@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.mx.ntlink;
+package com.mx.ntlink.client;
 
 /**
  * @author Ralph
