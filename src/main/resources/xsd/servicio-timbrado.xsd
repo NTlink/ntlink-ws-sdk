@@ -210,6 +210,8 @@
                 <xs:element minOccurs="0" name="userName" type="xs:string"/>
                 <xs:element minOccurs="0" name="password" type="xs:string"/>
                 <xs:element minOccurs="0" name="uuid" type="xs:string"/>
+                <xs:element minOccurs="0" name="motivo" type="xs:string"/>
+                <xs:element minOccurs="0" name="folioSustituto" type="xs:string"/>
                 <xs:element minOccurs="0" name="rfc" type="xs:string"/>
                 <xs:element minOccurs="0" name="expresion" type="xs:string"/>
                 <xs:element minOccurs="0" name="rfcReceptor" type="xs:string"/>
