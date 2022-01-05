@@ -24,7 +24,8 @@ public interface NtLinkClient {
 
   TimbraRetencionResponse timbraRetencion(TimbraRetencion retencion) throws SoapClientException;
 
-  TimbraRetencionQr timbraRetenionConQr(TimbraRetencionQr retencion) throws SoapClientException;
+  TimbraRetencionQrResponse timbraRetenionConQr(TimbraRetencionQr retencion)
+      throws SoapClientException;
 
   TimbraRetencionSinSelloResponse timbrarRetencionSinSello(
       TimbraRetencionSinSello retencionSinSello) throws SoapClientException;

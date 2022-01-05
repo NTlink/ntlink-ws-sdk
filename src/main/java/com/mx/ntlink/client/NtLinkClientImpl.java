@@ -67,11 +67,11 @@ public class NtLinkClientImpl extends AbstractSoapClient implements NtLinkClient
   }
 
   @Override
-  public TimbraRetencionQr timbraRetenionConQr(TimbraRetencionQr request)
+  public TimbraRetencionQrResponse timbraRetenionConQr(TimbraRetencionQr request)
       throws SoapClientException {
     request.setComprobante("<![CDATA[" + request.getComprobante() + "]]>");
     SOAPMessage response = sendRequest(request, TimbraRetencionQr.class);
-    return parseResponse(response, TimbraRetencionQr.class);
+    return parseResponse(response, TimbraRetencionQrResponse.class);
   }
 
   @Override
