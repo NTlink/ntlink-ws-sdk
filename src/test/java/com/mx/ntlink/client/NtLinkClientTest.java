@@ -1,11 +1,13 @@
 package com.mx.ntlink.client;
 
+import com.mx.ntlink.client.generated.TimbraCfdiQr;
+import com.mx.ntlink.client.generated.TimbraCfdiQrResponse;
 import com.mx.ntlink.client.generated.TimbraCfdiSinSello;
 import com.mx.ntlink.client.generated.TimbraCfdiSinSelloResponse;
 import com.mx.ntlink.error.SoapClientException;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
+import java.nio.file.Paths;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
@@ -20,8 +22,9 @@ public class NtLinkClientTest {
 
   @Test
   public void testTimbraCfdiSinSello() throws IOException, SoapClientException {
+
     String comprobante =
-        Files.readString(Path.of("src/test/resources/cfdi-samples/vehiculo-usado.xml"));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-samples/pue-cfdi.xml")));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -32,5 +35,22 @@ public class NtLinkClientTest {
     log.info(response.getTimbraCfdiSinSelloResult());
     Assert.assertNotNull(response);
     Assert.assertNotNull(response.getTimbraCfdiSinSelloResult());
+  }
+
+  @Test
+  public void testTimbraConQr() throws IOException, SoapClientException {
+    String comprobante =
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-samples/pue-cfdi.xml")));
+
+    TimbraCfdiQr request = new TimbraCfdiQr();
+    request.setPassword(TEST_PASS);
+    request.setUserName(TEST_USER);
+    request.setComprobante(comprobante);
+
+    TimbraCfdiQrResponse response = client.timbrarCfdiConQr(request);
+
+    log.info(response.getTimbraCfdiQrResult().getCfdi());
+    log.info(response.getTimbraCfdiQrResult().getDescripcionError());
+    log.info(response.getTimbraCfdiQrResult().getQrCodeBase64());
   }
 }

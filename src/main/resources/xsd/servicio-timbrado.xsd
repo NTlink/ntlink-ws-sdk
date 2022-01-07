@@ -307,6 +307,26 @@
         </xs:sequence>
     </xs:complexType>
 
+    <xs:complexType name="TimbraCfdiQrResult">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="CadenaTimbre" type="xs:string"/>
+            <xs:element minOccurs="0" name="Cfdi" type="xs:string"/>
+            <xs:element minOccurs="0" name="DescripcionError" type="xs:string"/>
+            <xs:element minOccurs="0" name="QrCodeBase64" type="xs:string"/>
+            <xs:element minOccurs="0" name="Valido" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TimbraCfdiQrSinSelloResult">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="CadenaTimbre" type="xs:string"/>
+            <xs:element minOccurs="0" name="Cfdi" type="xs:string"/>
+            <xs:element minOccurs="0" name="DescripcionError" type="xs:string"/>
+            <xs:element minOccurs="0" name="QrCodeBase64" type="xs:string"/>
+            <xs:element minOccurs="0" name="Valido" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+
     <xs:complexType name="ResultadoConsulta">
         <xs:sequence>
             <xs:element minOccurs="0" name="AcuseCancelacion" type="xs:string"/>
