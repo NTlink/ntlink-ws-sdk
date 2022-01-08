@@ -87,7 +87,7 @@
     <xs:element name="TimbraCfdiQrResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element minOccurs="0" name="TimbraCfdiQrResult" type="tns:TimbradoResponse"/>
+                <xs:element minOccurs="0" name="TimbraCfdiQrResult" type="tns:TimbraCfdiQrResult"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -103,7 +103,7 @@
     <xs:element name="TimbraCfdiQrSinSelloResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element minOccurs="0" name="TimbraCfdiQrSinSelloResult" type="tns:TimbradoResponse"/>
+                <xs:element minOccurs="0" name="TimbraCfdiQrSinSelloResult" type="tns:TimbraCfdiQrSinSelloResult"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -183,7 +183,7 @@
     <xs:element name="TimbraRetencionQrResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element minOccurs="0" name="TimbraRetencionQrResult" type="tns:TimbradoResponse"/>
+                <xs:element minOccurs="0" name="TimbraRetencionQrResult" type="tns:TimbraRetencionQrResult"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -318,6 +318,16 @@
     </xs:complexType>
 
     <xs:complexType name="TimbraCfdiQrSinSelloResult">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="CadenaTimbre" type="xs:string"/>
+            <xs:element minOccurs="0" name="Cfdi" type="xs:string"/>
+            <xs:element minOccurs="0" name="DescripcionError" type="xs:string"/>
+            <xs:element minOccurs="0" name="QrCodeBase64" type="xs:string"/>
+            <xs:element minOccurs="0" name="Valido" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TimbraRetencionQrResult">
         <xs:sequence>
             <xs:element minOccurs="0" name="CadenaTimbre" type="xs:string"/>
             <xs:element minOccurs="0" name="Cfdi" type="xs:string"/>
