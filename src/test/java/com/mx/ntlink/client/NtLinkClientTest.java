@@ -17,6 +17,7 @@ public class NtLinkClientTest {
 
   private static final NtLinkClient client =
       new NtLinkClientImpl("http://rds.dyndns.org:90/CertificadorWs40/ServicioTimbrado.svc");
+
   private static final String TEST_USER = "EKU9003173C9@ntlink.com.mx";
   private static final String TEST_PASS = "Factura.2021*";
 
@@ -24,7 +25,8 @@ public class NtLinkClientTest {
   public void testTimbraCfdiSinSello() throws IOException, SoapClientException {
 
     String comprobante =
-        new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-samples/pue-cfdi.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/cfdi-samples/vehiculo-usado.xml")));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -48,9 +50,8 @@ public class NtLinkClientTest {
     request.setComprobante(comprobante);
 
     TimbraCfdiQrResponse response = client.timbrarCfdiConQr(request);
-
-    log.info(response.getTimbraCfdiQrResult().getCfdi());
-    log.info(response.getTimbraCfdiQrResult().getDescripcionError());
-    log.info(response.getTimbraCfdiQrResult().getQrCodeBase64());
+    Assert.assertNotNull(response);
+    Assert.assertNotNull(response.getTimbraCfdiQrResult());
+    Assert.assertNotNull(response.getTimbraCfdiQrResult().getDescripcionError());
   }
 }

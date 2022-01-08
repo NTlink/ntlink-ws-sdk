@@ -3,29 +3,27 @@ package com.mx.ntlink.client;
 
 import com.mx.ntlink.client.generated.*;
 import com.mx.ntlink.error.SoapClientException;
-import lombok.extern.slf4j.Slf4j;
-
-import javax.xml.soap.MessageFactory;
-import javax.xml.soap.SOAPException;
-import javax.xml.soap.SOAPMessage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import javax.xml.soap.MessageFactory;
+import javax.xml.soap.SOAPException;
+import javax.xml.soap.SOAPMessage;
+import lombok.extern.slf4j.Slf4j;
 
 /** @author Ralph */
 @Slf4j
 public class NtLinkClientImpl extends AbstractSoapClient implements NtLinkClient {
 
-  private static  final String I_SERVICIO_TIMBRADO = "/IServicioTimbrado";
+  private static final String I_SERVICIO_TIMBRADO = "/IServicioTimbrado";
 
-  private static final String NTLINK_NAMESAPCE =
-          "https://ntlink.com.mx/IServicioTimbrado";
+  private static final String NTLINK_NAMESAPCE = "https://ntlink.com.mx/IServicioTimbrado";
 
   private static final String CERTIFICADOR_NAMESPACE =
-          "http://schemas.datacontract.org/2004/07/CertificadorWs";
+      "http://schemas.datacontract.org/2004/07/CertificadorWs";
   private static final String CERTIFICADOR_BUSINESS_NAMESPACE =
-          "http://schemas.datacontract.org/2004/07/CertificadorWs.Business";
+      "http://schemas.datacontract.org/2004/07/CertificadorWs.Business";
 
   public NtLinkClientImpl(String wsUrl) {
     super(wsUrl, NTLINK_NAMESAPCE.concat(I_SERVICIO_TIMBRADO));
@@ -106,7 +104,6 @@ public class NtLinkClientImpl extends AbstractSoapClient implements NtLinkClient
       stringResponse = stringResponse.replaceAll(CERTIFICADOR_NAMESPACE, NTLINK_NAMESAPCE);
       stringResponse = stringResponse.replaceAll(CERTIFICADOR_BUSINESS_NAMESPACE, NTLINK_NAMESAPCE);
       InputStream is = new ByteArrayInputStream(stringResponse.getBytes());
-      log.info("Replaced response: {}", stringResponse);
       return MessageFactory.newInstance().createMessage(message.getMimeHeaders(), is);
     } catch (IOException | SOAPException e) {
       throw new SoapClientException("Error replacing namespaces" + e.getMessage());
