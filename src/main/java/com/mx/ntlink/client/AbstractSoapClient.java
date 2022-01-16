@@ -115,7 +115,7 @@ public abstract class AbstractSoapClient {
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       message.writeTo(bos);
       bos.toString("UTF-8");
-      log.info(bos.toString());
+      log.debug(bos.toString());
     } catch (IOException | SOAPException e) {
       e.printStackTrace();
     }
