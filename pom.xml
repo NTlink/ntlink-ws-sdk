@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mx.ntlink</groupId>
 	<artifactId>ntlink-ws-sdk</artifactId>
-	<version>1.0.0</version>
+	<version>1.1.0</version>
 	<name>ntlink-ws-sdk</name>
 	<description>Web service client for NTLink web service CFDI V4</description>
 	<properties>
@@ -42,6 +42,13 @@
 			<artifactId>jaxb-impl</artifactId>
 			<version>2.3.5</version>
 		</dependency>
+		<!-- DEPENDENCY REQUIRED TO SIGN XML -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.not-yet-commons-ssl</artifactId>
+			<version>0.3.11_1</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>

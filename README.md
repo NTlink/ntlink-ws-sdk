@@ -77,7 +77,7 @@ To use just make a simple maven import
 <dependency>
 	<groupId>com.mx.ntlink</groupId>
 	<artifactId>ntlink-ws-sdk</artifactId>
-	<version>1.0.0</version>
+	<version>1.1.0</version>
 </dependency>
 ```
 
@@ -87,6 +87,7 @@ To use just make a simple maven import
 ## Roadmap
 
 - [x] 1.0.0 First WS client version supporting main CFDI V4.0 ws features
+- [x] 1.1.0 Adding Stamp Helper to generate stamp in XML before to send into CFDI 4.0 web service
 
 <!-- LICENSE -->
 ## License
