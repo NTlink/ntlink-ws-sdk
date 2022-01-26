@@ -1,8 +1,8 @@
 /** */
 package com.mx.ntlink.client;
 
-import com.mx.ntlink.client.generated.*;
 import com.mx.ntlink.error.SoapClientException;
+import com.mx.ntlink.models.generated.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

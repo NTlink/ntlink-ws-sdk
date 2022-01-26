@@ -1,10 +1,10 @@
 package com.mx.ntlink.client;
 
-import com.mx.ntlink.client.generated.TimbraCfdiQr;
-import com.mx.ntlink.client.generated.TimbraCfdiQrResponse;
-import com.mx.ntlink.client.generated.TimbraCfdiSinSello;
-import com.mx.ntlink.client.generated.TimbraCfdiSinSelloResponse;
 import com.mx.ntlink.error.SoapClientException;
+import com.mx.ntlink.models.generated.TimbraCfdiQr;
+import com.mx.ntlink.models.generated.TimbraCfdiQrResponse;
+import com.mx.ntlink.models.generated.TimbraCfdiSinSello;
+import com.mx.ntlink.models.generated.TimbraCfdiSinSelloResponse;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;

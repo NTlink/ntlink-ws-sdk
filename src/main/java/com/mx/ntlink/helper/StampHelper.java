@@ -3,7 +3,6 @@ package com.mx.ntlink.helper;
 import static javax.xml.parsers.DocumentBuilderFactory.newInstance;
 
 import com.mx.ntlink.error.StampException;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:pago10="http://www.sat.gob.mx/Pagos" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:catCFDI="http://www.sat.gob.mx/sitio_internet/cfd/catalogos" targetNamespace="http://www.sat.gob.mx/Pagos" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:import namespace="http://www.sat.gob.mx/sitio_internet/cfd/catalogos" schemaLocation="http://www.sat.gob.mx/sitio_internet/cfd/catalogos/catCFDI.xsd"/>
+    <xs:element name="Pagos">
+        <xs:annotation>
+            <xs:documentation>Modelo de Pagos complemento CFDI</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Pago" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>Elemento individual de pago</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="DoctoRelacionado" minOccurs="0">
+                                <xs:annotation>
+                                    <xs:documentation>Documento relacionado al complemento de pago</xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:attribute name="Folio" use="required">
+                                        <xs:annotation>
+                                            <xs:documentation>Atributo opcional para control interno del contribuyente que expresa el folio del comprobante, acepta una cadena de caracteres.</xs:documentation>
+                                        </xs:annotation>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:minLength value="1"/>
+                                                <xs:maxLength value="40"/>
+                                                <xs:whiteSpace value="collapse"/>
+                                                <xs:pattern value="[^|]{1,40}"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="IdDocumento" use="required">
+                                        <xs:annotation>
+                                            <xs:documentation>Atributo requerido para ligar el CFDI origen del complemento.</xs:documentation>
+                                        </xs:annotation>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:length value="36"/>
+                                                <xs:whiteSpace value="collapse"/>
+                                                <xs:pattern value="[a-f0-9A-F]{8}-[a-f0-9A-F]{4}-[a-f0-9A-F]{4}-[a-f0-9A-F]{4}-[a-f0-9A-F]{12}"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="ImpPagado" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:decimal">
+                                                <xs:fractionDigits value="2"/>
+                                                <xs:minInclusive value="0.00"/>
+                                                <xs:whiteSpace value="collapse"/>
+                                                <xs:pattern value="[0-9]{1,18}(.[0-9]{1,2})?"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="ImpSaldoAnt" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:decimal">
+                                                <xs:fractionDigits value="2"/>
+                                                <xs:minInclusive value="0.00"/>
+                                                <xs:whiteSpace value="collapse"/>
+                                                <xs:pattern value="[0-9]{1,18}(.[0-9]{1,2})?"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="ImpSaldoInsoluto" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:decimal">
+                                                <xs:fractionDigits value="2"/>
+                                                <xs:minInclusive value="0.00"/>
+                                                <xs:whiteSpace value="collapse"/>
+                                                <xs:pattern value="[0-9]{1,18}(.[0-9]{1,2})?"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="MonedaDR" type="catCFDI:c_Moneda" use="required">
+                                        <xs:annotation>
+                                            <xs:documentation>Atributo requerido para identificar la clave de la moneda utilizada para expresar los montos, cuando se usa moneda nacional se registra MXN. Conforme con la especificación ISO 4217.</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="MetodoDePagoDR" type="catCFDI:c_MetodoPago" use="optional">
+                                        <xs:annotation>
+                                            <xs:documentation>Atributo condicional para precisar la clave del método de pago que aplica para este comprobante fiscal digital por Internet, conforme al Artículo 29-A fracción VII incisos a y b del CFF.</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="Serie" use="required">
+                                        <xs:annotation>
+                                            <xs:documentation>Atributo opcional para control interno del contribuyente que expresa el folio del comprobante, acepta una cadena de caracteres.</xs:documentation>
+                                        </xs:annotation>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:minLength value="1"/>
+                                                <xs:maxLength value="40"/>
+                                                <xs:whiteSpace value="collapse"/>
+                                                <xs:pattern value="[^|]{1,40}"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="NumParcialidad" use="required">
+                                        <xs:annotation>
+                                            <xs:documentation>Atributo requerido para expresar el numero de  pago realizado al CFDI</xs:documentation>
+                                        </xs:annotation>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:short">
+                                                <xs:minInclusive value="1"/>
+                                                <xs:whiteSpace value="collapse"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="FechaPago" type="xs:string" use="required">
+                            <xs:annotation>
+                                <xs:documentation>Atributo requerido para la expresión de la fecha y hora de expedición del pago realizado. Se expresa en la forma AAAA-MM-DDThh:mm:ss y debe corresponder con la hora local donde se expide el comprobante.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="FormaDePagoP" type="catCFDI:c_FormaPago" use="optional">
+                            <xs:annotation>
+                                <xs:documentation>Atributo condicional para expresar la clave de la forma de pago de los bienes o servicios amparados por el comprobante.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="MonedaP" type="catCFDI:c_Moneda" use="required">
+                            <xs:annotation>
+                                <xs:documentation>Atributo requerido para identificar la clave de la moneda utilizada para expresar los montos, cuando se usa moneda nacional se registra MXN. Conforme con la especificación ISO 4217.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="Monto" use="required">
+                            <xs:annotation>
+                                <xs:documentation>Monto de pago atribuible al complemento de pago hasta dos decimales. No se permiten valores negativos.</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:decimal">
+                                    <xs:fractionDigits value="2"/>
+                                    <xs:minInclusive value="0.00"/>
+                                    <xs:whiteSpace value="collapse"/>
+                                    <xs:pattern value="[0-9]{1,18}(.[0-9]{1,2})?"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Version" use="required" fixed="1.1">
+                <xs:annotation>
+                    <xs:documentation>Atributo requerido con valor prefijado a 1.1 que indica la versión del estándar bajo el que se encuentra expresado el timbre fiscal.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:whiteSpace value="collapse"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
