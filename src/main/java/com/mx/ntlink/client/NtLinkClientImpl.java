@@ -1,7 +1,5 @@
-/** */
 package com.mx.ntlink.client;
 
-import com.mx.ntlink.client.generated.*;
 import com.mx.ntlink.error.SoapClientException;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -10,6 +8,25 @@ import java.io.InputStream;
 import javax.xml.soap.MessageFactory;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
+
+import com.mx.ntlink.models.generated.CancelaCfdi;
+import com.mx.ntlink.models.generated.CancelaCfdiResponse;
+import com.mx.ntlink.models.generated.CancelaRetencion;
+import com.mx.ntlink.models.generated.CancelaRetencionResponse;
+import com.mx.ntlink.models.generated.TimbraCfdi;
+import com.mx.ntlink.models.generated.TimbraCfdiQr;
+import com.mx.ntlink.models.generated.TimbraCfdiQrResponse;
+import com.mx.ntlink.models.generated.TimbraCfdiQrSinSello;
+import com.mx.ntlink.models.generated.TimbraCfdiQrSinSelloResponse;
+import com.mx.ntlink.models.generated.TimbraCfdiResponse;
+import com.mx.ntlink.models.generated.TimbraCfdiSinSello;
+import com.mx.ntlink.models.generated.TimbraCfdiSinSelloResponse;
+import com.mx.ntlink.models.generated.TimbraRetencion;
+import com.mx.ntlink.models.generated.TimbraRetencionQr;
+import com.mx.ntlink.models.generated.TimbraRetencionQrResponse;
+import com.mx.ntlink.models.generated.TimbraRetencionResponse;
+import com.mx.ntlink.models.generated.TimbraRetencionSinSello;
+import com.mx.ntlink.models.generated.TimbraRetencionSinSelloResponse;
 import lombok.extern.slf4j.Slf4j;
 
 /** @author Ralph */

@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mx.ntlink</groupId>
 	<artifactId>ntlink-ws-sdk</artifactId>
-	<version>1.1.0</version>
+	<version>2.0.0</version>
 	<name>ntlink-ws-sdk</name>
 	<description>Web service client for NTLink web service CFDI V4</description>
 	<properties>
@@ -83,9 +83,10 @@
 				<configuration>
 					<sources>
 						<source>src/main/resources/xsd</source>
+						<source>src/main/resources/cfdi</source>
 					</sources>
 					<!--outputDirectory>${project.basedir}/src/main/java</outputDirectory-->
-					<packageName>com.mx.ntlink.client.generated</packageName>
+					<packageName>com.mx.ntlink.models.generated</packageName>
 					<clearOutputDir>false</clearOutputDir>
 				</configuration>
 			</plugin>
