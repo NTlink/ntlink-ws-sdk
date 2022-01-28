@@ -15,6 +15,8 @@ import static com.mx.ntlink.util.CfdiConstants.PAGOS_NS;
 import static com.mx.ntlink.util.CfdiConstants.SAT_NS_40;
 import static com.mx.ntlink.util.CfdiConstants.SAT_XSD_40;
 import static com.mx.ntlink.util.CfdiConstants.TFD_NS;
+import static javax.xml.bind.Marshaller.JAXB_FORMATTED_OUTPUT;
+import static javax.xml.bind.Marshaller.JAXB_SCHEMA_LOCATION;
 
 public class CfdiTransformer {
 
@@ -22,9 +24,9 @@ public class CfdiTransformer {
         JAXBContext jaxbContext = JAXBContext.newInstance(Comprobante.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
         jaxbMarshaller.setProperty("com.sun.xml.bind.namespacePrefixMapper", new CfdiNamespaceMapper());
-        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        jaxbMarshaller.setProperty(JAXB_FORMATTED_OUTPUT, true);
         jaxbMarshaller.setProperty(
-                Marshaller.JAXB_SCHEMA_LOCATION, String.format("%s %s %s %s",SAT_NS_40,SAT_XSD_40,PAGOS_NS,TFD_NS));
+                JAXB_SCHEMA_LOCATION, String.format("%s %s %s %s",SAT_NS_40,SAT_XSD_40,PAGOS_NS,TFD_NS));
         StringWriter sw = new StringWriter();
         jaxbMarshaller.marshal(cfdi, sw);
         return sw.toString();
