@@ -1,14 +1,6 @@
 package com.mx.ntlink.client;
 
 import com.mx.ntlink.error.SoapClientException;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import javax.xml.soap.MessageFactory;
-import javax.xml.soap.SOAPException;
-import javax.xml.soap.SOAPMessage;
-
 import com.mx.ntlink.models.generated.CancelaCfdi;
 import com.mx.ntlink.models.generated.CancelaCfdiResponse;
 import com.mx.ntlink.models.generated.CancelaRetencion;
@@ -27,11 +19,20 @@ import com.mx.ntlink.models.generated.TimbraRetencionQrResponse;
 import com.mx.ntlink.models.generated.TimbraRetencionResponse;
 import com.mx.ntlink.models.generated.TimbraRetencionSinSello;
 import com.mx.ntlink.models.generated.TimbraRetencionSinSelloResponse;
-import lombok.extern.slf4j.Slf4j;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.xml.soap.MessageFactory;
+import javax.xml.soap.SOAPException;
+import javax.xml.soap.SOAPMessage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /** @author Ralph */
-@Slf4j
 public class NtLinkClientImpl extends AbstractSoapClient implements NtLinkClient {
+
+  private static final Logger log = LoggerFactory.getLogger(NtLinkClientImpl.class);
 
   private static final String I_SERVICIO_TIMBRADO = "/IServicioTimbrado";
 

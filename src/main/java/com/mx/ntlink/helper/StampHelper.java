@@ -27,18 +27,20 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.ssl.PKCS8Key;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-@Slf4j
 public class StampHelper {
 
   private static final String SIGN_ALGORITHM = "SHA256withRSA";
   private static final String CADENA_ORIGINAL_FILE_PATH = "xslt/cadenaoriginal.xslt";
   private static final String SELLO_ATTRIBUTE = "Sello";
+
+  private static final Logger log = LoggerFactory.getLogger(StampHelper.class);
 
   public String stampCfdi(String xml, String keyWord, String signKey) throws StampException {
     try {

@@ -9,16 +9,18 @@ import javax.xml.bind.*;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.soap.*;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
-@Slf4j
 public abstract class AbstractSoapClient {
 
   private final String wsUrl;
   private final String principalNamespace;
+
+  private static final Logger log = LoggerFactory.getLogger(AbstractSoapClient.class);
 
   protected AbstractSoapClient(String wsUrl, String principalNamespace) {
     this.wsUrl = wsUrl;

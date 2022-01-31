@@ -77,7 +77,7 @@ To use just make a simple maven import
 <dependency>
 	<groupId>com.mx.ntlink</groupId>
 	<artifactId>ntlink-ws-sdk</artifactId>
-	<version>2.0.1</version>
+	<version>2.0.2</version>
 </dependency>
 ```
 
@@ -90,6 +90,7 @@ To use just make a simple maven import
 - [x] 1.1.0 Adding Stamp Helper to generate stamp in XML before to send into CFDI 4.0 web service
 - [x] 2.0.0 Adding CFDI models and refactor generated classes package
 - [x] 2.0.1 Adding translator class with customizations
+- [x] 2.0.2 Removing lombok dependency
 
 <!-- LICENSE -->
 ## License
