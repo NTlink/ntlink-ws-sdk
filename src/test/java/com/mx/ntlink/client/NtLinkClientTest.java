@@ -11,6 +11,7 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +22,7 @@ public class NtLinkClientTest {
 
   private static final NtLinkClient client =
       new NtLinkClientImpl(
-          "http://ntlink-ws-proxy-lb-1393286963.us-west-2.elb.amazonaws.com/cfdi40/servicio-timbrado");
+          "http://dev-cfdi4.ntlink.com.mx/cfdi40/servicio-timbrado");
 
   private static final String TEST_USER = "EKU9003173C9@ntlink.com.mx";
   private static final String TEST_PASS = "Factura.2021*";
@@ -54,31 +55,6 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbraCFDIPUE_test() throws IOException, SoapClientException {
-
-    String comprobante =
-        new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-samples/otro-xml.xml")));
-
-    comprobante =
-        comprobante.replace(
-            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
-
-    /*
-    TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
-    cfdiSinSello.setPassword(TEST_PASS);
-    cfdiSinSello.setUserName(TEST_USER);
-    cfdiSinSello.setComprobante(comprobante);
-    TimbraCfdiSinSelloResponse response = client.timbrarSinSello(cfdiSinSello);
-
-    log.info(response.getTimbraCfdiSinSelloResult());
-    Assert.assertNotNull(response);
-    Assert.assertNotNull(response.getTimbraCfdiSinSelloResult());
-    Assert.assertTrue("Contains UUID", response.getTimbraCfdiSinSelloResult().contains("UUID"));
-    */
-
-  }
-
-  @Test
   public void testTimbraConQrWithError() throws IOException, SoapClientException {
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-samples/pue-cfdi.xml")));
@@ -95,6 +71,7 @@ public class NtLinkClientTest {
   }
 
 
+  @Ignore
   @Test
   public void timbraPPD_test() throws IOException, SoapClientException {
 
