@@ -3,6 +3,8 @@ package com.mx.ntlink.client;
 import com.mx.ntlink.error.SoapClientException;
 import com.mx.ntlink.models.generated.TimbraCfdiQr;
 import com.mx.ntlink.models.generated.TimbraCfdiQrResponse;
+import com.mx.ntlink.models.generated.TimbraCfdiQrSinSello;
+import com.mx.ntlink.models.generated.TimbraCfdiQrSinSelloResponse;
 import com.mx.ntlink.models.generated.TimbraCfdiSinSello;
 import com.mx.ntlink.models.generated.TimbraCfdiSinSelloResponse;
 import java.io.IOException;
@@ -10,6 +12,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+import com.mx.ntlink.models.generated.TimbraRetencion;
+import com.mx.ntlink.models.generated.TimbraRetencionSinSello;
+import com.mx.ntlink.models.generated.TimbraRetencionSinSelloResponse;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -106,16 +112,16 @@ public class NtLinkClientTest {
             comprobante.replace(
                     DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
-    TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
+    TimbraCfdiQrSinSello cfdiSinSello = new TimbraCfdiQrSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
     cfdiSinSello.setUserName(TEST_USER);
     cfdiSinSello.setComprobante(comprobante);
-    TimbraCfdiSinSelloResponse response = client.timbrarSinSello(cfdiSinSello);
+    TimbraCfdiQrSinSelloResponse response = client.timbrarSinSelloConQr(cfdiSinSello);
 
-    log.info(response.getTimbraCfdiSinSelloResult());
     Assert.assertNotNull(response);
-    Assert.assertNotNull(response.getTimbraCfdiSinSelloResult());
-    Assert.assertTrue("Contains UUID", response.getTimbraCfdiSinSelloResult().contains("UUID"));
+    Assert.assertNotNull(response.getTimbraCfdiQrSinSelloResult());
+    Assert.assertTrue(response.getTimbraCfdiQrSinSelloResult().getDescripcionError().isEmpty());
+    Assert.assertTrue("Contains UUID", response.getTimbraCfdiQrSinSelloResult().getCfdi().contains("UUID"));
   }
 
 
@@ -209,6 +215,29 @@ public class NtLinkClientTest {
     Assert.assertNotNull(response);
     Assert.assertNotNull(response.getTimbraCfdiSinSelloResult());
     Assert.assertTrue("Contains UUID", response.getTimbraCfdiSinSelloResult().contains("UUID"));
+  }
+
+  @Test
+  public void timbra_retencion_test() throws IOException, SoapClientException {
+
+    String retencion =
+            new String(
+                    Files.readAllBytes(Paths.get("./src/test/resources/retencion-samples/retencion.xml")));
+
+    retencion =
+            retencion.replace(
+                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+
+    TimbraRetencionSinSello retencionSinSello = new TimbraRetencionSinSello();
+    retencionSinSello.setPassword(TEST_PASS);
+    retencionSinSello.setUserName(TEST_USER);
+    retencionSinSello.setComprobante(retencion);
+    TimbraRetencionSinSelloResponse response = client.timbrarRetencionSinSello(retencionSinSello);
+
+    log.info(response.getTimbraRetencionSinSelloResult());
+    Assert.assertNotNull(response);
+    Assert.assertNotNull(response.getTimbraRetencionSinSelloResult());
+    Assert.assertTrue("Contains UUID", response.getTimbraRetencionSinSelloResult().contains("UUID"));
   }
 
 
