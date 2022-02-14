@@ -13,7 +13,6 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 public class NtLinkClientTest {
 
   private static final Logger log = LoggerFactory.getLogger(NtLinkClientTest.class);
@@ -24,7 +23,7 @@ public class NtLinkClientTest {
   private static final String TEST_USER = "EKU9003173C9@ntlink.com.mx";
   private static final String TEST_PASS = "Factura.2021*";
 
-  @Test
+  @Test(expected = SoapClientException.class)
   public void testTimbraCfdiSinSello() throws IOException, SoapClientException {
 
     String comprobante =
@@ -42,7 +41,7 @@ public class NtLinkClientTest {
     Assert.assertNotNull(response.getTimbraCfdiSinSelloResult());
   }
 
-  @Test
+  @Test(expected = SoapClientException.class)
   public void testTimbraConQr() throws IOException, SoapClientException {
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-samples/pue-cfdi.xml")));
