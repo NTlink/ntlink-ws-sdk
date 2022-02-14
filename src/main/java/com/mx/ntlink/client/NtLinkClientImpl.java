@@ -61,12 +61,11 @@ public class NtLinkClientImpl extends AbstractSoapClient implements NtLinkClient
     request.setComprobante("<![CDATA[" + request.getComprobante() + "]]>");
     SOAPMessage response = sendRequest(request, TimbraCfdi.class);
     TimbraCfdiResponse result = parseResponse(response, TimbraCfdiResponse.class);
-    if(result.getTimbraCfdiResult().contains("UUID")){
+    if (result.getTimbraCfdiResult().contains("UUID")) {
       return result;
-    }else{
+    } else {
       throw new SoapClientException(result.getTimbraCfdiResult());
     }
-
   }
 
   @Override
@@ -74,9 +73,9 @@ public class NtLinkClientImpl extends AbstractSoapClient implements NtLinkClient
     request.setComprobante("<![CDATA[" + request.getComprobante() + "]]>");
     SOAPMessage response = replaceNamespaces(sendRequest(request, TimbraCfdiQr.class));
     TimbraCfdiQrResponse result = parseResponse(response, TimbraCfdiQrResponse.class);
-    if(result.getTimbraCfdiQrResult().getDescripcionError().isEmpty()){
+    if (result.getTimbraCfdiQrResult().getDescripcionError().isEmpty()) {
       return result;
-    }else{
+    } else {
       throw new SoapClientException(result.getTimbraCfdiQrResult().getDescripcionError());
     }
   }
@@ -87,9 +86,9 @@ public class NtLinkClientImpl extends AbstractSoapClient implements NtLinkClient
     request.setComprobante("<![CDATA[" + request.getComprobante() + "]]>");
     SOAPMessage response = sendRequest(request, TimbraCfdiSinSello.class);
     TimbraCfdiSinSelloResponse result = parseResponse(response, TimbraCfdiSinSelloResponse.class);
-    if(result.getTimbraCfdiSinSelloResult().contains("UUID")){
+    if (result.getTimbraCfdiSinSelloResult().contains("UUID")) {
       return result;
-    }else{
+    } else {
       throw new SoapClientException(result.getTimbraCfdiSinSelloResult());
     }
   }
@@ -99,10 +98,11 @@ public class NtLinkClientImpl extends AbstractSoapClient implements NtLinkClient
       throws SoapClientException {
     request.setComprobante("<![CDATA[" + request.getComprobante() + "]]>");
     SOAPMessage response = replaceNamespaces(sendRequest(request, TimbraCfdiQrSinSello.class));
-    TimbraCfdiQrSinSelloResponse result = parseResponse(response, TimbraCfdiQrSinSelloResponse.class);
-    if(result.getTimbraCfdiQrSinSelloResult().getDescripcionError().isEmpty()){
+    TimbraCfdiQrSinSelloResponse result =
+        parseResponse(response, TimbraCfdiQrSinSelloResponse.class);
+    if (result.getTimbraCfdiQrSinSelloResult().getDescripcionError().isEmpty()) {
       return result;
-    }else{
+    } else {
       throw new SoapClientException(result.getTimbraCfdiQrSinSelloResult().getDescripcionError());
     }
   }
@@ -113,9 +113,9 @@ public class NtLinkClientImpl extends AbstractSoapClient implements NtLinkClient
     request.setComprobante("<![CDATA[" + request.getComprobante() + "]]>");
     SOAPMessage response = sendRequest(request, TimbraRetencion.class);
     TimbraRetencionResponse result = parseResponse(response, TimbraRetencionResponse.class);
-    if(result.getTimbraRetencionResult().contains("UUID")){
+    if (result.getTimbraRetencionResult().contains("UUID")) {
       return result;
-    }else{
+    } else {
       throw new SoapClientException(result.getTimbraRetencionResult());
     }
   }
@@ -126,9 +126,9 @@ public class NtLinkClientImpl extends AbstractSoapClient implements NtLinkClient
     request.setComprobante("<![CDATA[" + request.getComprobante() + "]]>");
     SOAPMessage response = replaceNamespaces(sendRequest(request, TimbraRetencionQr.class));
     TimbraRetencionQrResponse result = parseResponse(response, TimbraRetencionQrResponse.class);
-    if(result.getTimbraRetencionQrResult().getDescripcionError().isEmpty()){
+    if (result.getTimbraRetencionQrResult().getDescripcionError().isEmpty()) {
       return result;
-    }else{
+    } else {
       throw new SoapClientException(result.getTimbraRetencionQrResult().getDescripcionError());
     }
   }
@@ -138,10 +138,11 @@ public class NtLinkClientImpl extends AbstractSoapClient implements NtLinkClient
       throws SoapClientException {
     request.setComprobante("<![CDATA[" + request.getComprobante() + "]]>");
     SOAPMessage response = sendRequest(request, TimbraRetencionSinSello.class);
-    TimbraRetencionSinSelloResponse result = parseResponse(response, TimbraRetencionSinSelloResponse.class);
-    if(result.getTimbraRetencionSinSelloResult().contains("UUID")){
+    TimbraRetencionSinSelloResponse result =
+        parseResponse(response, TimbraRetencionSinSelloResponse.class);
+    if (result.getTimbraRetencionSinSelloResult().contains("UUID")) {
       return result;
-    }else{
+    } else {
       throw new SoapClientException(result.getTimbraRetencionSinSelloResult());
     }
   }
