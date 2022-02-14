@@ -91,6 +91,7 @@ To use just make a simple maven import
 - [x] 2.0.0 Adding CFDI models and refactor generated classes package
 - [x] 2.0.1 Adding translator class with customizations
 - [x] 2.0.2 Removing lombok dependency
+- [x] 2.0.3 Adding error handling on stamp CFDI and retention methods
 
 <!-- LICENSE -->
 ## License
