@@ -20,7 +20,7 @@ public class StampHelperTest {
   private static final Logger log = LoggerFactory.getLogger(StampHelperTest.class);
 
   private static final NtLinkClient client =
-      new NtLinkClientImpl("http://rds.dyndns.org:90/CertificadorWs40/ServicioTimbrado.svc");
+      new NtLinkClientImpl("http://dev-cfdi4.ntlink.com.mx/cfdi40/servicio-timbrado");
 
   private static final String TEST_USER = "URE180429TM6@ntlink.com.mx";
   private static final String TEST_PASS = "NTPruebas.2021*?";
