@@ -33,6 +33,7 @@ public class NtLinkClientTest {
   private static final String TEST_USER = "EKU9003173C9@ntlink.com.mx";
   private static final String TEST_PASS = "Factura.2021*";
 
+
   private static final DateTimeFormatter formatter =
       DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
   private static final String DATE_REPLACEMENT = "%fecha-timbrado%";
@@ -59,6 +60,7 @@ public class NtLinkClientTest {
     Assert.assertNotNull(response.getTimbraCfdiSinSelloResult());
     Assert.assertTrue("Contains UUID", response.getTimbraCfdiSinSelloResult().contains("UUID"));
   }
+
 
   @Test
   public void testTimbraConQrWithError() throws IOException, SoapClientException {
