@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<retenciones:Retenciones xmlns:retenciones="http://www.sat.gob.mx/esquemas/retencionpago/2"  xsi:schemaLocation="http://www.sat.gob.mx/esquemas/retencionpago/2 http://www.sat.gob.mx/esquemas/retencionpago/2/retencionpagov2.xsd" Version="2.0" FolioInt="00001" FechaExp="%fecha-timbrado%" LugarExpRetenc="98626" CveRetenc="18" DescRetenc="PRUEBAS SERVICIOS PROFESIONALES" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <retenciones:Emisor RfcE="EKU9003173C9" NomDenRazSocE="SAT PRUEBAS" RegimenFiscalE="601" />
+  <retenciones:Receptor NacionalidadR="Extranjero">
+    <retenciones:Extranjero NumRegIdTribR ="32001719737" NomDenRazSocR="EXTRANJERO" />
+  </retenciones:Receptor>
+  <retenciones:Periodo MesIni="08" MesFin="08" Ejercicio="2021" />
+  <retenciones:Totales MontoTotOperacion="1426800.00" MontoTotGrav="130000.00" MontoTotExent="0.00" MontoTotRet="1968000.00">
+    <retenciones:ImpRetenidos BaseRet="1230000" ImpuestoRet="002" MontoRet="196800" TipoPagoRet="01" />
+  </retenciones:Totales>
+  <retenciones:Complemento>
+  <pagosaextranjeros:Pagosaextranjeros xmlns:pagosaextranjeros="http://www.sat.gob.mx/esquemas/retencionpago/1/pagosaextranjeros" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/esquemas/retencionpago/1/pagosaextranjeros http://www.sat.gob.mx/esquemas/retencionpago/1/pagosaextranjeros/pagosaextranjeros.xsd" Version="1.0" EsBenefEfectDelCobro="NO"><pagosaextranjeros:NoBeneficiario PaisDeResidParaEfecFisc="US" ConceptoPago="1" DescripcionConcepto="pago por concierto Live AID" /></pagosaextranjeros:Pagosaextranjeros>
+  </retenciones:Complemento>
+</retenciones:Retenciones>
+
