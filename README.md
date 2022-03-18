@@ -77,7 +77,7 @@ To use just make a simple maven import
 <dependency>
 	<groupId>com.mx.ntlink</groupId>
 	<artifactId>ntlink-ws-sdk</artifactId>
-	<version>2.0.2</version>
+	<version>2.0.4</version>
 </dependency>
 ```
 
