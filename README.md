@@ -93,7 +93,8 @@ To use just make a simple maven import
 - [x] 2.0.2 Removing lombok dependency
 - [x] 2.0.3 Adding error handling on stamp CFDI and retention methods
 - [x] 2.0.4 Adding nomina12.xsd for class autogeneration via JaxB
-
+- [x] 2.0.4 Format  Pom and fixing import
+- 
 <!-- LICENSE -->
 ## License
 
