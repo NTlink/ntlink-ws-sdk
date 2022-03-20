@@ -12,12 +12,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.junit.Assert;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class StampHelperTest {
-
-  private static final Logger log = LoggerFactory.getLogger(StampHelperTest.class);
 
   private static final NtLinkClient client =
       new NtLinkClientImpl("http://dev-cfdi4.ntlink.com.mx/cfdi40/servicio-timbrado");
@@ -43,7 +39,6 @@ public class StampHelperTest {
 
     String xmlWithStamp = helper.stampCfdi(xml, PW_SAT, privateKey);
 
-    log.info(xmlWithStamp);
     Assert.assertNotNull(xmlWithStamp);
     TimbraCfdiQr stampRequest = new TimbraCfdiQr();
     stampRequest.setComprobante(xmlWithStamp);
@@ -56,7 +51,6 @@ public class StampHelperTest {
       Assert.assertNotNull(response.getTimbraCfdiQrResult().getCadenaTimbre());
       Assert.assertNotNull(response.getTimbraCfdiQrResult().getCfdi());
       Assert.assertNotNull(response.getTimbraCfdiQrResult().getQrCodeBase64());
-      log.info("XML timbrado : {}", response.getTimbraCfdiQrResult().getCfdi());
     } else {
       Assert.fail("Error timbrando XML: " + response.getTimbraCfdiQrResult().getDescripcionError());
     }

@@ -17,12 +17,8 @@ import java.time.format.DateTimeFormatter;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class NtLinkClientTest {
-
-  private static final Logger log = LoggerFactory.getLogger(NtLinkClientTest.class);
 
   private static final NtLinkClient client =
       new NtLinkClientImpl("http://dev-cfdi4.ntlink.com.mx/cfdi40/servicio-timbrado");
@@ -51,7 +47,6 @@ public class NtLinkClientTest {
     cfdiSinSello.setComprobante(comprobante);
     TimbraCfdiSinSelloResponse response = client.timbrarSinSello(cfdiSinSello);
 
-    log.info(response.getTimbraCfdiSinSelloResult());
     Assert.assertNotNull(response);
     Assert.assertNotNull(response.getTimbraCfdiSinSelloResult());
     Assert.assertTrue("Contains UUID", response.getTimbraCfdiSinSelloResult().contains("UUID"));
@@ -90,7 +85,6 @@ public class NtLinkClientTest {
     cfdiSinSello.setComprobante(comprobante);
     TimbraCfdiSinSelloResponse response = client.timbrarSinSello(cfdiSinSello);
 
-    log.info(response.getTimbraCfdiSinSelloResult());
     Assert.assertNotNull(response);
     Assert.assertNotNull(response.getTimbraCfdiSinSelloResult());
     Assert.assertTrue("Contains UUID", response.getTimbraCfdiSinSelloResult().contains("UUID"));
@@ -136,7 +130,6 @@ public class NtLinkClientTest {
     cfdiSinSello.setComprobante(comprobante);
     TimbraCfdiSinSelloResponse response = client.timbrarSinSello(cfdiSinSello);
 
-    log.info(response.getTimbraCfdiSinSelloResult());
     Assert.assertNotNull(response);
     Assert.assertNotNull(response.getTimbraCfdiSinSelloResult());
     Assert.assertTrue("Contains UUID", response.getTimbraCfdiSinSelloResult().contains("UUID"));
@@ -160,7 +153,6 @@ public class NtLinkClientTest {
     cfdiSinSello.setComprobante(comprobante);
     TimbraCfdiSinSelloResponse response = client.timbrarSinSello(cfdiSinSello);
 
-    log.info(response.getTimbraCfdiSinSelloResult());
     Assert.assertNotNull(response);
     Assert.assertNotNull(response.getTimbraCfdiSinSelloResult());
     Assert.assertTrue("Contains UUID", response.getTimbraCfdiSinSelloResult().contains("UUID"));
@@ -183,7 +175,6 @@ public class NtLinkClientTest {
     cfdiSinSello.setComprobante(comprobante);
     TimbraCfdiSinSelloResponse response = client.timbrarSinSello(cfdiSinSello);
 
-    log.info(response.getTimbraCfdiSinSelloResult());
     Assert.assertNotNull(response);
     Assert.assertNotNull(response.getTimbraCfdiSinSelloResult());
     Assert.assertTrue("Contains UUID", response.getTimbraCfdiSinSelloResult().contains("UUID"));
@@ -205,7 +196,6 @@ public class NtLinkClientTest {
     cfdiSinSello.setComprobante(comprobante);
     TimbraCfdiSinSelloResponse response = client.timbrarSinSello(cfdiSinSello);
 
-    log.info(response.getTimbraCfdiSinSelloResult());
     Assert.assertNotNull(response);
     Assert.assertNotNull(response.getTimbraCfdiSinSelloResult());
     Assert.assertTrue("Contains UUID", response.getTimbraCfdiSinSelloResult().contains("UUID"));
@@ -227,7 +217,6 @@ public class NtLinkClientTest {
     retencionSinSello.setComprobante(retencion);
     TimbraRetencionSinSelloResponse response = client.timbrarRetencionSinSello(retencionSinSello);
 
-    log.info(response.getTimbraRetencionSinSelloResult());
     Assert.assertNotNull(response);
     Assert.assertNotNull(response.getTimbraRetencionSinSelloResult());
     Assert.assertTrue(

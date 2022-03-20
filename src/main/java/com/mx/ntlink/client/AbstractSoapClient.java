@@ -3,14 +3,28 @@ package com.mx.ntlink.client;
 import com.mx.ntlink.error.SoapClientException;
 import com.mx.ntlink.util.CustomCharacterEscapeHandler;
 import com.sun.xml.bind.marshaller.DataWriter;
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
-import javax.xml.bind.*;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.soap.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import javax.xml.soap.MessageFactory;
+import javax.xml.soap.SOAPBody;
+import javax.xml.soap.SOAPConnection;
+import javax.xml.soap.SOAPConnectionFactory;
+import javax.xml.soap.SOAPEnvelope;
+import javax.xml.soap.SOAPException;
+import javax.xml.soap.SOAPMessage;
+import javax.xml.soap.SOAPPart;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
@@ -19,8 +33,6 @@ public abstract class AbstractSoapClient {
 
   private final String wsUrl;
   private final String principalNamespace;
-
-  private static final Logger log = LoggerFactory.getLogger(AbstractSoapClient.class);
 
   protected AbstractSoapClient(String wsUrl, String principalNamespace) {
     this.wsUrl = wsUrl;
@@ -44,7 +56,6 @@ public abstract class AbstractSoapClient {
       soapConnection.close();
       return soapResponse;
     } catch (SOAPException e) {
-      log.error("SOAPException in SOAPClient", e);
       throw new SoapClientException(e.getMessage());
     }
   }
@@ -56,7 +67,6 @@ public abstract class AbstractSoapClient {
       Node element = soapBody.getFirstChild();
       return parseNode(element, entityType);
     } catch (SOAPException e) {
-      log.error("Error parsing response", e);
       throw new SoapClientException(e.getMessage());
     }
   }
@@ -68,7 +78,6 @@ public abstract class AbstractSoapClient {
       JAXBElement<R> root = um.unmarshal(element, entityType);
       return root.getValue();
     } catch (JAXBException e) {
-      log.error("Error parsing response", e);
       throw new SoapClientException(e.getMessage());
     }
   }
@@ -107,7 +116,6 @@ public abstract class AbstractSoapClient {
         | ParserConfigurationException
         | IOException
         | SAXException e) {
-      log.error("Error generating request", e);
       throw new SoapClientException(e.getMessage());
     }
   }
@@ -117,7 +125,6 @@ public abstract class AbstractSoapClient {
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       message.writeTo(bos);
       bos.toString("UTF-8");
-      log.debug(bos.toString());
     } catch (IOException | SOAPException e) {
       e.printStackTrace();
     }

@@ -28,8 +28,6 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import org.apache.commons.ssl.PKCS8Key;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -40,14 +38,10 @@ public class StampHelper {
   private static final String CADENA_ORIGINAL_FILE_PATH = "xslt/cadenaoriginal.xslt";
   private static final String SELLO_ATTRIBUTE = "Sello";
 
-  private static final Logger log = LoggerFactory.getLogger(StampHelper.class);
-
   public String stampCfdi(String xml, String keyWord, String signKey) throws StampException {
     try {
       String cadenaOriginal = getStampChain(xml);
       String sello = getSign(cadenaOriginal, keyWord, signKey);
-      log.info("Cadena original : {}", cadenaOriginal);
-      log.debug("Sello : {}", sello);
       DocumentBuilderFactory factory = newInstance();
       DocumentBuilder builder;
       TransformerFactory tf = TransformerFactory.newInstance();
@@ -76,7 +70,6 @@ public class StampHelper {
       signature.update(originalChain.getBytes(StandardCharsets.UTF_8));
       return DatatypeConverter.printBase64Binary(signature.sign());
     } catch (GeneralSecurityException | IOException e) {
-      log.error("Error signing XML using key file", e);
       throw new StampException(e.getMessage());
     }
   }
@@ -98,7 +91,6 @@ public class StampHelper {
       transformer.transform(xmlSource, out);
       return baos.toString("UTF-8");
     } catch (TransformerException | UnsupportedEncodingException e) {
-      log.error("Error generating XML original chain", e);
       throw new StampException(e.getMessage());
     }
   }
