@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns="http://www.sat.gob.mx/sitio_internet/cfd/catalogos" xmlns:tdCFDI="http://www.sat.gob.mx/sitio_internet/cfd/tipoDatos/tdCFDI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 schema.xsd" Version="4.0" Serie="123" Folio="00686" Fecha="16-03-2022T00:00:00" FormaPago="01" SubTotal="30000.00" Moneda="MXN" Total="34800.00" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" LugarExpedicion="86680">
+   <cfdi:InformacionGlobal Periodicidad="04" Meses="12" Año="2021" />
+   <cfdi:CfdiRelacionados TipoRelacion="02">
+      <cfdi:CfdiRelacionado UUID="2E34BDB7-6C7B-4F00-AF13-586F700B3C8D" />
+   </cfdi:CfdiRelacionados>
+   <cfdi:Emisor Rfc="NLC091211KC6" Nombre="NT LINK COMUNICACIONES S.A. DE C.V." RegimenFiscal="610" FacAtrAdquirente="5981399143" />
+   <cfdi:Receptor Rfc="LSD070904LH3" Nombre=" (NO UTILIZAR)2" DomicilioFiscalReceptor="86690" ResidenciaFiscal="MEX" NumRegIdTrib="SSF1103037F1" RegimenFiscalReceptor="628" UsoCFDI="G01" />
+   <cfdi:Conceptos>
+      <cfdi:Concepto ClaveProdServ="78101501" NoIdentificacion="JBNI2343" Cantidad="1" ClaveUnidad="H87" Unidad="SERVICIO" Descripcion="TRANSPORTE NACIONAL DE CARGA" ValorUnitario="30000.00" Importe="30000.00" ObjetoImp="01">
+         <cfdi:ACuentaTerceros RfcACuentaTerceros="PZA000413788" NombreACuentaTerceros="RAZON SOCIAL DE PRUEBAS" RegimenFiscalACuentaTerceros="616" DomicilioFiscalACuentaTerceros="56816" />
+         <cfdi:InformacionAduanera NumeroPedimento="82  33  6411  8902567" />
+         <cfdi:Parte ClaveProdServ="10302407" Cantidad="2" Descripcion="xx">
+            <cfdi:InformacionAduanera NumeroPedimento="52  53  4408  4075095" />
+         </cfdi:Parte>
+      </cfdi:Concepto>
+      <cfdi:Concepto ClaveProdServ="50321802" Cantidad="1" ClaveUnidad="H87" Unidad="SERVICIO" Descripcion="prueba" ValorUnitario="200.00" Importe="200.00" Descuento="10.00" ObjetoImp="02">
+         <cfdi:Impuestos>
+            <cfdi:Traslados>
+               <cfdi:Traslado Base="140.200" Impuesto="001" TipoFactor="Tasa" />
+            </cfdi:Traslados>
+         </cfdi:Impuestos>
+         <cfdi:InformacionAduanera NumeroPedimento="56  99  3242  2529478" />
+         <cfdi:CuentaPredial Numero="15956011002" />
+         <cfdi:Parte ClaveProdServ="10402232" Cantidad="481.23" Descripcion="xxx">
+            <cfdi:InformacionAduanera NumeroPedimento="15  16  3835  6234781" />
+            <cfdi:InformacionAduanera NumeroPedimento="35  42  7589  8348649" />
+         </cfdi:Parte>
+         <cfdi:Parte ClaveProdServ="50404102" Cantidad="397.23" Descripcion="xx" />
+      </cfdi:Concepto>
+      <cfdi:Concepto ClaveProdServ="10302439" Cantidad="1" ClaveUnidad="H87" Descripcion="N" ValorUnitario="100.00" Importe="100.00" ObjetoImp="03">
+         <cfdi:ACuentaTerceros RfcACuentaTerceros="PZA000413788" NombreACuentaTerceros="RAZON SOCIAL DE PRUEBAS" RegimenFiscalACuentaTerceros="630" DomicilioFiscalACuentaTerceros="17905" />
+         <cfdi:InformacionAduanera NumeroPedimento="57  74  7893  0826143" />
+         <cfdi:Parte ClaveProdServ="30266301" Cantidad="3" Descripcion="xxx">
+            <cfdi:InformacionAduanera NumeroPedimento="88  69  7242  7601682" />
+         </cfdi:Parte>
+      </cfdi:Concepto>
+   </cfdi:Conceptos>
+   <cfdi:Impuestos TotalImpuestosRetenidos="891.24" TotalImpuestosTrasladados="226.26">
+      <cfdi:Retenciones>
+         <cfdi:Retencion Impuesto="003" Importe="409.26" />
+         <cfdi:Retencion Impuesto="002" Importe="549.26" />
+      </cfdi:Retenciones>
+      <cfdi:Traslados>
+         <cfdi:Traslado Base="296.23" Impuesto="003" TipoFactor="Tasa" />
+         <cfdi:Traslado Base="101.29" Impuesto="003" TipoFactor="Cuota" />
+         <cfdi:Traslado Base="773.26" Impuesto="002" TipoFactor="Cuota" />
+      </cfdi:Traslados>
+   </cfdi:Impuestos>
+   <cfdi:Complemento />
+</cfdi:Comprobante>
