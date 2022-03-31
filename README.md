@@ -77,7 +77,7 @@ To use just make a simple maven import
 <dependency>
 	<groupId>com.mx.ntlink</groupId>
 	<artifactId>ntlink-ws-sdk</artifactId>
-	<version>2.0.2</version>
+	<version>2.0.4</version>
 </dependency>
 ```
 
@@ -92,7 +92,9 @@ To use just make a simple maven import
 - [x] 2.0.1 Adding translator class with customizations
 - [x] 2.0.2 Removing lombok dependency
 - [x] 2.0.3 Adding error handling on stamp CFDI and retention methods
-
+- [x] 2.0.4 Adding nomina12.xsd for class autogeneration via JaxB
+- [x] 2.0.4 Format  Pom and fixing import
+- 
 <!-- LICENSE -->
 ## License
 
