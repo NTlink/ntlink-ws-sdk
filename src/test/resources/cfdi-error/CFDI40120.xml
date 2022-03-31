@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cfdi:Comprobante xmlns="http://www.sat.gob.mx/sitio_internet/cfd/catalogos" xmlns:tdCFDI="http://www.sat.gob.mx/sitio_internet/cfd/tipoDatos/tdCFDI" xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 schema.xsd" Version="4.0" Serie="123" Folio="00686" Fecha="%fecha-timbrado%" SubTotal="1000000000000000000.00" Moneda="USD" TipoCambio="20" Total="1000000000000000000.00" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" LugarExpedicion="86680" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="610" FacAtrAdquirente="5981399143" />
+   <cfdi:Receptor Rfc="XAXX010101000" Nombre="RAZON SOCIAL DE PRUEBA" DomicilioFiscalReceptor="86690" ResidenciaFiscal="MEX" NumRegIdTrib="SSF1103037F1" RegimenFiscalReceptor="628" UsoCFDI="G01" />
+   <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="50321802" Cantidad="1" ClaveUnidad="H87" Unidad="SERVICIO" Descripcion="prueba" ValorUnitario="1000000000000000000.00" Importe="1000000000000000000.00" ObjetoImp="02">
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Complemento />
+</cfdi:Comprobante>

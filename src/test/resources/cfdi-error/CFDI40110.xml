@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cfdi:Comprobante xmlns="http://www.sat.gob.mx/sitio_internet/cfd/catalogos" xmlns:tdCFDI="http://www.sat.gob.mx/sitio_internet/cfd/tipoDatos/tdCFDI" xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 schema.xsd" Version="4.0" Serie="123" Folio="00686" Fecha="%fecha-timbrado%" SubTotal="30000.00" Descuento="8080808.00" Moneda="MXN" Total="34800.00" TipoDeComprobante="T" Exportacion="01" MetodoPago="PUE" LugarExpedicion="86680" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="610" FacAtrAdquirente="5981399143" />
+   <cfdi:Receptor Rfc="XAXX010101000" Nombre="RAZON SOCIAL DE PRUEBA" DomicilioFiscalReceptor="86690" ResidenciaFiscal="MEX" NumRegIdTrib="SSF1103037F1" RegimenFiscalReceptor="628" UsoCFDI="G01" />
+   <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="78101501" NoIdentificacion="JBNI2343" Cantidad="1" ClaveUnidad="H87" Unidad="SERVICIO" Descripcion="CONCEPTO" ValorUnitario="30000.00" Importe="30000.00" ObjetoImp="01">
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="50321802" Cantidad="1" ClaveUnidad="H87" Unidad="SERVICIO" Descripcion="prueba" ValorUnitario="200.00" Importe="200.00" Descuento="10.00" ObjetoImp="02">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="140.200" Impuesto="001" TipoFactor="Tasa" />
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="10302439" Cantidad="1" ClaveUnidad="H87" Descripcion="N" ValorUnitario="100.00" Importe="100.00" ObjetoImp="03">
+     </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosRetenidos="891.24" TotalImpuestosTrasladados="226.26">
+    <cfdi:Retenciones>
+      <cfdi:Retencion Impuesto="003" Importe="409.26" />
+      <cfdi:Retencion Impuesto="002" Importe="549.26" />
+    </cfdi:Retenciones>
+    <cfdi:Traslados>
+      <cfdi:Traslado Base="296.23" Impuesto="003" TipoFactor="Tasa" />
+      <cfdi:Traslado Base="101.29" Impuesto="003" TipoFactor="Cuota" />
+      <cfdi:Traslado Base="773.26" Impuesto="002" TipoFactor="Cuota" />
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento />
+</cfdi:Comprobante>
