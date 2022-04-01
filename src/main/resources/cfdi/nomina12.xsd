@@ -98,6 +98,7 @@
 						<xs:attribute name="NumSeguridadSocial" use="optional">
 							<xs:annotation>
 								<xs:documentation>Atributo condicional para expresar el número de seguridad social del trabajador. Se debe ingresar cuando se cuente con él, o se esté obligado conforme a otras disposiciones distintas a las fiscales.</xs:documentation>
+								<xs:documentation>Atributo condicional para expresar el número de seguridad social del trabajador. Se debe ingresar cuando se cuente con él, o se esté obligado conforme a otras disposiciones distintas a las fiscales.</xs:documentation>
 							</xs:annotation>
 							<xs:simpleType>
 								<xs:restriction base="xs:string">
@@ -108,7 +109,7 @@
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:attribute>
-						<xs:attribute name="FechaInicioRelLaboral" type="tdCFDI:t_Fecha" use="optional">
+						<xs:attribute name="FechaInicioRelLaboral" type="xs:string" use="optional">
 							<xs:annotation>
 								<xs:documentation>Atributo condicional para expresar la fecha de inicio de la relación laboral entre el empleador y el empleado. Se expresa en la forma AAAA-MM-DD, de acuerdo con la especificación ISO 8601. Se debe ingresar cuando se cuente con él, o se esté obligado conforme a otras disposiciones distintas a las fiscales.</xs:documentation>
 							</xs:annotation>
@@ -654,17 +655,17 @@
 					<xs:documentation>Atributo requerido para indicar el tipo de nómina, puede ser O= Nómina ordinaria o E= Nómina extraordinaria.</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="FechaPago" type="tdCFDI:t_Fecha" use="required">
+			<xs:attribute name="FechaPago" type="xs:string" use="required">
 				<xs:annotation>
 					<xs:documentation>Atributo requerido para la expresión de la fecha efectiva de erogación del gasto. Se expresa en la forma AAAA-MM-DD, de acuerdo con la especificación ISO 8601.</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="FechaInicialPago" type="tdCFDI:t_Fecha" use="required">
+			<xs:attribute name="FechaInicialPago" type="xs:string" use="required">
 				<xs:annotation>
 					<xs:documentation>Atributo requerido para la expresión de la fecha inicial del período de pago. Se expresa en la forma AAAA-MM-DD, de acuerdo con la especificación ISO 8601.</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="FechaFinalPago" type="tdCFDI:t_Fecha" use="required">
+			<xs:attribute name="FechaFinalPago" type="xs:string" use="required">
 				<xs:annotation>
 					<xs:documentation>Atributo requerido para la expresión de la fecha final del período de pago. Se expresa en la forma AAAA-MM-DD, de acuerdo con la especificación ISO 8601.</xs:documentation>
 				</xs:annotation>
