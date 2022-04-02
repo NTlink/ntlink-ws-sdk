@@ -1,5 +1,7 @@
 package com.mx.ntlink.util;
 
+import static com.mx.ntlink.util.CfdiConstants.NOMINA_NS;
+import static com.mx.ntlink.util.CfdiConstants.NOMINA_PREFIX;
 import static com.mx.ntlink.util.CfdiConstants.PAGOS_NS;
 import static com.mx.ntlink.util.CfdiConstants.PAGO_PREFIX;
 import static com.mx.ntlink.util.CfdiConstants.SAT_NS_40;
@@ -23,6 +25,8 @@ public class CfdiNamespaceMapper extends NamespacePrefixMapper {
       return PAGO_PREFIX;
     } else if (TFD_NS.equals(namespaceUri)) {
       return TFD_PREFIX;
+    } else if (NOMINA_NS.equals(namespaceUri)) {
+      return NOMINA_PREFIX;
     }
     return suggestion;
   }
