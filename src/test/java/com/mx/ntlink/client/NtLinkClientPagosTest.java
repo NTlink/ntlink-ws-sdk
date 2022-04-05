@@ -307,11 +307,7 @@ public class NtLinkClientPagosTest {
           "Request Error :CRP20112 - Si no existe el nodo AcuentaTerceros, no se deben registrar apartados dentro de Conceptos. ",
           e.getMessage());
 
-      /**
-       * TODO: REVISAR: El servicio de Richard si responde bien, pero el proxy responde Error Al
-       * abrir el comprobante. En el log dice lo siguiente: Los datos del nivel de raíz no son
-       * válidos. línea 1, posición 1.
-       */
+
     }
   }
 

@@ -718,4 +718,86 @@ public class NtLinkClientNominaTest {
           e.getMessage());
     }
   }
+
+
+
+  @Test
+  public void timbra_nomina_error30() throws IOException, SoapClientException {
+
+    String comprobante =
+            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM30.xml")));
+
+    comprobante =
+            comprobante.replace(
+                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+
+    TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
+    cfdiSinSello.setPassword(TEST_PASS);
+    cfdiSinSello.setUserName(TEST_USER);
+    cfdiSinSello.setComprobante(comprobante);
+
+    try {
+      client.timbrarSinSello(cfdiSinSello);
+    } catch (SoapClientException e) {
+      Assert.assertEquals(
+              "Request Error :NOM30 - El nodo Nomina no se puede utilizar dentro del elemento ComplementoConcepto.",
+              e.getMessage());
+    }
+  }
+
+
+  @Test
+  public void timbra_nomina_error31() throws IOException, SoapClientException {
+
+    String comprobante =
+            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM31.xml")));
+
+    comprobante =
+            comprobante.replace(
+                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+
+    TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
+    cfdiSinSello.setPassword(TEST_PASS);
+    cfdiSinSello.setUserName(TEST_USER);
+    cfdiSinSello.setComprobante(comprobante);
+
+    try {
+      client.timbrarSinSello(cfdiSinSello);
+    } catch (SoapClientException e) {
+      Assert.assertEquals(
+              "Request Error :NOM31 - El nodo Nomina no tiene valores en TotalPercepciones y/o TotalOtrosPagos.",
+              e.getMessage());
+    }
+  }
+
+
+
+  @Test
+  public void timbra_nomina_error32() throws IOException, SoapClientException {
+
+    String comprobante =
+            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM32.xml")));
+
+    comprobante =
+            comprobante.replace(
+                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+
+    TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
+    cfdiSinSello.setPassword(TEST_PASS);
+    cfdiSinSello.setUserName(TEST_USER);
+    cfdiSinSello.setComprobante(comprobante);
+
+    try {
+      client.timbrarSinSello(cfdiSinSello);
+    } catch (SoapClientException e) {
+      Assert.assertEquals(
+              "Request Error :NOM32 - El nodo Nomina no tiene valores en TotalPercepciones y/o TotalOtrosPagos.",
+              e.getMessage());
+    }
+  }
+
+
+
+
+
 }
