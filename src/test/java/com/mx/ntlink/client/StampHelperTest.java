@@ -25,7 +25,7 @@ public class StampHelperTest {
   private static final String TEST_USER = "URE180429TM6@ntlink.com.mx";
   private static final String TEST_PASS = "NTPruebas.2021*?";
   private static final String DATE_REPLACEMENT = "%fecha-timbrado%";
-  private static final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-d'T'HH:mm:ss");
+  private static final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
   private static final StampHelper helper = new StampHelper();
 
   @Test

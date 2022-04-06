@@ -58,7 +58,7 @@ public class NtLinkClientTest {
 
   @Ignore
   @Test
-  public void testTimbraConQrWithError() throws IOException, SoapClientException {
+  public void  testTimbraConQrWithError() throws IOException, SoapClientException {
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-samples/pue-cfdi.xml")));
 
