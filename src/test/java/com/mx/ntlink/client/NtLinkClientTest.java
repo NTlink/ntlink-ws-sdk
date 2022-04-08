@@ -236,6 +236,29 @@ public class NtLinkClientTest {
   }
 
   @Test
+  public void timbra_retencion_test_extranejero() throws IOException, SoapClientException {
+
+    String retencion =
+            new String(
+                    Files.readAllBytes(Paths.get("./src/test/resources/retencion-samples/retencion_extranjero.xml")));
+
+    retencion =
+            retencion.replace(DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+
+    TimbraRetencionSinSello retencionSinSello = new TimbraRetencionSinSello();
+    retencionSinSello.setPassword(TEST_PASS);
+    retencionSinSello.setUserName(TEST_USER);
+    retencionSinSello.setComprobante(retencion);
+    TimbraRetencionSinSelloResponse response = client.timbrarRetencionSinSello(retencionSinSello);
+
+    log.info(response.getTimbraRetencionSinSelloResult());
+    Assert.assertNotNull(response);
+    Assert.assertNotNull(response.getTimbraRetencionSinSelloResult());
+    Assert.assertTrue(
+            "Contains UUID", response.getTimbraRetencionSinSelloResult().contains("UUID"));
+  }
+
+  @Test
   public void timbra_pagos_test() throws IOException, SoapClientException {
 
     String comprobante =

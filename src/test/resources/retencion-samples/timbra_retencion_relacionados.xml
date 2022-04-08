@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <retenciones:Retenciones xmlns:retenciones="http://www.sat.gob.mx/esquemas/retencionpago/2"  xsi:schemaLocation="http://www.sat.gob.mx/esquemas/retencionpago/2 http://www.sat.gob.mx/esquemas/retencionpago/2/retencionpagov2.xsd" Version="2.0" FolioInt="00666" FechaExp="%fecha-timbrado%" LugarExpRetenc="98626" CveRetenc="02" DescRetenc="PRUEBAS REGALIAS PROFESIONALES" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<retenciones:CfdiRetenRelacionados TipoRelacion="04" UUID="6FAB1ECD-0740-4157-AA2E-76069CC75357"/> 
-  <retenciones:Emisor RfcE="EKU9003173C9" NomDenRazSocE="SAT PRUEBAS" RegimenFiscalE="601" />
+  <retenciones:Emisor RfcE="EKU9003173C9" NomDenRazSocE="ESCUELA KEMPER URGATE" RegimenFiscalE="601" />
   <retenciones:Receptor NacionalidadR="Nacional">
-    <retenciones:Nacional RfcR="AABF800614HI0" NomDenRazSocR="prueba" DomicilioFiscalR="86400" />
+    <retenciones:Nacional RfcR="CACX7605101P8" NomDenRazSocR="XOCHITL CASAS CHAVEZ" DomicilioFiscalR="06370" />
   </retenciones:Receptor>
   <retenciones:Periodo MesIni="02" MesFin="03" Ejercicio="2021" />
-  <retenciones:Totales MontoTotOperacion="18000.00" MontoTotGrav="180000.00" MontoTotExent="0.00" MontoTotRet="1800.00">
-    <retenciones:ImpRetenidos BaseRet="18000.00" ImpuestoRet="001" MontoRet="1800.00" TipoPagoRet="03" />
+  <retenciones:Totales MontoTotOperacion="18000.00" MontoTotGrav="18000.00" MontoTotExent="0.00" MontoTotRet="18000.00">
+    <retenciones:ImpRetenidos BaseRet="18000.00" ImpuestoRet="001" MontoRet="18000.00" TipoPagoRet="01" />
   </retenciones:Totales>
   <retenciones:Complemento />
 </retenciones:Retenciones>

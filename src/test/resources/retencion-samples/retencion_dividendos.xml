@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <retenciones:Retenciones xmlns:retenciones="http://www.sat.gob.mx/esquemas/retencionpago/2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/esquemas/retencionpago/2 http://www.sat.gob.mx/esquemas/retencionpago/2/retencionpagov2.xsd" Version="2.0" FolioInt="00999" FechaExp="%fecha-timbrado%" LugarExpRetenc="98626" CveRetenc="14" DescRetenc="PRUEBAS">
-   <retenciones:Emisor RfcE="EKU9003173C9" NomDenRazSocE="SAT PRUEBAS" RegimenFiscalE="601" />
+   <retenciones:Emisor RfcE="EKU9003173C9" NomDenRazSocE="ESCUELA KEMPER URGATE" RegimenFiscalE="601" />
    <retenciones:Receptor NacionalidadR="Nacional">
-      <retenciones:Nacional RfcR="AABF800614HI0" NomDenRazSocR="prueba" DomicilioFiscalR="86400" />
+      <retenciones:Nacional RfcR="CACX7605101P8" NomDenRazSocR="XOCHITL CASAS CHAVEZ" DomicilioFiscalR="06370" />
    </retenciones:Receptor>
    <retenciones:Periodo MesIni="02" MesFin="03" Ejercicio="2021" />
    <retenciones:Totales MontoTotOperacion="18000.00" MontoTotGrav="180000.00" MontoTotExent="0.00" MontoTotRet="1800.00">
