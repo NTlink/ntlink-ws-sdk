@@ -306,8 +306,6 @@ public class NtLinkClientPagosTest {
       Assert.assertEquals(
           "Request Error :CRP20112 - Si no existe el nodo AcuentaTerceros, no se deben registrar apartados dentro de Conceptos. ",
           e.getMessage());
-
-
     }
   }
 

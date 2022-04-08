@@ -58,7 +58,7 @@ public class NtLinkClientTest {
 
   @Ignore
   @Test
-  public void  testTimbraConQrWithError() throws IOException, SoapClientException {
+  public void testTimbraConQrWithError() throws IOException, SoapClientException {
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-samples/pue-cfdi.xml")));
 
@@ -73,7 +73,6 @@ public class NtLinkClientTest {
     Assert.assertFalse(response.getTimbraCfdiQrResult().getDescripcionError().isEmpty());
   }
   /*Para este metodo es necesario sellar el cfdi, es por eso que da error */
-
 
   @Test
   public void timbraPPD_test() throws IOException, SoapClientException {
@@ -213,52 +212,6 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_retencion_test() throws IOException, SoapClientException {
-
-    String retencion =
-        new String(
-            Files.readAllBytes(Paths.get("./src/test/resources/retencion-samples/retencion.xml")));
-
-    retencion =
-        retencion.replace(DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
-
-    TimbraRetencionSinSello retencionSinSello = new TimbraRetencionSinSello();
-    retencionSinSello.setPassword(TEST_PASS);
-    retencionSinSello.setUserName(TEST_USER);
-    retencionSinSello.setComprobante(retencion);
-    TimbraRetencionSinSelloResponse response = client.timbrarRetencionSinSello(retencionSinSello);
-
-    log.info(response.getTimbraRetencionSinSelloResult());
-    Assert.assertNotNull(response);
-    Assert.assertNotNull(response.getTimbraRetencionSinSelloResult());
-    Assert.assertTrue(
-        "Contains UUID", response.getTimbraRetencionSinSelloResult().contains("UUID"));
-  }
-
-  @Test
-  public void timbra_retencion_test_extranejero() throws IOException, SoapClientException {
-
-    String retencion =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retencion-samples/retencion_extranjero.xml")));
-
-    retencion =
-            retencion.replace(DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
-
-    TimbraRetencionSinSello retencionSinSello = new TimbraRetencionSinSello();
-    retencionSinSello.setPassword(TEST_PASS);
-    retencionSinSello.setUserName(TEST_USER);
-    retencionSinSello.setComprobante(retencion);
-    TimbraRetencionSinSelloResponse response = client.timbrarRetencionSinSello(retencionSinSello);
-
-    log.info(response.getTimbraRetencionSinSelloResult());
-    Assert.assertNotNull(response);
-    Assert.assertNotNull(response.getTimbraRetencionSinSelloResult());
-    Assert.assertTrue(
-            "Contains UUID", response.getTimbraRetencionSinSelloResult().contains("UUID"));
-  }
-
-  @Test
   public void timbra_pagos_test() throws IOException, SoapClientException {
 
     String comprobante =
@@ -350,126 +303,6 @@ public class NtLinkClientTest {
     Assert.assertNotNull(response);
     Assert.assertNotNull(response.getTimbraCfdiSinSelloResult());
     Assert.assertTrue("Contains UUID", response.getTimbraCfdiSinSelloResult().contains("UUID"));
-  }
-
-  @Test
-  public void timbra_retencion1_test() throws IOException, SoapClientException {
-
-    String retencion =
-        new String(
-            Files.readAllBytes(Paths.get("./src/test/resources/retencion-samples/retencion1.xml")));
-
-    retencion =
-        retencion.replace(DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
-
-    TimbraRetencionSinSello retencionSinSello = new TimbraRetencionSinSello();
-    retencionSinSello.setPassword(TEST_PASS);
-    retencionSinSello.setUserName(TEST_USER);
-    retencionSinSello.setComprobante(retencion);
-    TimbraRetencionSinSelloResponse response = client.timbrarRetencionSinSello(retencionSinSello);
-
-    log.info(response.getTimbraRetencionSinSelloResult());
-    Assert.assertNotNull(response);
-    Assert.assertNotNull(response.getTimbraRetencionSinSelloResult());
-    Assert.assertTrue(
-        "Contains UUID", response.getTimbraRetencionSinSelloResult().contains("UUID"));
-  }
-
-  @Test
-  public void timbra_retencion_relacionados_test() throws IOException, SoapClientException {
-
-    String retencion =
-        new String(
-            Files.readAllBytes(
-                Paths.get(
-                    "./src/test/resources/retencion-samples/timbra_retencion_relacionados.xml")));
-
-    retencion =
-        retencion.replace(DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
-
-    TimbraRetencionSinSello retencionSinSello = new TimbraRetencionSinSello();
-    retencionSinSello.setPassword(TEST_PASS);
-    retencionSinSello.setUserName(TEST_USER);
-    retencionSinSello.setComprobante(retencion);
-    TimbraRetencionSinSelloResponse response = client.timbrarRetencionSinSello(retencionSinSello);
-
-    log.info(response.getTimbraRetencionSinSelloResult());
-    Assert.assertNotNull(response);
-    Assert.assertNotNull(response.getTimbraRetencionSinSelloResult());
-    Assert.assertTrue(
-        "Contains UUID", response.getTimbraRetencionSinSelloResult().contains("UUID"));
-  }
-
-  @Test
-  public void timbra_retencion_dividendos_test() throws IOException, SoapClientException {
-
-    String retencion =
-        new String(
-            Files.readAllBytes(
-                Paths.get("./src/test/resources/retencion-samples/retencion_dividendos.xml")));
-
-    retencion =
-        retencion.replace(DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
-
-    TimbraRetencionSinSello retencionSinSello = new TimbraRetencionSinSello();
-    retencionSinSello.setPassword(TEST_PASS);
-    retencionSinSello.setUserName(TEST_USER);
-    retencionSinSello.setComprobante(retencion);
-    TimbraRetencionSinSelloResponse response = client.timbrarRetencionSinSello(retencionSinSello);
-
-    log.info(response.getTimbraRetencionSinSelloResult());
-    Assert.assertNotNull(response);
-    Assert.assertNotNull(response.getTimbraRetencionSinSelloResult());
-    Assert.assertTrue(
-        "Contains UUID", response.getTimbraRetencionSinSelloResult().contains("UUID"));
-  }
-
-  @Test
-  public void timbra_retencion_enajenacion_test() throws IOException, SoapClientException {
-
-    String retencion =
-        new String(
-            Files.readAllBytes(
-                Paths.get("./src/test/resources/retencion-samples/retencion_enajenacion.xml")));
-
-    retencion =
-        retencion.replace(DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
-
-    TimbraRetencionSinSello retencionSinSello = new TimbraRetencionSinSello();
-    retencionSinSello.setPassword(TEST_PASS);
-    retencionSinSello.setUserName(TEST_USER);
-    retencionSinSello.setComprobante(retencion);
-    TimbraRetencionSinSelloResponse response = client.timbrarRetencionSinSello(retencionSinSello);
-
-    log.info(response.getTimbraRetencionSinSelloResult());
-    Assert.assertNotNull(response);
-    Assert.assertNotNull(response.getTimbraRetencionSinSelloResult());
-    Assert.assertTrue(
-        "Contains UUID", response.getTimbraRetencionSinSelloResult().contains("UUID"));
-  }
-
-  @Test
-  public void timbra_retencion_intereses_test() throws IOException, SoapClientException {
-
-    String retencion =
-        new String(
-            Files.readAllBytes(
-                Paths.get("./src/test/resources/retencion-samples/retencion_intereses.xml")));
-
-    retencion =
-        retencion.replace(DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
-
-    TimbraRetencionSinSello retencionSinSello = new TimbraRetencionSinSello();
-    retencionSinSello.setPassword(TEST_PASS);
-    retencionSinSello.setUserName(TEST_USER);
-    retencionSinSello.setComprobante(retencion);
-    TimbraRetencionSinSelloResponse response = client.timbrarRetencionSinSello(retencionSinSello);
-
-    log.info(response.getTimbraRetencionSinSelloResult());
-    Assert.assertNotNull(response);
-    Assert.assertNotNull(response.getTimbraRetencionSinSelloResult());
-    Assert.assertTrue(
-        "Contains UUID", response.getTimbraRetencionSinSelloResult().contains("UUID"));
   }
 
   @Test
@@ -1208,7 +1041,6 @@ public class NtLinkClientTest {
     }
   }
 
-
   @Test
   public void timbra_cfdi_error40127() throws IOException, SoapClientException {
 
@@ -1258,7 +1090,6 @@ public class NtLinkClientTest {
           "Request Error :CFDI40128 - Número de confirmación inválido.", e.getMessage());
     }
   }
-
 
   @Ignore
   @Test
