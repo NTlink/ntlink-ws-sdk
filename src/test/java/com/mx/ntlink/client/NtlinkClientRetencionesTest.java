@@ -32,8 +32,6 @@ public class NtlinkClientRetencionesTest {
       DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
   private static final String DATE_REPLACEMENT = "%fecha-timbrado%";
 
-
-
   @Test
   public void timbra_retencion1_test() throws IOException, SoapClientException {
 
@@ -226,17 +224,16 @@ public class NtlinkClientRetencionesTest {
     }
   }
 
-
   @Test
   public void timbra_retencion_errorRETEN20102() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20102.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20102.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS3);
@@ -247,22 +244,21 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20102 - EL certificado no cumple con alguno de los valores permitidos.(CSDRevocado)",
-              e.getMessage());
+          "Request Error :Reten20102 - EL certificado no cumple con alguno de los valores permitidos.(CSDRevocado)",
+          e.getMessage());
     }
   }
-
 
   @Test
   public void timbra_retencion_errorRETEN20103() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20103.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20103.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -273,8 +269,8 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20103 - El campo FechaExp no cumple con el patrón requerido.",
-              e.getMessage());
+          "Request Error :Reten20103 - El campo FechaExp no cumple con el patrón requerido.",
+          e.getMessage());
     }
   }
 
@@ -282,12 +278,12 @@ public class NtlinkClientRetencionesTest {
   public void timbra_retencion_errorRETEN20104() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20104.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20104.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -298,22 +294,21 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20104 - El campo LugarExpRetenc, no contiene un valor del catálogo c_CodigoPostal.",
-              e.getMessage());
+          "Request Error :Reten20104 - El campo LugarExpRetenc, no contiene un valor del catálogo c_CodigoPostal.",
+          e.getMessage());
     }
   }
-
 
   @Test
   public void timbra_retencion_errorRETEN20105() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20105.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20105.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -324,8 +319,8 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20105 - El campo CveRetenc no contiene un valor del catálogo c_CveRetenc.",
-              e.getMessage());
+          "Request Error :Reten20105 - El campo CveRetenc no contiene un valor del catálogo c_CveRetenc.",
+          e.getMessage());
     }
   }
 
@@ -333,12 +328,12 @@ public class NtlinkClientRetencionesTest {
   public void timbra_retencion_errorRETEN20106() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20106.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20106.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -349,22 +344,20 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20106 - El campo DescRetenc debe existir.",
-              e.getMessage());
+          "Request Error :Reten20106 - El campo DescRetenc debe existir.", e.getMessage());
     }
   }
-
 
   @Test
   public void timbra_retencion_errorRETEN20108() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20108.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20108.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -375,22 +368,21 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20108 - Los campos MontoTotGrav y MontoTotExento contienen un valor diferente de cero.",
-              e.getMessage());
+          "Request Error :Reten20108 - Los campos MontoTotGrav y MontoTotExento contienen un valor diferente de cero.",
+          e.getMessage());
     }
   }
-
 
   @Test
   public void timbra_retencion_errorRETEN20109() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20109.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20109.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -401,8 +393,8 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20109 - El campo TipoRelacion, no contiene un valor del catálogo c_TipoRelacion.",
-              e.getMessage());
+          "Request Error :Reten20109 - El campo TipoRelacion, no contiene un valor del catálogo c_TipoRelacion.",
+          e.getMessage());
     }
   }
 
@@ -410,12 +402,12 @@ public class NtlinkClientRetencionesTest {
   public void timbra_retencion_errorRETEN20110() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20110.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20110.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -426,8 +418,8 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20110 - El campo NomDenRazSocE del emisor, no corresponde con el nombre del titular del certificado de sello digital del Emisor.",
-              e.getMessage());
+          "Request Error :Reten20110 - El campo NomDenRazSocE del emisor, no corresponde con el nombre del titular del certificado de sello digital del Emisor.",
+          e.getMessage());
     }
   }
 
@@ -435,12 +427,12 @@ public class NtlinkClientRetencionesTest {
   public void timbra_retencion_errorRETEN20111() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20111.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20111.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -451,8 +443,8 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20111 - El campo RegimenFiscalE, no contiene un valor del catálogo c_RegimenFiscalE.",
-              e.getMessage());
+          "Request Error :Reten20111 - El campo RegimenFiscalE, no contiene un valor del catálogo c_RegimenFiscalE.",
+          e.getMessage());
     }
   }
 
@@ -460,12 +452,12 @@ public class NtlinkClientRetencionesTest {
   public void timbra_retencion_errorRETEN20112() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20112.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20112.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -476,8 +468,8 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20112 - La clave del campo RegimenFiscalE debe corresponder con el tipo de persona (física o moral).",
-              e.getMessage());
+          "Request Error :Reten20112 - La clave del campo RegimenFiscalE debe corresponder con el tipo de persona (física o moral).",
+          e.getMessage());
     }
   }
 
@@ -485,12 +477,12 @@ public class NtlinkClientRetencionesTest {
   public void timbra_retencion_errorRETEN20113() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20113.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20113.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -501,8 +493,8 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20113 - Este RFC del receptor no existe en la lista de RFC inscritos no cancelados del SAT.",
-              e.getMessage());
+          "Request Error :Reten20113 - Este RFC del receptor no existe en la lista de RFC inscritos no cancelados del SAT.",
+          e.getMessage());
     }
   }
 
@@ -510,12 +502,12 @@ public class NtlinkClientRetencionesTest {
   public void timbra_retencion_errorRETEN20116() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20116.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20116.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -526,8 +518,8 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20116 - El campo NomDenRazSocR del receptor, debe pertenecer al nombre asociado al RFC registrado en el campo RFCRecep del Receptor.",
-              e.getMessage());
+          "Request Error :Reten20116 - El campo NomDenRazSocR del receptor, debe pertenecer al nombre asociado al RFC registrado en el campo RFCRecep del Receptor.",
+          e.getMessage());
     }
   }
 
@@ -535,12 +527,12 @@ public class NtlinkClientRetencionesTest {
   public void timbra_retencion_errorRETEN20117() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20117.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20117.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -551,23 +543,21 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20117 - El campo RfcR no corresponde a persona física.",
-              e.getMessage());
+          "Request Error :Reten20117 - El campo RfcR no corresponde a persona física.",
+          e.getMessage());
     }
   }
-
-
 
   @Test
   public void timbra_retencion_errorRETEN20120() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20120.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20120.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -578,8 +568,8 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20120 -El campo DomicilioFiscalR, debe pertenecer al nombre asociado a la clave de RFC registrado en el campo RfcR.",
-              e.getMessage());
+          "Request Error :Reten20120 -El campo DomicilioFiscalR, debe pertenecer al nombre asociado a la clave de RFC registrado en el campo RfcR.",
+          e.getMessage());
     }
   }
 
@@ -587,12 +577,12 @@ public class NtlinkClientRetencionesTest {
   public void timbra_retencion_errorRETEN20121() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20121.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20121.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -603,8 +593,8 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20121 - El campo MesIni no contiene un valor del catálogo c_Periodo.",
-              e.getMessage());
+          "Request Error :Reten20121 - El campo MesIni no contiene un valor del catálogo c_Periodo.",
+          e.getMessage());
     }
   }
 
@@ -612,12 +602,12 @@ public class NtlinkClientRetencionesTest {
   public void timbra_retencion_errorRETEN20122() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20122.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20122.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -628,22 +618,21 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20122 - El campo MesIni no es menor o igual que el campo MesFin.",
-              e.getMessage());
+          "Request Error :Reten20122 - El campo MesIni no es menor o igual que el campo MesFin.",
+          e.getMessage());
     }
   }
-
 
   @Test
   public void timbra_retencion_errorRETEN20123() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20123.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20123.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -654,49 +643,25 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20123 - El campo MesFin no contiene un valor del catálogo c_Periodo.",
-              e.getMessage());
+          "Request Error :Reten20123 - El campo MesFin no contiene un valor del catálogo c_Periodo.",
+          e.getMessage());
     }
   }
-
-@Ignore
-  @Test
-  public void timbra_retencion_errorRETEN20124() throws IOException, SoapClientException {
-
-    String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20124.xml")));
-
-    comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
-
-    TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
-    timbraRetencionSinSello.setPassword(TEST_PASS);
-    timbraRetencionSinSello.setUserName(TEST_USER);
-    timbraRetencionSinSello.setComprobante(comprobante);
-
-    try {
-      client.timbrarRetencionSinSello(timbraRetencionSinSello);
-    } catch (SoapClientException e) {
-      Assert.assertEquals(
-              "Request Error :Reten20124 - El campo MesFin no es mayor o igual que el campo MesIni.",
-              e.getMessage());
-    }
-  }
-
 
   @Ignore
   @Test
-  public void timbra_retencion_errorRETEN20125() throws IOException, SoapClientException {
+  /**
+   *  This validation has contradictory problems with Reten20125
+   */
+  public void timbra_retencion_errorRETEN20124() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20125.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20124.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -707,23 +672,50 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20125 - El campo Ejercicio no contiene un valor del catálogo c_Ejercicio.",
-              e.getMessage());
+          "Request Error :Reten20124 - El campo MesFin no es mayor o igual que el campo MesIni.",
+          e.getMessage());
     }
   }
 
+  @Ignore
+  @Test
+  /**
+   *  This validation has contradictory problems with Reten20124
+   */
+  public void timbra_retencion_errorRETEN20125() throws IOException, SoapClientException {
 
+    String comprobante =
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20125.xml")));
+
+    comprobante =
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+
+    TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
+    timbraRetencionSinSello.setPassword(TEST_PASS);
+    timbraRetencionSinSello.setUserName(TEST_USER);
+    timbraRetencionSinSello.setComprobante(comprobante);
+
+    try {
+      client.timbrarRetencionSinSello(timbraRetencionSinSello);
+    } catch (SoapClientException e) {
+      Assert.assertEquals(
+          "Request Error :Reten20125 - El campo Ejercicio no contiene un valor del catálogo c_Ejercicio.",
+          e.getMessage());
+    }
+  }
 
   @Test
   public void timbra_retencion_errorRETEN20126() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20126.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20126.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -734,22 +726,21 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20126 - El campo Año, no es igual al año en curso o al año inmediato anterior.",
-              e.getMessage());
+          "Request Error :Reten20126 - El campo Año, no es igual al año en curso o al año inmediato anterior.",
+          e.getMessage());
     }
   }
-
 
   @Test
   public void timbra_retencion_errorRETEN20127() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20127.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20127.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -760,8 +751,8 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20127 - El campo MontoTotOperacion no es igual a la suma de los atributos MontoTotGrav y MontoTotExent.",
-              e.getMessage());
+          "Request Error :Reten20127 - El campo MontoTotOperacion no es igual a la suma de los atributos MontoTotGrav y MontoTotExent.",
+          e.getMessage());
     }
   }
 
@@ -769,12 +760,12 @@ public class NtlinkClientRetencionesTest {
   public void timbra_retencion_errorRETEN20128() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20128.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20128.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -785,8 +776,8 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20128 - El valor del atributo MontoTotGrav es mayor al atributo MontoTotOperacion",
-              e.getMessage());
+          "Request Error :Reten20128 - El valor del atributo MontoTotGrav es mayor al atributo MontoTotOperacion",
+          e.getMessage());
     }
   }
 
@@ -794,12 +785,12 @@ public class NtlinkClientRetencionesTest {
   public void timbra_retencion_errorRETEN20129() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20129.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20129.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -810,22 +801,21 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20129 - El valor del atributo MontoTotExent es mayor al atributo MontoTotOperacion",
-              e.getMessage());
+          "Request Error :Reten20129 - El valor del atributo MontoTotExent es mayor al atributo MontoTotOperacion",
+          e.getMessage());
     }
   }
-
 
   @Test
   public void timbra_retencion_errorRETEN20130() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20130.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20130.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -836,22 +826,20 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20130 - No existen los Impuestos Retenidos.",
-              e.getMessage());
+          "Request Error :Reten20130 - No existen los Impuestos Retenidos.", e.getMessage());
     }
   }
-
 
   @Test
   public void timbra_retencion_errorRETEN20131() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20131.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20131.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -862,23 +850,21 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20131 - El valor del campo MontoTotRet no es igual a la suma de los campos MontoRet.",
-              e.getMessage());
+          "Request Error :Reten20131 - El valor del campo MontoTotRet no es igual a la suma de los campos MontoRet.",
+          e.getMessage());
     }
   }
-
-
 
   @Test
   public void timbra_retencion_errorRETEN20132() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20132.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20132.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -889,8 +875,8 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20132 - El valor del campo UtilidadBimestral no es mayor que cero.",
-              e.getMessage());
+          "Request Error :Reten20132 - El valor del campo UtilidadBimestral no es mayor que cero.",
+          e.getMessage());
     }
   }
 
@@ -898,12 +884,12 @@ public class NtlinkClientRetencionesTest {
   public void timbra_retencion_errorRETEN20133() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(
-                    Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20133.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/retenciones-error/RETEN20133.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraRetencionSinSello timbraRetencionSinSello = new TimbraRetencionSinSello();
     timbraRetencionSinSello.setPassword(TEST_PASS);
@@ -914,10 +900,8 @@ public class NtlinkClientRetencionesTest {
       client.timbrarRetencionSinSello(timbraRetencionSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :Reten20133 - El valor del campo ISRCorrespondiente no es mayor que cero.",
-              e.getMessage());
+          "Request Error :Reten20133 - El valor del campo ISRCorrespondiente no es mayor que cero.",
+          e.getMessage());
     }
   }
-
-
 }

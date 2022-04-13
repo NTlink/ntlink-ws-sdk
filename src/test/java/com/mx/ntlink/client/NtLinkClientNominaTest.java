@@ -263,7 +263,8 @@ public class NtLinkClientNominaTest {
           e.getMessage());
     }
   }
-@Ignore
+
+  @Ignore
   @Test
   public void timbra_nomina_error11() throws IOException, SoapClientException {
 
@@ -1972,11 +1973,11 @@ public class NtLinkClientNominaTest {
   public void timbra_nomina_error82() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM82.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM82.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -1987,8 +1988,8 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM82 - El elemento AccionesOTitulos debe existir, ya que la clave expresada en el atributo Nomina.Percepciones.Percepcion.TipoPercepcion es \"045\".",
-              e.getMessage());
+          "Request Error :NOM82 - El elemento AccionesOTitulos debe existir, ya que la clave expresada en el atributo Nomina.Percepciones.Percepcion.TipoPercepcion es \"045\".",
+          e.getMessage());
     }
   }
 
@@ -1996,11 +1997,11 @@ public class NtLinkClientNominaTest {
   public void timbra_nomina_error83() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM83.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM83.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2011,8 +2012,8 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM83 - El elemento AccionesOTitulos no debe existir, ya que la clave expresada en el atributo Nomina.Percepciones.Percepcion.TipoPercepcion no es \"045\".",
-              e.getMessage());
+          "Request Error :NOM83 - El elemento AccionesOTitulos no debe existir, ya que la clave expresada en el atributo Nomina.Percepciones.Percepcion.TipoPercepcion no es \"045\".",
+          e.getMessage());
     }
   }
 
@@ -2020,11 +2021,11 @@ public class NtLinkClientNominaTest {
   public void timbra_nomina_error84() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM84.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM84.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2035,21 +2036,20 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM84 - El elemento HorasExtra, debe existir, ya que la clave expresada en el atributo Nomina.Percepciones.Percepcion.TipoPercepcion es \"019\".",
-              e.getMessage());
+          "Request Error :NOM84 - El elemento HorasExtra, debe existir, ya que la clave expresada en el atributo Nomina.Percepciones.Percepcion.TipoPercepcion es \"019\".",
+          e.getMessage());
     }
   }
-
 
   @Test
   public void timbra_nomina_error85() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM85.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM85.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2060,21 +2060,20 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM85 - El elemento HorasExtra, no debe existir, ya que la clave expresada en el atributo Nomina.Percepciones.Percepcion.TipoPercepcion no es \"019\".",
-              e.getMessage());
+          "Request Error :NOM85 - El elemento HorasExtra, no debe existir, ya que la clave expresada en el atributo Nomina.Percepciones.Percepcion.TipoPercepcion no es \"019\".",
+          e.getMessage());
     }
   }
-
 
   @Test
   public void timbra_nomina_error86() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM86.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM86.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2085,21 +2084,20 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM86 - El nodo Incapacidades debe existir, ya que la clave expresada en el atributo Nomina.Percepciones.Percepcion.TipoPercepcion es \"014\".",
-              e.getMessage());
+          "Request Error :NOM86 - El nodo Incapacidades debe existir, ya que la clave expresada en el atributo Nomina.Percepciones.Percepcion.TipoPercepcion es \"014\".",
+          e.getMessage());
     }
   }
-
 
   @Test
   public void timbra_nomina_error87() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM87.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM87.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2110,21 +2108,20 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM87 - La suma de los campos ImporteMonetario no es igual a la suma de los valores ImporteGravado e ImporteExento de la percepción, ya que la clave expresada en el atributo Nomina.Percepciones.Percepcion.TipoPercepcion es \"014\".",
-              e.getMessage());
+          "Request Error :NOM87 - La suma de los campos ImporteMonetario no es igual a la suma de los valores ImporteGravado e ImporteExento de la percepción, ya que la clave expresada en el atributo Nomina.Percepciones.Percepcion.TipoPercepcion es \"014\".",
+          e.getMessage());
     }
   }
-
 
   @Test
   public void timbra_nomina_error88() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM87.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM87.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2135,21 +2132,20 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM88 - El valor del atributo Nomina.Percepciones.Percepcion.HorasExtra.TipoHoras no cumple con un valor del catálogo c_TipoHoras.",
-              e.getMessage());
+          "Request Error :NOM88 - El valor del atributo Nomina.Percepciones.Percepcion.HorasExtra.TipoHoras no cumple con un valor del catálogo c_TipoHoras.",
+          e.getMessage());
     }
   }
-
 
   @Test
   public void timbra_nomina_error89() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM89.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM89.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2160,21 +2156,20 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM89 - Los atributos MontoDiario y TotalParcialidad no deben existir, ya que existe valor en Nomina.Percepciones.JubilacionPensionRetiro.TotalUnaExhibicion.",
-              e.getMessage());
+          "Request Error :NOM89 - Los atributos MontoDiario y TotalParcialidad no deben existir, ya que existe valor en Nomina.Percepciones.JubilacionPensionRetiro.TotalUnaExhibicion.",
+          e.getMessage());
     }
   }
-
 
   @Test
   public void timbra_nomina_error90() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM90.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM90.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2185,21 +2180,20 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM90 - El atributo MontoDiario debe existir y el atributo TotalUnaExhibicion no debe existir, ya que Nomina.Percepciones.JubilacionPensionRetiro.TotalParcialidad tiene valor.",
-              e.getMessage());
+          "Request Error :NOM90 - El atributo MontoDiario debe existir y el atributo TotalUnaExhibicion no debe existir, ya que Nomina.Percepciones.JubilacionPensionRetiro.TotalParcialidad tiene valor.",
+          e.getMessage());
     }
   }
-
 
   @Test
   public void timbra_nomina_error91() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM91.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM91.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2210,21 +2204,20 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM91 - El valor en el atributo Nomina.Deducciones.TotalImpuestosRetenidos no es igual a la suma de los atributos Importe de las deducciones que tienen expresada la clave \"002\" en el atributo TipoDeduccion.",
-              e.getMessage());
+          "Request Error :NOM91 - El valor en el atributo Nomina.Deducciones.TotalImpuestosRetenidos no es igual a la suma de los atributos Importe de las deducciones que tienen expresada la clave \"002\" en el atributo TipoDeduccion.",
+          e.getMessage());
     }
   }
-
 
   @Test
   public void timbra_nomina_error92() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM92.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM92.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2235,8 +2228,8 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM92 - El atributo Nomina.Deducciones.TotalImpuestosRetenidos no debe existir, ya que no existen deducciones con clave \"002\" en el atributo TipoDeduccion.",
-              e.getMessage());
+          "Request Error :NOM92 - El atributo Nomina.Deducciones.TotalImpuestosRetenidos no debe existir, ya que no existen deducciones con clave \"002\" en el atributo TipoDeduccion.",
+          e.getMessage());
     }
   }
 
@@ -2244,11 +2237,11 @@ public class NtLinkClientNominaTest {
   public void timbra_nomina_error93() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM93.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM93.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2259,22 +2252,20 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM93 - El valor del atributo Nomina.Deducciones.Deduccion.TipoDeduccion no cumple con un valor del catálogo c_TipoDeduccion.",
-              e.getMessage());
+          "Request Error :NOM93 - El valor del atributo Nomina.Deducciones.Deduccion.TipoDeduccion no cumple con un valor del catálogo c_TipoDeduccion.",
+          e.getMessage());
     }
   }
-
-
 
   @Test
   public void timbra_nomina_error94() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM94.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM94.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2285,22 +2276,20 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM94 - Debe existir el elemento Incapacidades, ya que la clave expresada en Nomina.Deducciones.Deduccion.TipoDeduccion es \"006\".",
-              e.getMessage());
+          "Request Error :NOM94 - Debe existir el elemento Incapacidades, ya que la clave expresada en Nomina.Deducciones.Deduccion.TipoDeduccion es \"006\".",
+          e.getMessage());
     }
   }
-
-
 
   @Test
   public void timbra_nomina_error95() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM95.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM95.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2311,8 +2300,8 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM95 - El atributo Deduccion:Importe no es igual a la suma de los nodos Incapacidad:ImporteMonetario, ya que la clave expresada en Nomina.Deducciones.Deduccion.TipoDeduccion es \"006\".",
-              e.getMessage());
+          "Request Error :NOM95 - El atributo Deduccion:Importe no es igual a la suma de los nodos Incapacidad:ImporteMonetario, ya que la clave expresada en Nomina.Deducciones.Deduccion.TipoDeduccion es \"006\".",
+          e.getMessage());
     }
   }
 
@@ -2320,11 +2309,11 @@ public class NtLinkClientNominaTest {
   public void timbra_nomina_error96() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM96.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM96.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2335,21 +2324,20 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM96 -El atributo Nomina.Deducciones.Deduccion.Importe no es mayor que cero.",
-              e.getMessage());
+          "Request Error :NOM96 -El atributo Nomina.Deducciones.Deduccion.Importe no es mayor que cero.",
+          e.getMessage());
     }
   }
-
 
   @Test
   public void timbra_nomina_error97() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM97.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM97.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2360,22 +2348,20 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM97 - El valor del atributo Nomina.OtrosPagos.OtroPago.TipoOtroPago no cumple con un valor del catálogo c_TipoOtroPago.",
-              e.getMessage());
+          "Request Error :NOM97 - El valor del atributo Nomina.OtrosPagos.OtroPago.TipoOtroPago no cumple con un valor del catálogo c_TipoOtroPago.",
+          e.getMessage());
     }
   }
-
-
 
   @Test
   public void timbra_nomina_error98() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM98.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM98.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2386,23 +2372,20 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM98 - El nodo CompensacionSaldosAFavor debe existir, ya que el valor de Nomina.OtrosPagos.OtroPago.TipoOtroPago es \"004\".",
-              e.getMessage());
+          "Request Error :NOM98 - El nodo CompensacionSaldosAFavor debe existir, ya que el valor de Nomina.OtrosPagos.OtroPago.TipoOtroPago es \"004\".",
+          e.getMessage());
     }
   }
-
-
-
 
   @Test
   public void timbra_nomina_error99() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM99.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM99.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2413,21 +2396,20 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM99 - El nodo SubsidioAlEmpleo. debe existir, ya que el valor de Nomina.OtrosPagos.OtroPago.TipoOtroPago es 002.",
-              e.getMessage());
+          "Request Error :NOM99 - El nodo SubsidioAlEmpleo. debe existir, ya que el valor de Nomina.OtrosPagos.OtroPago.TipoOtroPago es 002.",
+          e.getMessage());
     }
   }
-
 
   @Test
   public void timbra_nomina_error100() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM100.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM100.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2438,21 +2420,20 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM100 - El Importe del elemento OtroPago no es mayor que cero.",
-              e.getMessage());
+          "Request Error :NOM100 - El Importe del elemento OtroPago no es mayor que cero.",
+          e.getMessage());
     }
   }
-
 
   @Test
   public void timbra_nomina_error101() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM101.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM101.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2463,8 +2444,8 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM101 - El valor del atributo Nomina.OtrosPagos.OtroPago.SubsidioAlEmpleo.SubsidioCausado no puede ser mayor que 407.02 ya que el valor de NumDiasPagados es menor o igual a 31.",
-              e.getMessage());
+          "Request Error :NOM101 - El valor del atributo Nomina.OtrosPagos.OtroPago.SubsidioAlEmpleo.SubsidioCausado no puede ser mayor que 407.02 ya que el valor de NumDiasPagados es menor o igual a 31.",
+          e.getMessage());
     }
   }
 
@@ -2472,11 +2453,11 @@ public class NtLinkClientNominaTest {
   public void timbra_nomina_error102() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM102.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM102.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2487,21 +2468,20 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM102 - El valor del atributo Nomina.OtrosPagos.OtroPago.CompensacionSaldosAFavor.SaldoAFavor no es mayor o igual que el valor del atributo CompensacionSaldosAFavor:RemanenteSalFav.",
-              e.getMessage());
+          "Request Error :NOM102 - El valor del atributo Nomina.OtrosPagos.OtroPago.CompensacionSaldosAFavor.SaldoAFavor no es mayor o igual que el valor del atributo CompensacionSaldosAFavor:RemanenteSalFav.",
+          e.getMessage());
     }
   }
-
 
   @Test
   public void timbra_nomina_error103() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM103.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM103.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2512,8 +2492,8 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM103 - El valor del atributo Nomina.OtrosPagos.OtroPago.CompensacionSaldosAFavor.Año no es igual al año inmediato anterior o al año en curso. Favor de considerar el valor del atributo FechaPago.",
-              e.getMessage());
+          "Request Error :NOM103 - El valor del atributo Nomina.OtrosPagos.OtroPago.CompensacionSaldosAFavor.Año no es igual al año inmediato anterior o al año en curso. Favor de considerar el valor del atributo FechaPago.",
+          e.getMessage());
     }
   }
 
@@ -2521,11 +2501,11 @@ public class NtLinkClientNominaTest {
   public void timbra_nomina_error104() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM104.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM104.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2536,21 +2516,20 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM104 - El valor del atributo Incapacidad.TipoIncapacidad no cumple con un valor del catálogo c_TIpoIncapacidad.",
-              e.getMessage());
+          "Request Error :NOM104 - El valor del atributo Incapacidad.TipoIncapacidad no cumple con un valor del catálogo c_TIpoIncapacidad.",
+          e.getMessage());
     }
   }
-
 
   @Test
   public void timbra_nomina_error105() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM105.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM105.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2561,21 +2540,20 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM105 - El elemento OtroPago no contiene un atributo TipoOtroPago con la clave \"002\" o se registró junto con otro atributo TipoOtroPago con clave \"007\" o \"008\".",
-              e.getMessage());
+          "Request Error :NOM105 - El elemento OtroPago no contiene un atributo TipoOtroPago con la clave \"002\" o se registró junto con otro atributo TipoOtroPago con clave \"007\" o \"008\".",
+          e.getMessage());
     }
   }
-
 
   @Test
   public void timbra_nomina_error106() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM106.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM106.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2586,21 +2564,20 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM106 - En el atributo TipoOtroPago no deben registrarse las claves \"002\", \"007\" o \"008\" ya que en el atributo TipoRegimen no existe la clave \"02\".",
-              e.getMessage());
+          "Request Error :NOM106 - En el atributo TipoOtroPago no deben registrarse las claves \"002\", \"007\" o \"008\" ya que en el atributo TipoRegimen no existe la clave \"02\".",
+          e.getMessage());
     }
   }
-
 
   @Test
   public void timbra_nomina_error107() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM107.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM107.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2611,21 +2588,20 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM107 - El Importe del elemento OtroPago no es menor o igual que el valor del atributo SubsidioCausado.",
-              e.getMessage());
+          "Request Error :NOM107 - El Importe del elemento OtroPago no es menor o igual que el valor del atributo SubsidioCausado.",
+          e.getMessage());
     }
   }
-
 
   @Test
   public void timbra_nomina_error108() throws IOException, SoapClientException {
 
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM108.xml")));
+        new String(Files.readAllBytes(Paths.get("./src/test/resources/nomina-error/NOM108.xml")));
 
     comprobante =
-            comprobante.replace(
-                    DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
+        comprobante.replace(
+            DATE_REPLACEMENT, formatter.format(LocalDateTime.now().minusMinutes(10)));
 
     TimbraCfdiSinSello cfdiSinSello = new TimbraCfdiSinSello();
     cfdiSinSello.setPassword(TEST_PASS);
@@ -2636,9 +2612,8 @@ public class NtLinkClientNominaTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-              "Request Error :NOM108 - El valor del atributo SubsidioCausado no puede ser mayor que el resultado de multiplicar el factor 13.39 por el valor del atributo NumDiasPagados.",
-              e.getMessage());
+          "Request Error :NOM108 - El valor del atributo SubsidioCausado no puede ser mayor que el resultado de multiplicar el factor 13.39 por el valor del atributo NumDiasPagados.",
+          e.getMessage());
     }
   }
-
 }

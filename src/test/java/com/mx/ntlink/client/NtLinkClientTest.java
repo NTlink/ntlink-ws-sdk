@@ -1,6 +1,7 @@
 package com.mx.ntlink.client;
 
 import com.mx.ntlink.error.SoapClientException;
+import com.mx.ntlink.helper.StampHelper;
 import com.mx.ntlink.models.generated.*;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -58,6 +59,10 @@ public class NtLinkClientTest {
 
   @Ignore
   @Test
+  /**
+   * Attribute 'Sello' must appear on element 'cfdi:Comprobante'.
+   * Agregar  stampHelper.stampCfdi(comprobante)
+   */
   public void testTimbraConQrWithError() throws IOException, SoapClientException {
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-samples/pue-cfdi.xml")));
@@ -424,7 +429,6 @@ public class NtLinkClientTest {
     }
   }
 
-  @Ignore
   @Test
   public void timbra_cfdi_error40105() throws IOException, SoapClientException {
 
@@ -444,7 +448,7 @@ public class NtLinkClientTest {
       client.timbrarSinSello(cfdiSinSello);
     } catch (SoapClientException e) {
       Assert.assertEquals(
-          "Request Error :CFDI40105 - El campo FormaPago no contiene el valor \"99\". ",
+          "Request Error :CFDI40105 - El campo FormaPago no contiene el valor \"99\".",
           e.getMessage());
     }
   }

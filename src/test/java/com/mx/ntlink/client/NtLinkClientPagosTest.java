@@ -1623,7 +1623,6 @@ public class NtLinkClientPagosTest {
     }
   }
 
-
   @Ignore
   @Test
   public void timbra_pagos_error20247() throws IOException, SoapClientException {

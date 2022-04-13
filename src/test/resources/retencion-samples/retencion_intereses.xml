@@ -6,7 +6,7 @@
   </retenciones:Receptor>
   <retenciones:Periodo MesIni="03" MesFin="04" Ejercicio="2021" />
   <retenciones:Totales MontoTotOperacion="5500.00" MontoTotGrav="5500.00" MontoTotExent="0.00" MontoTotRet="500.00">
-    <retenciones:ImpRetenidos BaseRet="5000.00" ImpuestoRet="001" MontoRet="5000.00" TipoPagoRet="01" />
+    <retenciones:ImpRetenidos BaseRet="5000.00" ImpuestoRet="001" MontoRet="500.00" TipoPagoRet="01" />
   </retenciones:Totales>
   <retenciones:Complemento>
   <intereses:Intereses Version="1.0" xsi:schemaLocation=" http://www.sat.gob.mx/esquemas/retencionpago/1/intereses http://www.sat.gob.mx/esquemas/retencionpago/1/intereses/intereses.xsd" xmlns:intereses="http://www.sat.gob.mx/esquemas/retencionpago/1/intereses" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SistFinanciero="SI" RetiroAORESRetInt="NO" OperFinancDerivad="NO" MontIntNominal="800" MontIntReal="800" Perdida="0" />
