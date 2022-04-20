@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:nomina12="http://www.sat.gob.mx/nomina12" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd http://www.sat.gob.mx/nomina12 http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina12.xsd " Version="4.0" Folio="0043" Fecha="%fecha-timbrado%" SubTotal="1.00" Moneda="MXN" Total="1.00" TipoDeComprobante="N" MetodoPago="PUE" LugarExpedicion="04100" Exportacion="01">
+   <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="610" />
+   <cfdi:Receptor Rfc="CACX7605101P8" Nombre="EMPLEADO DE  PRUEBAS" UsoCFDI="CN01" RegimenFiscalReceptor="605" DomicilioFiscalReceptor="26000" />
+   <cfdi:Conceptos>
+      <cfdi:Concepto ObjetoImp="01" ClaveProdServ="84111505" Cantidad="1" ClaveUnidad="ACT" Descripcion="Pago de nómina" ValorUnitario="1.00" Importe="1.00">
+    <cfdi:ComplementoConcepto>
+     <nomina12:Nomina xsi:schemaLocation="http://www.sat.gob.mx/nomina12 http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina12.xsd" Version="1.2" TipoNomina="O" FechaPago="2022-03-28" FechaInicialPago="2022-03-28" FechaFinalPago="2022-03-28" NumDiasPagados="1.000" TotalPercepciones="1.00">
+         <nomina12:Emisor RegistroPatronal="Y12345678910" />
+         <nomina12:Receptor Curp="PEAG750615MDFRLB06" NumSeguridadSocial="45139846211" FechaInicioRelLaboral="2021-06-01" Antigüedad="P43W" TipoContrato="01" Sindicalizado="No" TipoJornada="01" TipoRegimen="02" NumEmpleado="000003" Departamento="na" Puesto="jr" RiesgoPuesto="1" PeriodicidadPago="01" SalarioBaseCotApor="309.43" SalarioDiarioIntegrado="309.43" ClaveEntFed="DIF" />
+         <nomina12:Percepciones TotalSueldos="1.00" TotalGravado="1.00" TotalExento="0.00">
+            <nomina12:Percepcion TipoPercepcion="001" Clave="555" Concepto="Sueldos, Salarios  Rayas y Jornales" ImporteGravado="1.00" ImporteExento="0.00" />
+         </nomina12:Percepciones>
+         <nomina12:OtrosPagos>
+            <nomina12:OtroPago TipoOtroPago="002" Clave="002" Concepto="SUBSIDIO" Importe="0.00">
+               <nomina12:SubsidioAlEmpleo SubsidioCausado="0.00" />
+            </nomina12:OtroPago>
+         </nomina12:OtrosPagos>
+      </nomina12:Nomina>
+        </cfdi:ComplementoConcepto>
+</cfdi:Concepto>
+      </cfdi:Conceptos>
+<cfdi:Complemento>
+ <nomina12:Nomina xsi:schemaLocation="http://www.sat.gob.mx/nomina12 http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina12.xsd" Version="1.2" TipoNomina="O" FechaPago="2022-03-28" FechaInicialPago="2022-03-28" FechaFinalPago="2022-03-28" NumDiasPagados="1.000" TotalPercepciones="1.00">
+         <nomina12:Emisor RegistroPatronal="Y12345678910" />
+         <nomina12:Receptor Curp="PEAG750615MDFRLB06" NumSeguridadSocial="45139846211" FechaInicioRelLaboral="2021-06-01" Antigüedad="P43W" TipoContrato="01" Sindicalizado="No" TipoJornada="01" TipoRegimen="02" NumEmpleado="000003" Departamento="na" Puesto="jr" RiesgoPuesto="1" PeriodicidadPago="01" SalarioBaseCotApor="309.43" SalarioDiarioIntegrado="309.43" ClaveEntFed="DIF" />
+         <nomina12:Percepciones TotalSueldos="1.00" TotalGravado="1.00" TotalExento="0.00">
+            <nomina12:Percepcion TipoPercepcion="001" Clave="555" Concepto="Sueldos, Salarios  Rayas y Jornales" ImporteGravado="1.00" ImporteExento="0.00" />
+         </nomina12:Percepciones>
+         <nomina12:OtrosPagos>
+            <nomina12:OtroPago TipoOtroPago="002" Clave="002" Concepto="SUBSIDIO" Importe="0.00">
+               <nomina12:SubsidioAlEmpleo SubsidioCausado="0.00" />
+            </nomina12:OtroPago>
+         </nomina12:OtrosPagos>
+      </nomina12:Nomina>
+   </cfdi:Complemento>
+</cfdi:Comprobante>

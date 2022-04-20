@@ -4,8 +4,8 @@
 		<cfdi:CfdiRelacionado UUID="9FBBF225-7ACE-4194-8FB2-F003739BC5EE"/>
 		<cfdi:CfdiRelacionado UUID="F15EEA8E-B927-4DDD-8C16-037E8C945511"/>
 	</cfdi:CfdiRelacionados>
-   <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE SA DE CV" RegimenFiscal="601"/>
-   <cfdi:Receptor Rfc="MASO451221PM4" Nombre="MARIA OLIVIA MARTINEZ SAGAZ" DomicilioFiscalReceptor="80290" RegimenFiscalReceptor="601" UsoCFDI="G01" />
+   <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601"/>
+   <cfdi:Receptor Rfc="MASO451221PM4" Nombre="MARIA OLIVIA MARTINEZ SAGAZ" DomicilioFiscalReceptor="80290" RegimenFiscalReceptor="626" UsoCFDI="G01" />
    <cfdi:Conceptos>
       <cfdi:Concepto ClaveProdServ="72101510" Cantidad="1" ClaveUnidad="E48" Unidad="SERVICIO" Descripcion="SERVICIO DE FONTANERIA" ValorUnitario="609.50" Importe="609.50" ObjetoImp="02">
 	  <cfdi:Impuestos>
