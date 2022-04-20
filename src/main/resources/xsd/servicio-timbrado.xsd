@@ -376,14 +376,13 @@
         </xs:sequence>
     </xs:complexType>
 
-
-        <xs:complexType name="RegistraEmpresa">
-            <xs:sequence>
-                <xs:element minOccurs="0" name="userName" type="xs:string"/>
-                <xs:element minOccurs="0" name="password" type="xs:string"/>
-                <xs:element minOccurs="0" name="empresa" type="tns:EmpresaNtLink"/>
-            </xs:sequence>
-        </xs:complexType>
+    <xs:complexType name="RegistraEmpresa">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="userName" type="xs:string"/>
+            <xs:element minOccurs="0" name="password" type="xs:string"/>
+            <xs:element minOccurs="0" name="empresa" type="tns:EmpresaNtLink"/>
+        </xs:sequence>
+    </xs:complexType>
 
     <xs:element name="RegistraEmpresaResponse">
         <xs:complexType>
@@ -391,13 +390,13 @@
         </xs:complexType>
     </xs:element>
 
-        <xs:complexType name="BajaEmpresa">
-            <xs:sequence>
-                <xs:element minOccurs="0" name="userName" type="xs:string"/>
-                <xs:element minOccurs="0" name="password" type="xs:string"/>
-                <xs:element minOccurs="0" name="rfcEmpresa" type="xs:string"/>
-            </xs:sequence>
-        </xs:complexType>
+    <xs:complexType name="BajaEmpresa">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="userName" type="xs:string"/>
+            <xs:element minOccurs="0" name="password" type="xs:string"/>
+            <xs:element minOccurs="0" name="rfcEmpresa" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
 
     <xs:element name="BajaEmpresaResponse">
         <xs:complexType>
@@ -424,20 +423,6 @@
             <xs:element minOccurs="0" name="Telefono" type="xs:string"/>
             <xs:element minOccurs="0" name="TimbresContratados" type="xs:int"/>
             <xs:element minOccurs="0" name="Usuarios" type="xs:int"/>
-        </xs:sequence>
-    </xs:complexType>
-
-        <xs:complexType name="ConsultaEstatusCFDI">
-            <xs:sequence>
-                <xs:element minOccurs="0" name="userName" type="xs:string"/>
-                <xs:element minOccurs="0" name="password" type="xs:string"/>
-                <xs:element minOccurs="0" name="expresion" type="xs:string"/>
-            </xs:sequence>
-        </xs:complexType>
-
-    <xs:complexType name="ConsultaEstatusCFDIResponse">
-        <xs:sequence>
-            <xs:element minOccurs="0" name="ConsultaEstatusCFDIResult" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 

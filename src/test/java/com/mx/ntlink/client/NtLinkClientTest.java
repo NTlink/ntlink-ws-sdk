@@ -1,7 +1,6 @@
 package com.mx.ntlink.client;
 
 import com.mx.ntlink.error.SoapClientException;
-import com.mx.ntlink.helper.StampHelper;
 import com.mx.ntlink.models.generated.*;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -60,8 +59,8 @@ public class NtLinkClientTest {
   @Ignore
   @Test
   /**
-   * Attribute 'Sello' must appear on element 'cfdi:Comprobante'.
-   * Agregar  stampHelper.stampCfdi(comprobante)
+   * Attribute 'Sello' must appear on element 'cfdi:Comprobante'. Agregar
+   * stampHelper.stampCfdi(comprobante)
    */
   public void testTimbraConQrWithError() throws IOException, SoapClientException {
     String comprobante =
@@ -311,7 +310,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40101() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40101() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40101.xml")));
@@ -345,7 +344,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40102() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40102() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40102.xml")));
@@ -369,7 +368,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40103() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40103() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40103.xml")));
@@ -394,7 +393,7 @@ public class NtLinkClientTest {
 
   @Ignore
   @Test
-  public void timbra_cfdi_error40104() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40104() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40104.xml")));
@@ -430,7 +429,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40105() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40105() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40105.xml")));
@@ -454,7 +453,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40106() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40106() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40106.xml")));
@@ -479,7 +478,7 @@ public class NtLinkClientTest {
 
   @Ignore
   @Test
-  public void timbra_cfdi_error40107() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40107() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40107.xml")));
@@ -515,7 +514,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40108() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40108() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40108.xml")));
@@ -539,7 +538,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40109() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40109() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40109.xml")));
@@ -563,7 +562,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40110() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40110() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40110.xml")));
@@ -587,7 +586,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40111() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40111() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40111.xml")));
@@ -611,7 +610,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40112() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40112() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40112.xml")));
@@ -636,7 +635,7 @@ public class NtLinkClientTest {
 
   @Ignore
   @Test
-  public void timbra_cfdi_error40113() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40113() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40113.xml")));
@@ -669,7 +668,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40114() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40114() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40114.xml")));
@@ -693,7 +692,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40115() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40115() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40115.xml")));
@@ -717,7 +716,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40116() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40116() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40116.xml")));
@@ -742,7 +741,7 @@ public class NtLinkClientTest {
 
   @Ignore
   @Test
-  public void timbra_cfdi_error40117() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40117() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40117.xml")));
@@ -774,7 +773,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40118() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40118() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40118.xml")));
@@ -798,7 +797,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40119() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40119() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40119.xml")));
@@ -823,7 +822,7 @@ public class NtLinkClientTest {
 
   @Ignore
   @Test
-  public void timbra_cfdi_error40120() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40120() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40120.xml")));
@@ -858,7 +857,7 @@ public class NtLinkClientTest {
 
   @Ignore
   @Test
-  public void timbra_cfdi_error40121() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40121() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40121.xml")));
@@ -892,7 +891,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40122() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40122() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40122.xml")));
@@ -917,7 +916,7 @@ public class NtLinkClientTest {
 
   @Ignore
   @Test
-  public void timbra_cfdi_error40123() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40123() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40123.xml")));
@@ -952,7 +951,7 @@ public class NtLinkClientTest {
 
   @Ignore
   @Test
-  public void timbra_cfdi_error40124() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40124() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40124.xml")));
@@ -986,7 +985,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40125() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40125() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40125.xml")));
@@ -1011,7 +1010,7 @@ public class NtLinkClientTest {
 
   @Ignore
   @Test
-  public void timbra_cfdi_error40126() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40126() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40126.xml")));
@@ -1046,7 +1045,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40127() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40127() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40127.xml")));
@@ -1073,7 +1072,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40128() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40128() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40128.xml")));
@@ -1097,7 +1096,7 @@ public class NtLinkClientTest {
 
   @Ignore
   @Test
-  public void timbra_cfdi_error40129() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40129() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40129.xml")));
@@ -1125,7 +1124,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40130() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40130() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40130.xml")));
@@ -1150,7 +1149,7 @@ public class NtLinkClientTest {
 
   @Ignore
   @Test
-  public void timbra_cfdi_error40131() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40131() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40131.xml")));
@@ -1181,7 +1180,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40132() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40132() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40132.xml")));
@@ -1206,7 +1205,7 @@ public class NtLinkClientTest {
 
   @Ignore
   @Test
-  public void timbra_cfdi_error40133() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40133() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40133.xml")));
@@ -1237,7 +1236,7 @@ public class NtLinkClientTest {
 
   @Ignore
   @Test
-  public void timbra_cfdi_error40134() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40134() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40134.xml")));
@@ -1270,7 +1269,7 @@ public class NtLinkClientTest {
 
   @Ignore
   @Test
-  public void timbra_cfdi_error40135() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40135() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40135.xml")));
@@ -1302,7 +1301,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40136() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40136() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40136.xml")));
@@ -1327,7 +1326,7 @@ public class NtLinkClientTest {
 
   @Ignore
   @Test
-  public void timbra_cfdi_error40137() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40137() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40137.xml")));
@@ -1361,7 +1360,7 @@ public class NtLinkClientTest {
 
   @Ignore
   @Test
-  public void timbra_cfdi_error40138() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40138() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40138.xml")));
@@ -1386,7 +1385,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40139() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40139() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40139.xml")));
@@ -1411,7 +1410,7 @@ public class NtLinkClientTest {
 
   @Ignore
   @Test
-  public void timbra_cfdi_error40140() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40140() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40140.xml")));
@@ -1443,7 +1442,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40141() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40141() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40141.xml")));
@@ -1468,7 +1467,7 @@ public class NtLinkClientTest {
 
   @Ignore
   @Test
-  public void timbra_cfdi_error40142() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40142() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40142.xml")));
@@ -1501,7 +1500,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40143() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40143() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40143.xml")));
@@ -1526,7 +1525,7 @@ public class NtLinkClientTest {
 
   @Ignore
   @Test
-  public void timbra_cfdi_error40144() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40144() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40144.xml")));
@@ -1552,7 +1551,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40145() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40145() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40145.xml")));
@@ -1576,7 +1575,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_error40146() throws IOException, SoapClientException {
+  public void timbra_cfdi_error40146() throws IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-error/CFDI40146.xml")));

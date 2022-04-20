@@ -650,9 +650,7 @@ public class NtlinkClientRetencionesTest {
 
   @Ignore
   @Test
-  /**
-   *  This validation has contradictory problems with Reten20125
-   */
+  /** This validation has contradictory problems with Reten20125 */
   public void timbra_retencion_errorRETEN20124() throws IOException, SoapClientException {
 
     String comprobante =
@@ -679,9 +677,7 @@ public class NtlinkClientRetencionesTest {
 
   @Ignore
   @Test
-  /**
-   *  This validation has contradictory problems with Reten20124
-   */
+  /** This validation has contradictory problems with Reten20124 */
   public void timbra_retencion_errorRETEN20125() throws IOException, SoapClientException {
 
     String comprobante =
