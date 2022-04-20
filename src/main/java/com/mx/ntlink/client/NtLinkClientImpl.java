@@ -1,10 +1,16 @@
 package com.mx.ntlink.client;
 
 import com.mx.ntlink.error.SoapClientException;
+import com.mx.ntlink.models.generated.BajaEmpresa;
+import com.mx.ntlink.models.generated.BajaEmpresaResponse;
 import com.mx.ntlink.models.generated.CancelaCfdi;
 import com.mx.ntlink.models.generated.CancelaCfdiResponse;
 import com.mx.ntlink.models.generated.CancelaRetencion;
 import com.mx.ntlink.models.generated.CancelaRetencionResponse;
+import com.mx.ntlink.models.generated.ConsultaEstatusCFDI;
+import com.mx.ntlink.models.generated.ConsultaEstatusCFDIResponse;
+import com.mx.ntlink.models.generated.RegistraEmpresa;
+import com.mx.ntlink.models.generated.RegistraEmpresaResponse;
 import com.mx.ntlink.models.generated.TimbraCfdi;
 import com.mx.ntlink.models.generated.TimbraCfdiQr;
 import com.mx.ntlink.models.generated.TimbraCfdiQrResponse;
@@ -145,6 +151,26 @@ public class NtLinkClientImpl extends AbstractSoapClient implements NtLinkClient
     } else {
       throw new SoapClientException(result.getTimbraRetencionSinSelloResult());
     }
+  }
+
+  @Override
+  public RegistraEmpresaResponse registraEmpresa(RegistraEmpresa registro)
+      throws SoapClientException {
+    SOAPMessage response = sendRequest(registro, RegistraEmpresa.class);
+    return parseResponse(response, RegistraEmpresaResponse.class);
+  }
+
+  @Override
+  public BajaEmpresaResponse bajaEmpresa(BajaEmpresa baja) throws SoapClientException {
+    SOAPMessage response = sendRequest(baja, BajaEmpresa.class);
+    return parseResponse(response, BajaEmpresaResponse.class);
+  }
+
+  @Override
+  public ConsultaEstatusCFDIResponse estatusCfdi(ConsultaEstatusCFDI consulta)
+      throws SoapClientException {
+    SOAPMessage response = sendRequest(consulta, ConsultaEstatusCFDI.class);
+    return parseResponse(response, ConsultaEstatusCFDIResponse.class);
   }
 
   private SOAPMessage replaceNamespaces(SOAPMessage message) throws SoapClientException {

@@ -4,12 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.mx.ntlink</groupId>
     <artifactId>ntlink-ws-sdk</artifactId>
-    <version>2.0.6</version>
+    <version>2.0.7</version>
     <name>ntlink-ws-sdk</name>
     <description>Web service client for NTLink web service CFDI V4</description>
 
     <properties>
-        <fmt-maven-plugin.version>2.10</fmt-maven-plugin.version>
+        <!--dont update to 2.10 version, it is not compatible with java 1.8-->
+        <fmt-maven-plugin.version>2.9</fmt-maven-plugin.version>
         <java.version>8</java.version>
         <javax.xml.soap-api.version>1.4.0</javax.xml.soap-api.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>

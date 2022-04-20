@@ -77,7 +77,7 @@ To use just make a simple maven import
 <dependency>
 	<groupId>com.mx.ntlink</groupId>
 	<artifactId>ntlink-ws-sdk</artifactId>
-	<version>2.0.6</version>
+	<version>2.0.7</version>
 </dependency>
 ```
 
@@ -96,6 +96,7 @@ To use just make a simple maven import
 - [x] 2.0.4 Format  Pom and fixing import
 - [x] 2.0.5 Correction of type XMLGregorian to string of for nomina12.xsd
 - [x] 2.0.6 Including nomina namespace
+- [x] 2.0.7 Include company registration, deletion and status CFDI  method calls
 
 - 
 <!-- LICENSE -->

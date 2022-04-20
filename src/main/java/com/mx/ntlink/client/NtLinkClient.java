@@ -1,10 +1,16 @@
 package com.mx.ntlink.client;
 
 import com.mx.ntlink.error.SoapClientException;
+import com.mx.ntlink.models.generated.BajaEmpresa;
+import com.mx.ntlink.models.generated.BajaEmpresaResponse;
 import com.mx.ntlink.models.generated.CancelaCfdi;
 import com.mx.ntlink.models.generated.CancelaCfdiResponse;
 import com.mx.ntlink.models.generated.CancelaRetencion;
 import com.mx.ntlink.models.generated.CancelaRetencionResponse;
+import com.mx.ntlink.models.generated.ConsultaEstatusCFDI;
+import com.mx.ntlink.models.generated.ConsultaEstatusCFDIResponse;
+import com.mx.ntlink.models.generated.RegistraEmpresa;
+import com.mx.ntlink.models.generated.RegistraEmpresaResponse;
 import com.mx.ntlink.models.generated.TimbraCfdi;
 import com.mx.ntlink.models.generated.TimbraCfdiQr;
 import com.mx.ntlink.models.generated.TimbraCfdiQrResponse;
@@ -45,4 +51,10 @@ public interface NtLinkClient {
 
   TimbraRetencionSinSelloResponse timbrarRetencionSinSello(
       TimbraRetencionSinSello retencionSinSello) throws SoapClientException;
+
+  RegistraEmpresaResponse registraEmpresa(RegistraEmpresa registro) throws SoapClientException;
+
+  BajaEmpresaResponse bajaEmpresa(BajaEmpresa baja) throws SoapClientException;
+
+  ConsultaEstatusCFDIResponse estatusCfdi(ConsultaEstatusCFDI consulta) throws SoapClientException;
 }
