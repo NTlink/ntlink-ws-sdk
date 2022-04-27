@@ -97,6 +97,7 @@ To use just make a simple maven import
 - [x] 2.0.5 Correction of type XMLGregorian to string of for nomina12.xsd
 - [x] 2.0.6 Including nomina namespace
 - [x] 2.0.7 Include company registration, deletion and status CFDI  method calls
+- [x] 2.0.8 Pagos version 20
 
 - 
 <!-- LICENSE -->

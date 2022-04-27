@@ -17,7 +17,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
 import javax.xml.bind.JAXBException;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
 import org.junit.Test;
 
 public class CfdiTransformerTest {
@@ -26,15 +30,15 @@ public class CfdiTransformerTest {
   public void xmlToCfdiModel_test() throws FileNotFoundException, JAXBException {
 
     InputStream is =
-        new FileInputStream("./src/test/resources/cfdi-samples/complemento-con-sello.xml");
+        new FileInputStream("./src/test/resources/cfdi-samples/pagos-impuestos.xml");
 
     Comprobante comprobante = CfdiTransformer.xmlToCfdiModel(is);
 
     assertNotNull(comprobante);
 
-    assertEquals("VCO1612152V1", comprobante.getEmisor().getRfc());
+    assertEquals("SPR190613I52", comprobante.getEmisor().getRfc());
 
-    assertEquals("VSE8203172I2", comprobante.getReceptor().getRfc());
+    assertEquals("MASO451221PM4", comprobante.getReceptor().getRfc());
 
     assertEquals(BigDecimal.ZERO, comprobante.getTotal());
 
@@ -42,35 +46,22 @@ public class CfdiTransformerTest {
 
     Comprobante.Complemento complemento = comprobante.getComplemento();
 
-    TimbreFiscalDigital tfd =
-        (TimbreFiscalDigital)
-            complemento.getAny().stream()
-                .filter(c -> c instanceof TimbreFiscalDigital)
-                .findAny()
-                .get();
-
-    assertNotNull(tfd);
-
-    assertEquals("EB94379B-D031-4E14-BD33-AB4D8E630807", tfd.getUUID());
-
-    assertEquals("00001000000504447535", tfd.getNoCertificadoSAT());
-
     Pagos pagos =
         (Pagos) complemento.getAny().stream().filter(c -> c instanceof Pagos).findAny().get();
 
     assertNotNull(pagos);
 
-    assertEquals(new BigDecimal("116000.00"), pagos.getPago().get(0).getMonto());
+    assertEquals(new BigDecimal("1.16"), pagos.getPago().get(0).getMonto());
 
     assertEquals(
-        "4974BE6B-AE4A-4ED4-A44D-64F0980EE946",
-        pagos.getPago().get(0).getDoctoRelacionado().getIdDocumento());
+        "5BD612EA-DB91-441D-BF85-37F442796EC1",
+        pagos.getPago().get(0).getDoctoRelacionado().get(0).getIdDocumento());
 
-    assertEquals(1, pagos.getPago().get(0).getDoctoRelacionado().getNumParcialidad());
+    assertEquals(BigInteger.ONE, pagos.getPago().get(0).getDoctoRelacionado().get(0).getNumParcialidad());
   }
 
   @Test
-  public void test2() throws JAXBException {
+  public void test2() throws JAXBException, DatatypeConfigurationException {
     Comprobante comprobante = new Comprobante();
 
     comprobante.setVersion("4.0");
@@ -133,7 +124,8 @@ public class CfdiTransformerTest {
     Comprobante.Complemento complemento = new Comprobante.Complemento();
     Pagos pagos = new Pagos();
     Pagos.Pago pago = new Pagos.Pago();
-    pago.setFechaPago("2022-01-24T00:00:00");
+    pago.setFechaPago(
+        DatatypeFactory.newInstance().newXMLGregorianCalendar(LocalDate.now().toString()));
     pago.setFormaDePagoP("03");
     pago.setMonedaP(CMoneda.MXN);
     pago.setMonto(BigDecimal.ONE);
@@ -142,13 +134,12 @@ public class CfdiTransformerTest {
     relacionado.setIdDocumento("4974BE6B-AE4A-4ED4-A44D-64F0980EE946");
     relacionado.setImpPagado(new BigDecimal("0.5"));
     relacionado.setImpSaldoAnt(BigDecimal.ONE);
-    relacionado.setNumParcialidad((short) 1);
+    relacionado.setNumParcialidad(BigInteger.ONE);
     relacionado.setImpSaldoInsoluto(new BigDecimal("0.5"));
-    relacionado.setMetodoDePagoDR(CMetodoPago.PPD);
     relacionado.setMonedaDR(CMoneda.MXN);
     relacionado.setSerie("PFP");
-    pago.setDoctoRelacionado(relacionado);
-    pagos.setVersion("1.0");
+    pago.getDoctoRelacionado().add(relacionado);
+    pagos.setVersion("2.0");
     pagos.getPago().add(pago);
     complemento.getAny().add(pagos);
     comprobante.setComplemento(complemento);
@@ -156,6 +147,7 @@ public class CfdiTransformerTest {
     String xml = CfdiTransformer.cfdiMoldelToString(comprobante);
 
     assertTrue(xml.contains(CfdiConstants.SAT_NS_4_PREFIX));
+    System.out.println(xml);
     assertTrue(xml.contains(CfdiConstants.PAGO_PREFIX));
     System.out.println(xml);
   }
