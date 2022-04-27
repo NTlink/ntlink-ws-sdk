@@ -11,7 +11,6 @@ import com.mx.ntlink.models.generated.CTipoFactor;
 import com.mx.ntlink.models.generated.CUsoCFDI;
 import com.mx.ntlink.models.generated.Comprobante;
 import com.mx.ntlink.models.generated.Pagos;
-import com.mx.ntlink.models.generated.TimbreFiscalDigital;
 import com.mx.ntlink.util.CfdiConstants;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -29,8 +28,7 @@ public class CfdiTransformerTest {
   @Test
   public void xmlToCfdiModel_test() throws FileNotFoundException, JAXBException {
 
-    InputStream is =
-        new FileInputStream("./src/test/resources/cfdi-samples/pagos-impuestos.xml");
+    InputStream is = new FileInputStream("./src/test/resources/cfdi-samples/pagos-impuestos.xml");
 
     Comprobante comprobante = CfdiTransformer.xmlToCfdiModel(is);
 
@@ -57,7 +55,8 @@ public class CfdiTransformerTest {
         "5BD612EA-DB91-441D-BF85-37F442796EC1",
         pagos.getPago().get(0).getDoctoRelacionado().get(0).getIdDocumento());
 
-    assertEquals(BigInteger.ONE, pagos.getPago().get(0).getDoctoRelacionado().get(0).getNumParcialidad());
+    assertEquals(
+        BigInteger.ONE, pagos.getPago().get(0).getDoctoRelacionado().get(0).getNumParcialidad());
   }
 
   @Test
