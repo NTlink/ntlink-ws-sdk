@@ -17,13 +17,15 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.time.LocalDate;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CfdiTransformerTest {
+
+  private static final Logger log = LoggerFactory.getLogger(CfdiTransformerTest.class);
 
   @Test
   public void xmlToCfdiModel_test() throws FileNotFoundException, JAXBException {
@@ -123,8 +125,7 @@ public class CfdiTransformerTest {
     Comprobante.Complemento complemento = new Comprobante.Complemento();
     Pagos pagos = new Pagos();
     Pagos.Pago pago = new Pagos.Pago();
-    pago.setFechaPago(
-        DatatypeFactory.newInstance().newXMLGregorianCalendar(LocalDate.now().toString()));
+    pago.setFechaPago("2022-01-25T13:13:14");
     pago.setFormaDePagoP("03");
     pago.setMonedaP(CMoneda.MXN);
     pago.setMonto(BigDecimal.ONE);
@@ -146,8 +147,7 @@ public class CfdiTransformerTest {
     String xml = CfdiTransformer.cfdiMoldelToString(comprobante);
 
     assertTrue(xml.contains(CfdiConstants.SAT_NS_4_PREFIX));
-    System.out.println(xml);
     assertTrue(xml.contains(CfdiConstants.PAGO_PREFIX));
-    System.out.println(xml);
+    log.info(xml);
   }
 }
