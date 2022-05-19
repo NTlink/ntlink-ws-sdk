@@ -9,6 +9,8 @@ import com.mx.ntlink.models.generated.CancelaRetencion;
 import com.mx.ntlink.models.generated.CancelaRetencionResponse;
 import com.mx.ntlink.models.generated.ConsultaEstatusCFDI;
 import com.mx.ntlink.models.generated.ConsultaEstatusCFDIResponse;
+import com.mx.ntlink.models.generated.ConsultaSaldo;
+import com.mx.ntlink.models.generated.ConsultaSaldoResponse;
 import com.mx.ntlink.models.generated.RegistraEmpresa;
 import com.mx.ntlink.models.generated.RegistraEmpresaResponse;
 import com.mx.ntlink.models.generated.TimbraCfdi;
@@ -28,6 +30,8 @@ import com.mx.ntlink.models.generated.TimbraRetencionSinSelloResponse;
 
 /** @author Ralph */
 public interface NtLinkClient {
+
+  ConsultaSaldoResponse consultaSaldo(ConsultaSaldo request) throws SoapClientException;
 
   CancelaCfdiResponse cancelarCfdi(CancelaCfdi cancellation) throws SoapClientException;
 
