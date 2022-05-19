@@ -99,6 +99,7 @@ To use just make a simple maven import
 - [x] 2.0.7 Include company registration, deletion and status CFDI  method calls
 - [x] 2.0.8 Pagos version 20
 - [x] 2.0.9 Consulta saldo method
+- [x] 2.0.10 Adding logback logger
 
 - 
 <!-- LICENSE -->
