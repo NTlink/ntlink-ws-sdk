@@ -9,6 +9,8 @@ import com.mx.ntlink.models.generated.CancelaRetencion;
 import com.mx.ntlink.models.generated.CancelaRetencionResponse;
 import com.mx.ntlink.models.generated.ConsultaEstatusCFDI;
 import com.mx.ntlink.models.generated.ConsultaEstatusCFDIResponse;
+import com.mx.ntlink.models.generated.ConsultaSaldo;
+import com.mx.ntlink.models.generated.ConsultaSaldoResponse;
 import com.mx.ntlink.models.generated.RegistraEmpresa;
 import com.mx.ntlink.models.generated.RegistraEmpresaResponse;
 import com.mx.ntlink.models.generated.TimbraCfdi;
@@ -47,6 +49,12 @@ public class NtLinkClientImpl extends AbstractSoapClient implements NtLinkClient
 
   public NtLinkClientImpl(String wsUrl) {
     super(wsUrl, NTLINK_NAMESAPCE.concat(I_SERVICIO_TIMBRADO));
+  }
+
+  @Override
+  public ConsultaSaldoResponse consultaSaldo(ConsultaSaldo request) throws SoapClientException {
+    SOAPMessage response = sendRequest(request, ConsultaSaldo.class);
+    return parseResponse(response, ConsultaSaldoResponse.class);
   }
 
   @Override

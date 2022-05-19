@@ -77,7 +77,7 @@ To use just make a simple maven import
 <dependency>
 	<groupId>com.mx.ntlink</groupId>
 	<artifactId>ntlink-ws-sdk</artifactId>
-	<version>2.0.7</version>
+	<version>2.0.9</version>
 </dependency>
 ```
 
@@ -98,6 +98,7 @@ To use just make a simple maven import
 - [x] 2.0.6 Including nomina namespace
 - [x] 2.0.7 Include company registration, deletion and status CFDI  method calls
 - [x] 2.0.8 Pagos version 20
+- [x] 2.0.9 Consulta saldo method
 
 - 
 <!-- LICENSE -->
