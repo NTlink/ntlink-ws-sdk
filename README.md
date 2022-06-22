@@ -77,7 +77,7 @@ To use just make a simple maven import
 <dependency>
 	<groupId>com.mx.ntlink</groupId>
 	<artifactId>ntlink-ws-sdk</artifactId>
-	<version>2.0.9</version>
+	<version>2.0.11</version>
 </dependency>
 ```
 
@@ -100,6 +100,8 @@ To use just make a simple maven import
 - [x] 2.0.8 Pagos version 20
 - [x] 2.0.9 Consulta saldo method
 - [x] 2.0.10 Adding logback logger
+- [x] 2.0.11 Add missing WS Client Methods (CancelaCfdiOtrosPACs, CancelaCfdiRequest, ConsultaAceptacionRechazo, ConsultaCFDIRelacionados, ObtenerDatosCliente, ObtenerEmpresas, ObtenerStatusHash, ObtenerStatusUuid, ProcesarRespuestaAceptacionRechazo)
+
 
 - 
 <!-- LICENSE -->

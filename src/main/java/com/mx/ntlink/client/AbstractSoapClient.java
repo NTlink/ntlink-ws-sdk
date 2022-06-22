@@ -50,7 +50,7 @@ public abstract class AbstractSoapClient {
     try {
       SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
       soapConnection = soapConnectionFactory.createConnection();
-
+      logSoapMessage(soapRequest);
       SOAPMessage soapResponse = soapConnection.call(soapRequest, wsUrl);
       logSoapMessage(soapResponse);
       if (soapResponse.getSOAPBody().hasFault()) {
@@ -128,7 +128,7 @@ public abstract class AbstractSoapClient {
     }
   }
 
-  private void logSoapMessage(SOAPMessage message) {
+  protected void logSoapMessage(SOAPMessage message) {
     try {
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       message.writeTo(bos);

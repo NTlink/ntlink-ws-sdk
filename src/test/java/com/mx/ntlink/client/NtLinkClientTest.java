@@ -18,10 +18,15 @@ public class NtLinkClientTest {
   private static final Logger log = LoggerFactory.getLogger(NtLinkClientTest.class);
 
   private static final NtLinkClient client =
-      new NtLinkClientImpl("http://dev-cfdi4.ntlink.com.mx/cfdi40/servicio-timbrado");
+      new NtLinkClientImpl("http://rds.dyndns.org:90/CertificadorWs40/ServicioTimbrado.svc");
 
   private static final String TEST_USER = "EKU9003173C9@ntlink.com.mx";
   private static final String TEST_PASS = "Factura.2021*";
+  private static final String TEST_EXPR = "?";
+  private static final String TEST_UUID = "24E2465A-8B69-4F7C-BD68-4213E71F58F0";
+  private static final String TEST_RFC_EMISOR = "EKU9003173C9";
+  private static final String TEST_RFC_RECEPTOR = "?";
+  private static final String TEST_REQ_CANCELACION = "?";
 
   private static final String TEST_USER2 = "CACX7605101P8@ntlink.com.mx";
   private static final String TEST_PASS2 = "Ntlink.2021";
@@ -32,6 +37,121 @@ public class NtLinkClientTest {
   private static final DateTimeFormatter formatter =
       DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
   private static final String DATE_REPLACEMENT = "%fecha-timbrado%";
+
+  @Test
+  public void procesarRespuestaAceptacionRechazo() throws IOException, SoapClientException {
+    ProcesarRespuestaAceptacionRechazo request = new ProcesarRespuestaAceptacionRechazo();
+    Folios folio = new Folios();
+    folio.setUUDI(TEST_UUID);
+    folio.setRespuesta(FoliosR.ACEPTACION);
+    ArrayOfFolios folios = new ArrayOfFolios();
+    folios.getFolios().add(folio);
+
+    request.setUserName(TEST_USER);
+    request.setPassword(TEST_PASS);
+    request.setUuid(folios);
+    request.setRfcEmisor(TEST_RFC_EMISOR);
+    request.setRfcReceptor(TEST_RFC_RECEPTOR);
+    ProcesarRespuestaAceptacionRechazoResponse response =
+        client.procesarRespuestaAceptacionRechazo(request);
+    Assert.assertNotNull(response.getProcesarRespuestaAceptacionRechazoResult());
+  }
+
+  @Test
+  public void obtenerEmpresas() throws IOException, SoapClientException {
+    ObtenerEmpresas request = new ObtenerEmpresas();
+    request.setUserName(TEST_USER);
+    request.setPassword(TEST_PASS);
+    ObtenerEmpresasResponse response = client.obtenerEmpresas(request);
+    Assert.assertNotNull(response.getObtenerEmpresasResult());
+  }
+
+  @Test
+  public void obtenerDatosCliente() throws IOException, SoapClientException {
+    ObtenerDatosCliente request = new ObtenerDatosCliente();
+    request.setUserName(TEST_USER);
+    request.setPassword(TEST_PASS);
+    ObtenerDatosClienteResponse response = client.obtenerDatosCliente(request);
+    Assert.assertNotNull(response.getObtenerDatosClienteResult().getRfc());
+  }
+
+  @Test
+  public void cancelaCfdiOtrosPACs() throws IOException, SoapClientException {
+    CancelaCfdiOtrosPACs request = new CancelaCfdiOtrosPACs();
+    request.setUuid("");
+    request.setRfcEmisor("");
+    request.setExpresion("");
+    request.setRfcReceptor("");
+    request.setBase64Cer("");
+    request.setBase64Key("");
+    request.setPasswordKey("");
+    CancelaCfdiOtrosPACsResponse response = client.cancelaCfdiOtrosPACs(request);
+    Assert.assertNotNull(response.getCancelaCfdiOtrosPACsResult());
+  }
+
+  @Test
+  public void cancelaCfdiRequest() throws IOException, SoapClientException {
+    CancelaCfdiRequest request = new CancelaCfdiRequest();
+    request.setUserName(TEST_USER);
+    request.setPassword(TEST_PASS);
+    request.setRequestCancelacion(TEST_REQ_CANCELACION);
+    request.setExpresion(TEST_EXPR);
+    request.setUuid(TEST_UUID);
+    CancelaCfdiRequestResponse response = client.cancelaCfdiRequest(request);
+    Assert.assertNotNull(response.getCancelaCfdiRequestResult().getAcuse());
+  }
+
+  @Test
+  public void consultaAceptacionRechazo() throws IOException, SoapClientException {
+    ConsultaAceptacionRechazo request = new ConsultaAceptacionRechazo();
+    request.setUserName(TEST_USER);
+    request.setPassword(TEST_PASS);
+    request.setRfcEmisor("");
+    request.setRfcReceptor("");
+    ConsultaAceptacionRechazoResponse response = client.consultaAceptacionRechazo(request);
+    Assert.assertNotNull(response.getConsultaAceptacionRechazoResult());
+  }
+
+  @Test
+  public void consultaCFDIRelacionados() throws IOException, SoapClientException {
+    ConsultaCFDIRelacionados request = new ConsultaCFDIRelacionados();
+    request.setUserName(TEST_USER);
+    request.setPassword(TEST_PASS);
+    request.setUuid(TEST_UUID);
+    request.setRfcEmisor(TEST_RFC_EMISOR);
+    request.setRfcReceptor(TEST_RFC_RECEPTOR);
+    ConsultaCFDIRelacionadosResponse response = client.consultaCfdiRelacionados(request);
+    Assert.assertNotNull(response.getConsultaCFDIRelacionadosResult());
+  }
+
+  @Test
+  public void obtenerStatusHash() throws IOException, SoapClientException {
+    ObtenerStatusHash request = new ObtenerStatusHash();
+    request.setUserName(TEST_USER);
+    request.setPassword(TEST_PASS);
+    request.setHash("");
+    ObtenerStatusHashResponse response = client.obtenerStatusHash(request);
+    Assert.assertNotNull(response.getObtenerStatusHashResult().getStatus());
+  }
+
+  @Test
+  public void obtenerStatusUUID() throws IOException, SoapClientException {
+    ObtenerStatusUuid request = new ObtenerStatusUuid();
+    request.setUserName(TEST_USER);
+    request.setPassword(TEST_PASS);
+    request.setUuid("24E2465A-8B69-4F7C-BD68-4213E71F58F0");
+    ObtenerStatusUuidResponse response = client.obtenerStatusUuid(request);
+    Assert.assertNotNull(response.getObtenerStatusUuidResult().getStatus());
+  }
+
+  @Test
+  public void consultaSaldo() throws IOException, SoapClientException {
+    ConsultaSaldo request = new ConsultaSaldo();
+    request.setUserName(TEST_USER);
+    request.setPassword(TEST_PASS);
+    ConsultaSaldoResponse response = client.consultaSaldo(request);
+    Assert.assertNotNull(response.getConsultaSaldoResult());
+  }
 
   @Test
   public void timbraVehiculoUsado_test() throws IOException, SoapClientException {
