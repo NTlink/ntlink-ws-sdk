@@ -4,13 +4,31 @@ import com.mx.ntlink.error.SoapClientException;
 import com.mx.ntlink.models.generated.BajaEmpresa;
 import com.mx.ntlink.models.generated.BajaEmpresaResponse;
 import com.mx.ntlink.models.generated.CancelaCfdi;
+import com.mx.ntlink.models.generated.CancelaCfdiOtrosPACs;
+import com.mx.ntlink.models.generated.CancelaCfdiOtrosPACsResponse;
+import com.mx.ntlink.models.generated.CancelaCfdiRequest;
+import com.mx.ntlink.models.generated.CancelaCfdiRequestResponse;
 import com.mx.ntlink.models.generated.CancelaCfdiResponse;
 import com.mx.ntlink.models.generated.CancelaRetencion;
 import com.mx.ntlink.models.generated.CancelaRetencionResponse;
+import com.mx.ntlink.models.generated.ConsultaAceptacionRechazo;
+import com.mx.ntlink.models.generated.ConsultaAceptacionRechazoResponse;
+import com.mx.ntlink.models.generated.ConsultaCFDIRelacionados;
+import com.mx.ntlink.models.generated.ConsultaCFDIRelacionadosResponse;
 import com.mx.ntlink.models.generated.ConsultaEstatusCFDI;
 import com.mx.ntlink.models.generated.ConsultaEstatusCFDIResponse;
 import com.mx.ntlink.models.generated.ConsultaSaldo;
 import com.mx.ntlink.models.generated.ConsultaSaldoResponse;
+import com.mx.ntlink.models.generated.ObtenerDatosCliente;
+import com.mx.ntlink.models.generated.ObtenerDatosClienteResponse;
+import com.mx.ntlink.models.generated.ObtenerEmpresas;
+import com.mx.ntlink.models.generated.ObtenerEmpresasResponse;
+import com.mx.ntlink.models.generated.ObtenerStatusHash;
+import com.mx.ntlink.models.generated.ObtenerStatusHashResponse;
+import com.mx.ntlink.models.generated.ObtenerStatusUuid;
+import com.mx.ntlink.models.generated.ObtenerStatusUuidResponse;
+import com.mx.ntlink.models.generated.ProcesarRespuestaAceptacionRechazo;
+import com.mx.ntlink.models.generated.ProcesarRespuestaAceptacionRechazoResponse;
 import com.mx.ntlink.models.generated.RegistraEmpresa;
 import com.mx.ntlink.models.generated.RegistraEmpresaResponse;
 import com.mx.ntlink.models.generated.TimbraCfdi;
@@ -30,6 +48,29 @@ import com.mx.ntlink.models.generated.TimbraRetencionSinSelloResponse;
 
 /** @author Ralph */
 public interface NtLinkClient {
+  ProcesarRespuestaAceptacionRechazoResponse procesarRespuestaAceptacionRechazo(
+      ProcesarRespuestaAceptacionRechazo request) throws SoapClientException;
+
+  ObtenerEmpresasResponse obtenerEmpresas(ObtenerEmpresas request) throws SoapClientException;
+
+  ObtenerDatosClienteResponse obtenerDatosCliente(ObtenerDatosCliente request)
+      throws SoapClientException;
+
+  CancelaCfdiOtrosPACsResponse cancelaCfdiOtrosPACs(CancelaCfdiOtrosPACs request)
+      throws SoapClientException;
+
+  CancelaCfdiRequestResponse cancelaCfdiRequest(CancelaCfdiRequest request)
+      throws SoapClientException;
+
+  ConsultaAceptacionRechazoResponse consultaAceptacionRechazo(ConsultaAceptacionRechazo request)
+      throws SoapClientException;
+
+  ConsultaCFDIRelacionadosResponse consultaCfdiRelacionados(ConsultaCFDIRelacionados request)
+      throws SoapClientException;
+
+  ObtenerStatusHashResponse obtenerStatusHash(ObtenerStatusHash request) throws SoapClientException;
+
+  ObtenerStatusUuidResponse obtenerStatusUuid(ObtenerStatusUuid request) throws SoapClientException;
 
   ConsultaSaldoResponse consultaSaldo(ConsultaSaldo request) throws SoapClientException;
 

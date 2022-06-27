@@ -4,13 +4,31 @@ import com.mx.ntlink.error.SoapClientException;
 import com.mx.ntlink.models.generated.BajaEmpresa;
 import com.mx.ntlink.models.generated.BajaEmpresaResponse;
 import com.mx.ntlink.models.generated.CancelaCfdi;
+import com.mx.ntlink.models.generated.CancelaCfdiOtrosPACs;
+import com.mx.ntlink.models.generated.CancelaCfdiOtrosPACsResponse;
+import com.mx.ntlink.models.generated.CancelaCfdiRequest;
+import com.mx.ntlink.models.generated.CancelaCfdiRequestResponse;
 import com.mx.ntlink.models.generated.CancelaCfdiResponse;
 import com.mx.ntlink.models.generated.CancelaRetencion;
 import com.mx.ntlink.models.generated.CancelaRetencionResponse;
+import com.mx.ntlink.models.generated.ConsultaAceptacionRechazo;
+import com.mx.ntlink.models.generated.ConsultaAceptacionRechazoResponse;
+import com.mx.ntlink.models.generated.ConsultaCFDIRelacionados;
+import com.mx.ntlink.models.generated.ConsultaCFDIRelacionadosResponse;
 import com.mx.ntlink.models.generated.ConsultaEstatusCFDI;
 import com.mx.ntlink.models.generated.ConsultaEstatusCFDIResponse;
 import com.mx.ntlink.models.generated.ConsultaSaldo;
 import com.mx.ntlink.models.generated.ConsultaSaldoResponse;
+import com.mx.ntlink.models.generated.ObtenerDatosCliente;
+import com.mx.ntlink.models.generated.ObtenerDatosClienteResponse;
+import com.mx.ntlink.models.generated.ObtenerEmpresas;
+import com.mx.ntlink.models.generated.ObtenerEmpresasResponse;
+import com.mx.ntlink.models.generated.ObtenerStatusHash;
+import com.mx.ntlink.models.generated.ObtenerStatusHashResponse;
+import com.mx.ntlink.models.generated.ObtenerStatusUuid;
+import com.mx.ntlink.models.generated.ObtenerStatusUuidResponse;
+import com.mx.ntlink.models.generated.ProcesarRespuestaAceptacionRechazo;
+import com.mx.ntlink.models.generated.ProcesarRespuestaAceptacionRechazoResponse;
 import com.mx.ntlink.models.generated.RegistraEmpresa;
 import com.mx.ntlink.models.generated.RegistraEmpresaResponse;
 import com.mx.ntlink.models.generated.TimbraCfdi;
@@ -42,6 +60,9 @@ public class NtLinkClientImpl extends AbstractSoapClient implements NtLinkClient
 
   private static final String NTLINK_NAMESAPCE = "https://ntlink.com.mx/IServicioTimbrado";
 
+  private static final String NTLINK_BUSINESS_NAMESPACE =
+      "https://ntlink.com.mx/IServicioTimbrado.Business";
+
   private static final String CERTIFICADOR_NAMESPACE =
       "http://schemas.datacontract.org/2004/07/CertificadorWs";
   private static final String CERTIFICADOR_BUSINESS_NAMESPACE =
@@ -49,6 +70,71 @@ public class NtLinkClientImpl extends AbstractSoapClient implements NtLinkClient
 
   public NtLinkClientImpl(String wsUrl) {
     super(wsUrl, NTLINK_NAMESAPCE.concat(I_SERVICIO_TIMBRADO));
+  }
+
+  @Override
+  public ProcesarRespuestaAceptacionRechazoResponse procesarRespuestaAceptacionRechazo(
+      ProcesarRespuestaAceptacionRechazo request) throws SoapClientException {
+    SOAPMessage response =
+        replaceNamespaces(sendRequest(request, ProcesarRespuestaAceptacionRechazo.class));
+    return parseResponse(response, ProcesarRespuestaAceptacionRechazoResponse.class);
+  }
+
+  @Override
+  public ObtenerEmpresasResponse obtenerEmpresas(ObtenerEmpresas request)
+      throws SoapClientException {
+    SOAPMessage response = replaceNamespaces(sendRequest(request, ObtenerEmpresas.class));
+    return parseResponse(response, ObtenerEmpresasResponse.class);
+  }
+
+  @Override
+  public ObtenerDatosClienteResponse obtenerDatosCliente(ObtenerDatosCliente request)
+      throws SoapClientException {
+    SOAPMessage response = replaceNamespaces(sendRequest(request, ObtenerDatosCliente.class));
+    return parseResponse(response, ObtenerDatosClienteResponse.class);
+  };
+
+  @Override
+  public CancelaCfdiOtrosPACsResponse cancelaCfdiOtrosPACs(CancelaCfdiOtrosPACs request)
+      throws SoapClientException {
+    SOAPMessage response = sendRequest(request, CancelaCfdiOtrosPACs.class);
+    return parseResponse(response, CancelaCfdiOtrosPACsResponse.class);
+  }
+
+  @Override
+  public CancelaCfdiRequestResponse cancelaCfdiRequest(CancelaCfdiRequest request)
+      throws SoapClientException {
+    request.setRequestCancelacion("<![CDATA[" + request.getRequestCancelacion() + "]]>");
+    SOAPMessage response = replaceNamespaces(sendRequest(request, CancelaCfdiRequest.class));
+    return parseResponse(response, CancelaCfdiRequestResponse.class);
+  }
+
+  @Override
+  public ConsultaAceptacionRechazoResponse consultaAceptacionRechazo(
+      ConsultaAceptacionRechazo request) throws SoapClientException {
+    SOAPMessage response = sendRequest(request, ConsultaAceptacionRechazo.class);
+    return parseResponse(response, ConsultaAceptacionRechazoResponse.class);
+  }
+
+  @Override
+  public ConsultaCFDIRelacionadosResponse consultaCfdiRelacionados(ConsultaCFDIRelacionados request)
+      throws SoapClientException {
+    SOAPMessage response = sendRequest(request, ConsultaCFDIRelacionados.class);
+    return parseResponse(response, ConsultaCFDIRelacionadosResponse.class);
+  }
+
+  @Override
+  public ObtenerStatusHashResponse obtenerStatusHash(ObtenerStatusHash request)
+      throws SoapClientException {
+    SOAPMessage response = replaceNamespaces(sendRequest(request, ObtenerStatusHash.class));
+    return parseResponse(response, ObtenerStatusHashResponse.class);
+  }
+
+  @Override
+  public ObtenerStatusUuidResponse obtenerStatusUuid(ObtenerStatusUuid request)
+      throws SoapClientException {
+    SOAPMessage response = replaceNamespaces(sendRequest(request, ObtenerStatusUuid.class));
+    return parseResponse(response, ObtenerStatusUuidResponse.class);
   }
 
   @Override
@@ -188,6 +274,8 @@ public class NtLinkClientImpl extends AbstractSoapClient implements NtLinkClient
       String stringResponse = bos.toString("UTF-8");
       stringResponse = stringResponse.replaceAll(CERTIFICADOR_NAMESPACE, NTLINK_NAMESAPCE);
       stringResponse = stringResponse.replaceAll(CERTIFICADOR_BUSINESS_NAMESPACE, NTLINK_NAMESAPCE);
+      stringResponse = stringResponse.replaceAll(NTLINK_BUSINESS_NAMESPACE, NTLINK_NAMESAPCE);
+
       InputStream is = new ByteArrayInputStream(stringResponse.getBytes());
       return MessageFactory.newInstance().createMessage(message.getMimeHeaders(), is);
     } catch (IOException | SOAPException e) {

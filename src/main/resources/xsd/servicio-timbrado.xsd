@@ -1,4 +1,57 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="https://ntlink.com.mx/IServicioTimbrado" elementFormDefault="qualified" targetNamespace="https://ntlink.com.mx/IServicioTimbrado">
+    <xs:element name="ObtenerEmpresas">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="userName" type="xs:string"/>
+                <xs:element minOccurs="0" name="password" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ObtenerEmpresasResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="ObtenerEmpresasResult" type="tns:ArrayOfEmpresaNtLink"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ObtenerDatosCliente">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="userName" type="xs:string"/>
+                <xs:element minOccurs="0" name="password" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ObtenerDatosClienteResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="ObtenerDatosClienteResult">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="Ciudad" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Colonia" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Contacto" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Cp" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Direccion" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Email" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Empresas" type="xs:int"/>
+                            <xs:element minOccurs="0" name="Estado" type="xs:string"/>
+                            <xs:element minOccurs="0" name="FechaContrato" type="xs:dateTime"/>
+                            <xs:element minOccurs="0" name="RazonSocial" type="xs:string"/>
+                            <xs:element minOccurs="0" name="RegimenFiscal" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Rfc" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Sucursales" type="xs:int"/>
+                            <xs:element minOccurs="0" name="Telefono" type="xs:string"/>
+                            <xs:element minOccurs="0" name="TimbresConsumidos" type="xs:int"/>
+                            <xs:element minOccurs="0" name="TimbresContratados" type="xs:int"/>
+                            <xs:element minOccurs="0" name="Usuarios" type="xs:int"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
     <xs:element name="ConsultaSaldo">
         <xs:complexType>
             <xs:sequence>
@@ -14,6 +67,7 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+
     <xs:element name="ConsultaAceptacionRechazo">
         <xs:complexType>
             <xs:sequence>
@@ -32,6 +86,18 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="ProcesarRespuestaAceptacionRechazo">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="userName" type="xs:string"/>
+                <xs:element minOccurs="0" name="password" type="xs:string"/>
+                <xs:element minOccurs="0" name="uuid" type="tns:ArrayOfFolios"/>
+                <xs:element minOccurs="0" name="rfcEmisor" type="xs:string"/>
+                <xs:element minOccurs="0" name="rfcReceptor" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
     <xs:element name="ProcesarRespuestaAceptacionRechazoResponse">
         <xs:complexType>
             <xs:sequence>
@@ -39,6 +105,7 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+
     <xs:element name="ConsultaEstatusCFDI">
         <xs:complexType>
             <xs:sequence>
@@ -229,6 +296,8 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element minOccurs="0" name="uuid" type="xs:string"/>
+                <xs:element minOccurs="0" name="motivo" type="xs:string"/>
+                <xs:element minOccurs="0" name="folioSustituto" type="xs:string"/>
                 <xs:element minOccurs="0" name="rfcEmisor" type="xs:string"/>
                 <xs:element minOccurs="0" name="expresion" type="xs:string"/>
                 <xs:element minOccurs="0" name="rfcReceptor" type="xs:string"/>
@@ -423,6 +492,32 @@
             <xs:element minOccurs="0" name="Telefono" type="xs:string"/>
             <xs:element minOccurs="0" name="TimbresContratados" type="xs:int"/>
             <xs:element minOccurs="0" name="Usuarios" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ArrayOfEmpresaNtLink">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="EmpresaNtLink" type="tns:EmpresaNtLink"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="Folios.R">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Aceptacion"/>
+            <xs:enumeration value="Rechazo"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="Folios">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Respuesta" type="tns:Folios.R"/>
+            <xs:element minOccurs="0" name="UUDI" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ArrayOfFolios">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="Folios" type="tns:Folios"/>
         </xs:sequence>
     </xs:complexType>
 

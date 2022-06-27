@@ -50,7 +50,6 @@ public abstract class AbstractSoapClient {
     try {
       SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
       soapConnection = soapConnectionFactory.createConnection();
-
       SOAPMessage soapResponse = soapConnection.call(soapRequest, wsUrl);
       logSoapMessage(soapResponse);
       if (soapResponse.getSOAPBody().hasFault()) {
