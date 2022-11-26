@@ -7,7 +7,9 @@ import static com.mx.ntlink.util.CfdiConstants.TFD_NS;
 import static javax.xml.bind.Marshaller.JAXB_FORMATTED_OUTPUT;
 import static javax.xml.bind.Marshaller.JAXB_SCHEMA_LOCATION;
 
+import com.mx.ntlink.error.XMLParserException;
 import com.mx.ntlink.models.generated.Comprobante;
+import com.mx.ntlink.models.generated.TimbreFiscalDigital;
 import com.mx.ntlink.util.CfdiNamespaceMapper;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -40,5 +42,19 @@ public class CfdiTransformer {
 
   public static Comprobante xmlToCfdiModel(String xml) throws JAXBException {
     return xmlToCfdiModel(new ByteArrayInputStream(xml.getBytes()));
+  }
+
+  public static TimbreFiscalDigital xmlToTFD(InputStream xmlStream) throws XMLParserException {
+    try {
+      JAXBContext jc = JAXBContext.newInstance(TimbreFiscalDigital.class);
+      Unmarshaller um = jc.createUnmarshaller();
+      return (TimbreFiscalDigital) um.unmarshal(xmlStream);
+    } catch (JAXBException ex) {
+      throw new XMLParserException(ex.getMessage());
+    }
+  }
+
+  public static TimbreFiscalDigital xmlToTFD(String xml) throws XMLParserException {
+    return xmlToTFD(new ByteArrayInputStream(xml.getBytes()));
   }
 }
