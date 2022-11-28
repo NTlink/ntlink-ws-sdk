@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import com.mx.ntlink.error.XMLParserException;
 import com.mx.ntlink.models.generated.CMetodoPago;
 import com.mx.ntlink.models.generated.CMoneda;
 import com.mx.ntlink.models.generated.CTipoDeComprobante;
@@ -17,8 +18,6 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import javax.xml.bind.JAXBException;
-import javax.xml.datatype.DatatypeConfigurationException;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +27,7 @@ public class CfdiTransformerTest {
   private static final Logger log = LoggerFactory.getLogger(CfdiTransformerTest.class);
 
   @Test
-  public void xmlToCfdiModel_test() throws FileNotFoundException, JAXBException {
+  public void xmlToCfdiModel_test() throws FileNotFoundException, XMLParserException {
 
     InputStream is = new FileInputStream("./src/test/resources/cfdi-samples/pagos-impuestos.xml");
 
@@ -62,7 +61,7 @@ public class CfdiTransformerTest {
   }
 
   @Test
-  public void test2() throws JAXBException, DatatypeConfigurationException {
+  public void test2() throws XMLParserException {
     Comprobante comprobante = new Comprobante();
 
     comprobante.setVersion("4.0");

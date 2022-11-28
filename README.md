@@ -101,6 +101,7 @@ To use just make a simple maven import
 - [x] 2.0.9 Consulta saldo method
 - [x] 2.0.10 Adding logback logger
 - [x] 2.0.11 Add missing WS Client Methods (CancelaCfdiOtrosPACs, CancelaCfdiRequest, ConsultaAceptacionRechazo, ConsultaCFDIRelacionados, ObtenerDatosCliente, ObtenerEmpresas, ObtenerStatusHash, ObtenerStatusUuid, ProcesarRespuestaAceptacionRechazo)
+- [x] 2.0.12 Adding TimbreFiscalTransformer
 
 
 - 
