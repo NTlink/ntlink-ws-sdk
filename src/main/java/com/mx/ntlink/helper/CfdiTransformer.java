@@ -9,6 +9,9 @@ import static javax.xml.bind.Marshaller.JAXB_SCHEMA_LOCATION;
 
 import com.mx.ntlink.error.XMLParserException;
 import com.mx.ntlink.models.generated.Comprobante;
+import com.mx.ntlink.models.generated.Nomina;
+import com.mx.ntlink.models.generated.Pagos;
+import com.mx.ntlink.models.generated.Retenciones;
 import com.mx.ntlink.models.generated.TimbreFiscalDigital;
 import com.mx.ntlink.util.CfdiNamespaceMapper;
 import java.io.ByteArrayInputStream;
@@ -65,5 +68,47 @@ public class CfdiTransformer {
 
   public static TimbreFiscalDigital xmlToTFD(String xml) throws XMLParserException {
     return xmlToTFD(new ByteArrayInputStream(xml.getBytes()));
+  }
+
+  public static Retenciones xmlToRetencionModel(InputStream xmlStream) throws XMLParserException {
+    try {
+      JAXBContext jc = JAXBContext.newInstance(Retenciones.class);
+      Unmarshaller um = jc.createUnmarshaller();
+      return (Retenciones) um.unmarshal(xmlStream);
+    } catch (JAXBException ex) {
+      throw new XMLParserException(ex.getMessage());
+    }
+  }
+
+  public static Retenciones xmlToRetencionModel(String xml) throws XMLParserException {
+    return xmlToRetencionModel(new ByteArrayInputStream(xml.getBytes()));
+  }
+
+  public static Pagos xmlToPagosModel(InputStream xmlStream) throws XMLParserException {
+    try {
+      JAXBContext jc = JAXBContext.newInstance(Pagos.class);
+      Unmarshaller um = jc.createUnmarshaller();
+      return (Pagos) um.unmarshal(xmlStream);
+    } catch (JAXBException ex) {
+      throw new XMLParserException(ex.getMessage());
+    }
+  }
+
+  public static Pagos xmlToPagosModel(String xml) throws XMLParserException {
+    return xmlToPagosModel(new ByteArrayInputStream(xml.getBytes()));
+  }
+
+  public static Nomina xmlToNominaModel(InputStream xmlStream) throws XMLParserException {
+    try {
+      JAXBContext jc = JAXBContext.newInstance(Nomina.class);
+      Unmarshaller um = jc.createUnmarshaller();
+      return (Nomina) um.unmarshal(xmlStream);
+    } catch (JAXBException ex) {
+      throw new XMLParserException(ex.getMessage());
+    }
+  }
+
+  public static Nomina xmlToNominaModel(String xml) throws XMLParserException {
+    return xmlToNominaModel(new ByteArrayInputStream(xml.getBytes()));
   }
 }

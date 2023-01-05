@@ -77,7 +77,7 @@ To use just make a simple maven import
 <dependency>
 	<groupId>com.mx.ntlink</groupId>
 	<artifactId>ntlink-ws-sdk</artifactId>
-	<version>2.0.13</version>
+	<version>2.0.14</version>
 </dependency>
 ```
 
@@ -103,9 +103,9 @@ To use just make a simple maven import
 - [x] 2.0.11 Add missing WS Client Methods (CancelaCfdiOtrosPACs, CancelaCfdiRequest, ConsultaAceptacionRechazo, ConsultaCFDIRelacionados, ObtenerDatosCliente, ObtenerEmpresas, ObtenerStatusHash, ObtenerStatusUuid, ProcesarRespuestaAceptacionRechazo)
 - [x] 2.0.12 Adding TimbreFiscalTransformer
 - [x] 2.0.13 Adding retenciones20.xsd generated for class autogeneration via JaxB
+- [x] 2.0.14 Including Retenciones,Nomina and Pagos transformer methods
 
 
-- 
 <!-- LICENSE -->
 ## License
 
