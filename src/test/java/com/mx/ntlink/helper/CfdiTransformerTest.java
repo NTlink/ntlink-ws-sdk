@@ -12,7 +12,9 @@ import com.mx.ntlink.models.generated.CTipoFactor;
 import com.mx.ntlink.models.generated.CUsoCFDI;
 import com.mx.ntlink.models.generated.Comprobante;
 import com.mx.ntlink.models.generated.Pagos;
-import com.mx.ntlink.util.CfdiConstants;
+import com.mx.ntlink.models.generated.Retenciones;
+import com.mx.ntlink.models.generated.TimbreFiscalDigital;
+import com.mx.ntlink.util.NamespaceConstants;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -61,8 +63,9 @@ public class CfdiTransformerTest {
   }
 
   @Test
-  public void test2() throws XMLParserException {
+  public void cfdiMoldelToString_validateNamespacesGeneration() throws XMLParserException {
     Comprobante comprobante = new Comprobante();
+
 
     comprobante.setVersion("4.0");
     comprobante.setExportacion("01");
@@ -145,8 +148,91 @@ public class CfdiTransformerTest {
 
     String xml = CfdiTransformer.cfdiMoldelToString(comprobante);
 
-    assertTrue(xml.contains(CfdiConstants.SAT_NS_4_PREFIX));
-    assertTrue(xml.contains(CfdiConstants.PAGO_PREFIX));
-    log.info(xml);
+    assertTrue(xml.contains(NamespaceConstants.SAT_NS_4_PREFIX));
+    assertTrue(xml.contains(NamespaceConstants.PAGO_PREFIX));
+    System.out.println(xml);
   }
+
+
+  @Test
+  public void xmlToRetencionModel_test() throws FileNotFoundException, XMLParserException {
+
+    InputStream is = new FileInputStream("./src/test/resources/cfdi-samples/retencion-intereses-timbrada.xml");
+
+    Retenciones retencion = CfdiTransformer.xmlToRetencionModel(is);
+
+    assertNotNull(retencion);
+
+    assertEquals("URE180429TM6", retencion.getEmisor().getRfcE());
+
+    assertEquals("XAXX010101000", retencion.getReceptor().getNacional().getRfcR());
+
+    assertEquals(BigDecimal.ZERO, retencion.getTotales().getMontoTotRet());
+
+    assertEquals(BigDecimal.ONE, retencion.getTotales().getImpRetenidos().get(0).getBaseRet());
+
+    Retenciones.Complemento complemento = retencion.getComplemento();
+
+    TimbreFiscalDigital tfd =
+            (TimbreFiscalDigital) complemento.getAny().stream().filter(c -> c instanceof TimbreFiscalDigital).findAny().get();
+
+    assertNotNull(tfd);
+
+    assertEquals(
+            "90F8EDCC-3384-49EE-B0FB-9945E7497956",
+            tfd.getUUID());
+
+    assertEquals(
+            "2022-09-20T23:16:25",
+            tfd.getFechaTimbrado());
+
+    assertEquals(
+            "SPR190613I52",
+            tfd.getRfcProvCertif());
+  }
+
+  @Test
+  public void retencionMoldelToString() throws XMLParserException {
+    Retenciones retencion = new Retenciones();
+    Retenciones.Emisor emisor = new Retenciones.Emisor();
+    emisor.setNomDenRazSocE("UNIVERSIDAD ROBOTICA ESPAÑOLA");
+    emisor.setRfcE("URE180429TM6");
+    emisor.setRegimenFiscalE("601");
+
+    Retenciones.Receptor receptor = new Retenciones.Receptor();
+    Retenciones.Receptor.Nacional nacional = new Retenciones.Receptor.Nacional();
+    nacional.setRfcR("EKU9003173C9");
+    nacional.setNomDenRazSocR("ESCUELA KEMPER URGATE");
+    nacional.setDomicilioFiscalR("65000");
+    receptor.setNacional(nacional);
+    receptor.setNacionalidadR("Nacional");
+
+    Retenciones.Periodo periodo = new Retenciones.Periodo();
+    periodo.setEjercicio("2021");
+    periodo.setMesFin("03");
+    periodo.setMesIni("02");
+
+    Retenciones.Totales totales = new Retenciones.Totales();
+    Retenciones.Totales.ImpRetenidos impuestos = new Retenciones.Totales.ImpRetenidos();
+    impuestos.setBaseRet(new BigDecimal("2000"));
+    impuestos.setImpuestoRet("001");
+    impuestos.setMontoRet(new BigDecimal("580"));
+    impuestos.setTipoPagoRet("03");
+    totales.getImpRetenidos().add(impuestos);
+    totales.setMontoTotOperacion(new BigDecimal("2000"));
+    totales.setMontoTotGrav(new BigDecimal("2000"));
+    totales.setMontoTotExent(BigDecimal.ZERO);
+    totales.setMontoTotRet(new BigDecimal("580"));
+
+    retencion.setEmisor(emisor);
+    retencion.setReceptor(receptor);
+    retencion.setPeriodo(periodo);
+    retencion.setTotales(totales);
+
+
+    String xml = CfdiTransformer.retentionMoldelToString(retencion);
+
+    System.out.println(xml);
+  }
+
 }
