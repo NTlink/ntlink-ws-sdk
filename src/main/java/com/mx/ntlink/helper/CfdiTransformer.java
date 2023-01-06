@@ -10,7 +10,6 @@ import com.mx.ntlink.models.generated.Retenciones;
 import com.mx.ntlink.models.generated.TimbreFiscalDigital;
 import com.mx.ntlink.util.CfdiNamespaceMapper;
 import com.mx.ntlink.util.RetencionesNamespaceMapper;
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.StringWriter;
@@ -41,7 +40,7 @@ public class CfdiTransformer {
       JAXBContext jaxbContext = JAXBContext.newInstance(Retenciones.class);
       Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
       jaxbMarshaller.setProperty(
-              "com.sun.xml.bind.namespacePrefixMapper", new RetencionesNamespaceMapper());
+          "com.sun.xml.bind.namespacePrefixMapper", new RetencionesNamespaceMapper());
       jaxbMarshaller.setProperty(JAXB_FORMATTED_OUTPUT, true);
       StringWriter sw = new StringWriter();
       jaxbMarshaller.marshal(cfdi, sw);

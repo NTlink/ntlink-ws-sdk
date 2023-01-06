@@ -66,7 +66,6 @@ public class CfdiTransformerTest {
   public void cfdiMoldelToString_validateNamespacesGeneration() throws XMLParserException {
     Comprobante comprobante = new Comprobante();
 
-
     comprobante.setVersion("4.0");
     comprobante.setExportacion("01");
     comprobante.setFecha("2022-01-25T13:13:14");
@@ -153,11 +152,11 @@ public class CfdiTransformerTest {
     System.out.println(xml);
   }
 
-
   @Test
   public void xmlToRetencionModel_test() throws FileNotFoundException, XMLParserException {
 
-    InputStream is = new FileInputStream("./src/test/resources/cfdi-samples/retencion-intereses-timbrada.xml");
+    InputStream is =
+        new FileInputStream("./src/test/resources/cfdi-samples/retencion-intereses-timbrada.xml");
 
     Retenciones retencion = CfdiTransformer.xmlToRetencionModel(is);
 
@@ -174,21 +173,19 @@ public class CfdiTransformerTest {
     Retenciones.Complemento complemento = retencion.getComplemento();
 
     TimbreFiscalDigital tfd =
-            (TimbreFiscalDigital) complemento.getAny().stream().filter(c -> c instanceof TimbreFiscalDigital).findAny().get();
+        (TimbreFiscalDigital)
+            complemento.getAny().stream()
+                .filter(c -> c instanceof TimbreFiscalDigital)
+                .findAny()
+                .get();
 
     assertNotNull(tfd);
 
-    assertEquals(
-            "90F8EDCC-3384-49EE-B0FB-9945E7497956",
-            tfd.getUUID());
+    assertEquals("90F8EDCC-3384-49EE-B0FB-9945E7497956", tfd.getUUID());
 
-    assertEquals(
-            "2022-09-20T23:16:25",
-            tfd.getFechaTimbrado());
+    assertEquals("2022-09-20T23:16:25", tfd.getFechaTimbrado());
 
-    assertEquals(
-            "SPR190613I52",
-            tfd.getRfcProvCertif());
+    assertEquals("SPR190613I52", tfd.getRfcProvCertif());
   }
 
   @Test
@@ -229,10 +226,8 @@ public class CfdiTransformerTest {
     retencion.setPeriodo(periodo);
     retencion.setTotales(totales);
 
-
     String xml = CfdiTransformer.retentionMoldelToString(retencion);
 
     System.out.println(xml);
   }
-
 }
