@@ -22,32 +22,31 @@ public class CfdiNamespaceMapper extends NamespacePrefixMapper {
   @Override
   public String getPreferredPrefix(String namespaceUri, String suggestion, boolean requirePrefix) {
 
-    switch (namespaceUri){
-      case  SAT_NS_40:
+    switch (namespaceUri) {
+      case SAT_NS_40:
         suggestion = SAT_NS_4_PREFIX;
         break;
-      case  W3_NS:
+      case W3_NS:
         suggestion = XSI_PREFIX;
         break;
-      case  PAGOS_NS:
+      case PAGOS_NS:
         suggestion = PAGO_PREFIX;
         break;
-      case  TFD_NS:
+      case TFD_NS:
         suggestion = TFD_PREFIX;
         break;
-      case  NOMINA_NS:
+      case NOMINA_NS:
         suggestion = NOMINA_PREFIX;
         break;
-      case  CARTA_PORTE_NS:
+      case CARTA_PORTE_NS:
         suggestion = CARTA_PORTE_PREFIX;
         break;
-      case  COMERCIO_EXT_NS:
+      case COMERCIO_EXT_NS:
         suggestion = COMERCIO_EXT_PREFIX;
         break;
     }
 
     return suggestion;
-
   }
 
   @Override
