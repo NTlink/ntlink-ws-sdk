@@ -149,7 +149,6 @@ public class CfdiTransformerTest {
 
     assertTrue(xml.contains(NamespaceConstants.SAT_NS_4_PREFIX));
     assertTrue(xml.contains(NamespaceConstants.PAGO_PREFIX));
-    System.out.println(xml);
   }
 
   @Test
@@ -227,7 +226,5 @@ public class CfdiTransformerTest {
     retencion.setTotales(totales);
 
     String xml = CfdiTransformer.retentionMoldelToString(retencion);
-
-    System.out.println(xml);
   }
 }
