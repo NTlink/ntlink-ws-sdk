@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.mx.ntlink</groupId>
     <artifactId>ntlink-ws-sdk</artifactId>
-    <version>2.0.14</version>
+    <version>3.0.0</version>
     <name>ntlink-ws-sdk</name>
     <description>Web service client for NTLink web service CFDI V4</description>
 
@@ -57,34 +57,6 @@
             <groupId>org.apache.servicemix.bundles</groupId>
             <artifactId>org.apache.servicemix.bundles.not-yet-commons-ssl</artifactId>
             <version>${org.apache.servicemix.bundles.not-yet-commons-ssl.version}</version>
-        </dependency>
-
-
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
-        </dependency>
-
-        <!-- ch.qos.logback.contrib.jackson.JacksonJsonFormatter -->
-        <dependency>
-            <groupId>ch.qos.logback.contrib</groupId>
-            <artifactId>logback-jackson</artifactId>
-            <version>${logback.contrib.version}</version>
-        </dependency>
-
-        <!-- ch.qos.logback.contrib.json.classic.JsonLayout -->
-        <dependency>
-            <groupId>ch.qos.logback.contrib</groupId>
-            <artifactId>logback-json-classic</artifactId>
-            <version>${logback.contrib.version}</version>
-        </dependency>
-
-        <!-- com.fasterxml.jackson.databind.ObjectMapper -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.9.5</version>
         </dependency>
 
         <dependency>
