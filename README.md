@@ -68,6 +68,13 @@ In order to compile this project you will need
 * java 8 or higher
 * maven 3.5 or higher  
 
+### Maven deploy
+
+In order to deploy dependencies to S3 bucket, install locally [aws-maven wagon extension](https://github.com/spring-attic/aws-maven)
+
+
+``` mvn clean install deploy -D aws.accessKeyId=XXXXX -D aws.secretKey=XXXXXXXXXXX```
+
 <!-- USAGE EXAMPLES -->
 ## Usage
 

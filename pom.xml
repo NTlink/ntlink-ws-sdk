@@ -113,5 +113,36 @@
                 </configuration>
             </plugin>
         </plugins>
+        <extensions>
+            <extension>
+                <groupId>org.springframework.build</groupId>
+                <artifactId>aws-maven</artifactId>
+                <version>5.0.0.RELEASE</version>
+            </extension>
+        </extensions>
     </build>
+
+    <repositories>
+        <repository>
+            <id>ntlink-snapshots</id>
+            <name>ntlink-snapshots</name>
+            <url>s3://ntlink-maven/snapshots</url>
+        </repository>
+        <repository>
+            <id>ntlink-releases</id>
+            <name>ntlink-releases</name>
+            <url>s3://ntlink-maven/releases</url>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ntlink-snapshots</id>
+            <url>s3://ntlink-maven/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ntlink-releases</id>
+            <url>s3://ntlink-maven/releases</url>
+        </repository>
+    </distributionManagement>
 </project>
