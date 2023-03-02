@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.mx.ntlink</groupId>
     <artifactId>ntlink-ws-sdk</artifactId>
-    <version>3.0.0</version>
+    <version>3.0.1</version>
     <name>ntlink-ws-sdk</name>
     <description>Web service client for NTLink web service CFDI V4</description>
 

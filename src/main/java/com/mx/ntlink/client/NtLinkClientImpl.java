@@ -49,6 +49,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import javax.xml.soap.MessageFactory;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
@@ -68,8 +69,8 @@ public class NtLinkClientImpl extends AbstractSoapClient implements NtLinkClient
   private static final String CERTIFICADOR_BUSINESS_NAMESPACE =
       "http://schemas.datacontract.org/2004/07/CertificadorWs.Business";
 
-  public NtLinkClientImpl(String wsUrl) {
-    super(wsUrl, NTLINK_NAMESAPCE.concat(I_SERVICIO_TIMBRADO));
+  public NtLinkClientImpl(URL wsEndpoint) {
+    super(wsEndpoint, NTLINK_NAMESAPCE.concat(I_SERVICIO_TIMBRADO));
   }
 
   @Override

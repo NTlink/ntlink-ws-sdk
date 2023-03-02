@@ -84,7 +84,7 @@ To use just make a simple maven import
 <dependency>
 	<groupId>com.mx.ntlink</groupId>
 	<artifactId>ntlink-ws-sdk</artifactId>
-	<version>3.0.0</version>
+	<version>3.0.1</version>
 </dependency>
 ```
 
@@ -112,6 +112,7 @@ To use just make a simple maven import
 - [x] 2.0.13 Adding retenciones20.xsd generated for class autogeneration via JaxB
 - [x] 2.0.14 Including Retenciones,Nomina and Pagos transformer methods
 - [x] 3.0.0 SDK cleanup
+  - [x] 3.0.1 Require java.net.URL as parameter on client creation to allow handle read and connect timeout. 
 
 
 <!-- LICENSE -->

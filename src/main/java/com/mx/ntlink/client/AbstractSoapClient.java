@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
@@ -33,13 +34,13 @@ import org.xml.sax.SAXException;
 
 public abstract class AbstractSoapClient {
 
-  private final String wsUrl;
+  private URL endpoint;
   private final String principalNamespace;
 
   private static final Logger log = LoggerFactory.getLogger(AbstractSoapClient.class);
 
-  protected AbstractSoapClient(String wsUrl, String principalNamespace) {
-    this.wsUrl = wsUrl;
+  protected AbstractSoapClient(URL endpoint, String principalNamespace) {
+    this.endpoint = endpoint;
     this.principalNamespace = principalNamespace;
   }
 
@@ -50,7 +51,7 @@ public abstract class AbstractSoapClient {
     try {
       SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
       soapConnection = soapConnectionFactory.createConnection();
-      SOAPMessage soapResponse = soapConnection.call(soapRequest, wsUrl);
+      SOAPMessage soapResponse = soapConnection.call(soapRequest, endpoint);
       logSoapMessage(soapResponse);
       if (soapResponse.getSOAPBody().hasFault()) {
         throw new SoapClientException(

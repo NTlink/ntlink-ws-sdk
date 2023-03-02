@@ -3,11 +3,14 @@ package com.mx.ntlink.client;
 import com.mx.ntlink.error.SoapClientException;
 import com.mx.ntlink.models.generated.TimbraCfdiSinSello;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -16,13 +19,18 @@ import org.slf4j.LoggerFactory;
 public class NtLinkClientPagosTest {
 
   private static final Logger log = LoggerFactory.getLogger(NtLinkClientPagosTest.class);
-  private static final NtLinkClient client =
-      new NtLinkClientImpl("http://dev-cfdi4.ntlink.com.mx/cfdi40/servicio-timbrado");
+  private NtLinkClient client;
   private static final String TEST_USER = "EKU9003173C9@ntlink.com.mx";
   private static final String TEST_PASS = "Factura.2021*";
   private static final DateTimeFormatter formatter =
       DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
   private static final String DATE_REPLACEMENT = "%fecha-timbrado%";
+
+  @Before
+  public void init() throws MalformedURLException {
+    URL endpoint = new URL("http://dev-cfdi4.ntlink.com.mx/cfdi40/servicio-timbrado");
+    this.client = new NtLinkClientImpl(endpoint);
+  }
 
   @Test
   public void timbra_pagos_error20101() throws IOException, SoapClientException {
