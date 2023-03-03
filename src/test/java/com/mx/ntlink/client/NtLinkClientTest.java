@@ -3,11 +3,17 @@ package com.mx.ntlink.client;
 import com.mx.ntlink.error.SoapClientException;
 import com.mx.ntlink.models.generated.*;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLStreamHandler;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -17,11 +23,10 @@ public class NtLinkClientTest {
 
   private static final Logger log = LoggerFactory.getLogger(NtLinkClientTest.class);
 
-  private static final NtLinkClient client =
-      new NtLinkClientImpl("http://rds.dyndns.org:90/CertificadorWs40/ServicioTimbrado.svc");
+  private NtLinkClient client;
 
   private static final String TEST_USER = "EKU9003173C9@ntlink.com.mx";
-  private static final String TEST_PASS = "Factura.2021*";
+  private static final String TEST_PASS = "Factura.2022*";
   private static final String TEST_EXPR = "?";
   private static final String TEST_UUID = "24E2465A-8B69-4F7C-BD68-4213E71F58F0";
   private static final String TEST_RFC_EMISOR = "EKU9003173C9";
@@ -38,8 +43,29 @@ public class NtLinkClientTest {
       DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
   private static final String DATE_REPLACEMENT = "%fecha-timbrado%";
 
+  @Before
+  public void init() throws MalformedURLException {
+    URL endpoint =
+        new URL(
+            new URL("http://dev-cfdi4.ntlink.com.mx"),
+            "/cfdi40/servicio-timbrado",
+            new URLStreamHandler() {
+              @Override
+              protected URLConnection openConnection(URL url) throws IOException {
+                URL target = new URL(url.toString());
+                URLConnection connection = target.openConnection();
+                // Connection settings
+                connection.setConnectTimeout(10000); // 10 sec
+                connection.setReadTimeout(60000); // 1 min
+                return (connection);
+              }
+            });
+
+    this.client = new NtLinkClientImpl(endpoint);
+  }
+
   @Test
-  public void procesarRespuestaAceptacionRechazo() throws IOException, SoapClientException {
+  public void procesarRespuestaAceptacionRechazo() throws SoapClientException {
     ProcesarRespuestaAceptacionRechazo request = new ProcesarRespuestaAceptacionRechazo();
     Folios folio = new Folios();
     folio.setUUDI(TEST_UUID);
@@ -58,16 +84,22 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void obtenerEmpresas() throws IOException, SoapClientException {
+  public void obtenerEmpresas() throws SoapClientException {
     ObtenerEmpresas request = new ObtenerEmpresas();
-    request.setUserName(TEST_USER);
-    request.setPassword(TEST_PASS);
+    request.setUserName("URE180429TM6@ntlink.com.mx");
+    request.setPassword("NTPruebas.2021*?");
     ObtenerEmpresasResponse response = client.obtenerEmpresas(request);
     Assert.assertNotNull(response.getObtenerEmpresasResult());
+    Optional<String> rfc =
+        response.getObtenerEmpresasResult().getEmpresaNtLink().stream()
+            .map(EmpresaNtLink::getRfc)
+            .filter(r -> "URE180429TM6".equals(r))
+            .findAny();
+    Assert.assertTrue(rfc.isPresent());
   }
 
   @Test
-  public void obtenerDatosCliente() throws IOException, SoapClientException {
+  public void obtenerDatosCliente() throws SoapClientException {
     ObtenerDatosCliente request = new ObtenerDatosCliente();
     request.setUserName(TEST_USER);
     request.setPassword(TEST_PASS);
@@ -76,7 +108,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void cancelaCfdiOtrosPACs() throws IOException, SoapClientException {
+  public void cancelaCfdiOtrosPACs() throws SoapClientException {
     CancelaCfdiOtrosPACs request = new CancelaCfdiOtrosPACs();
     request.setUuid("");
     request.setRfcEmisor("");
@@ -90,7 +122,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void cancelaCfdiRequest() throws IOException, SoapClientException {
+  public void cancelaCfdiRequest() throws SoapClientException {
     CancelaCfdiRequest request = new CancelaCfdiRequest();
     request.setUserName(TEST_USER);
     request.setPassword(TEST_PASS);
@@ -102,7 +134,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void consultaAceptacionRechazo() throws IOException, SoapClientException {
+  public void consultaAceptacionRechazo() throws SoapClientException {
     ConsultaAceptacionRechazo request = new ConsultaAceptacionRechazo();
     request.setUserName(TEST_USER);
     request.setPassword(TEST_PASS);
@@ -113,7 +145,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void consultaCFDIRelacionados() throws IOException, SoapClientException {
+  public void consultaCFDIRelacionados() throws SoapClientException {
     ConsultaCFDIRelacionados request = new ConsultaCFDIRelacionados();
     request.setUserName(TEST_USER);
     request.setPassword(TEST_PASS);
@@ -125,7 +157,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void obtenerStatusHash() throws IOException, SoapClientException {
+  public void obtenerStatusHash() throws SoapClientException {
     ObtenerStatusHash request = new ObtenerStatusHash();
     request.setUserName(TEST_USER);
     request.setPassword(TEST_PASS);
@@ -135,7 +167,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void obtenerStatusUUID() throws IOException, SoapClientException {
+  public void obtenerStatusUUID() throws SoapClientException {
     ObtenerStatusUuid request = new ObtenerStatusUuid();
     request.setUserName(TEST_USER);
     request.setPassword(TEST_PASS);
@@ -145,7 +177,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void consultaSaldo() throws IOException, SoapClientException {
+  public void consultaSaldo() throws SoapClientException {
     ConsultaSaldo request = new ConsultaSaldo();
     request.setUserName(TEST_USER);
     request.setPassword(TEST_PASS);
@@ -154,7 +186,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbraVehiculoUsado_test() throws IOException, SoapClientException {
+  public void timbraVehiculoUsado_test() throws SoapClientException, IOException {
 
     String comprobante =
         new String(
@@ -182,7 +214,7 @@ public class NtLinkClientTest {
    * Attribute 'Sello' must appear on element 'cfdi:Comprobante'. Agregar
    * stampHelper.stampCfdi(comprobante)
    */
-  public void testTimbraConQrWithError() throws IOException, SoapClientException {
+  public void testTimbraConQrWithError() throws SoapClientException, IOException {
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-samples/pue-cfdi.xml")));
 
@@ -199,7 +231,7 @@ public class NtLinkClientTest {
   /*Para este metodo es necesario sellar el cfdi, es por eso que da error */
 
   @Test
-  public void timbraPPD_test() throws IOException, SoapClientException {
+  public void timbraPPD_test() throws SoapClientException, IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-samples/cfdi-ppd.xml")));
@@ -221,7 +253,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbraPUE_test() throws IOException, SoapClientException {
+  public void timbraPUE_test() throws SoapClientException, IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-samples/cfdi-pue.xml")));
@@ -244,7 +276,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_global_test() throws IOException, SoapClientException {
+  public void timbra_cfdi_global_test() throws SoapClientException, IOException {
 
     String comprobante =
         new String(
@@ -267,7 +299,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_relacionados_test() throws IOException, SoapClientException {
+  public void timbra_cfdi_relacionados_test() throws SoapClientException, IOException {
 
     String comprobante =
         new String(
@@ -291,7 +323,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_terceros_test() throws IOException, SoapClientException {
+  public void timbra_cfdi_terceros_test() throws SoapClientException, IOException {
 
     String comprobante =
         new String(
@@ -314,7 +346,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_ine_test() throws IOException, SoapClientException {
+  public void timbra_cfdi_ine_test() throws SoapClientException, IOException {
 
     String comprobante =
         new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-samples/cfdi-ine.xml")));
@@ -336,7 +368,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_pagos_test() throws IOException, SoapClientException {
+  public void timbra_pagos_test() throws SoapClientException, IOException {
 
     String comprobante =
         new String(
@@ -360,7 +392,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_pagos_terceros_test() throws IOException, SoapClientException {
+  public void timbra_pagos_terceros_test() throws SoapClientException, IOException {
 
     String comprobante =
         new String(
@@ -383,7 +415,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_iedu() throws IOException, SoapClientException {
+  public void timbra_cfdi_iedu() throws SoapClientException, IOException {
 
     String comprobante =
         new String(
@@ -407,7 +439,7 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void timbra_cfdi_donataria() throws IOException, SoapClientException {
+  public void timbra_cfdi_donataria() throws SoapClientException, IOException {
 
     String comprobante =
         new String(
