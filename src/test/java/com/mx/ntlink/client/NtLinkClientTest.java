@@ -19,6 +19,8 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static org.junit.Assert.assertNotNull;
+
 public class NtLinkClientTest {
 
   private static final Logger log = LoggerFactory.getLogger(NtLinkClientTest.class);
@@ -26,7 +28,7 @@ public class NtLinkClientTest {
   private NtLinkClient client;
 
   private static final String TEST_USER = "EKU9003173C9@ntlink.com.mx";
-  private static final String TEST_PASS = "Factura.2022*";
+  private static final String TEST_PASS = "Factura.2021*";
   private static final String TEST_EXPR = "?";
   private static final String TEST_UUID = "24E2465A-8B69-4F7C-BD68-4213E71F58F0";
   private static final String TEST_RFC_EMISOR = "EKU9003173C9";
@@ -38,6 +40,9 @@ public class NtLinkClientTest {
 
   private static final String TEST_USER3 = "XIA190128J61@ntlink.com.mx";
   private static final String TEST_PASS3 = "Ntlink.2022";
+
+  private static final String TEST_USER_URE = "URE180429TM6@ntlink.com.mx";
+  private static final String TEST_PASS_URE = "NTPruebas.2021*?";
 
   private static final DateTimeFormatter formatter =
       DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
@@ -80,16 +85,16 @@ public class NtLinkClientTest {
     request.setRfcReceptor(TEST_RFC_RECEPTOR);
     ProcesarRespuestaAceptacionRechazoResponse response =
         client.procesarRespuestaAceptacionRechazo(request);
-    Assert.assertNotNull(response.getProcesarRespuestaAceptacionRechazoResult());
+    assertNotNull(response.getProcesarRespuestaAceptacionRechazoResult());
   }
 
   @Test
   public void obtenerEmpresas() throws SoapClientException {
     ObtenerEmpresas request = new ObtenerEmpresas();
-    request.setUserName("URE180429TM6@ntlink.com.mx");
-    request.setPassword("NTPruebas.2021*?");
+    request.setUserName(TEST_USER_URE);
+    request.setPassword(TEST_PASS_URE);
     ObtenerEmpresasResponse response = client.obtenerEmpresas(request);
-    Assert.assertNotNull(response.getObtenerEmpresasResult());
+    assertNotNull(response.getObtenerEmpresasResult());
     Optional<String> rfc =
         response.getObtenerEmpresasResult().getEmpresaNtLink().stream()
             .map(EmpresaNtLink::getRfc)
@@ -104,7 +109,7 @@ public class NtLinkClientTest {
     request.setUserName(TEST_USER);
     request.setPassword(TEST_PASS);
     ObtenerDatosClienteResponse response = client.obtenerDatosCliente(request);
-    Assert.assertNotNull(response.getObtenerDatosClienteResult().getRfc());
+    assertNotNull(response.getObtenerDatosClienteResult().getRfc());
   }
 
   @Test
@@ -118,7 +123,7 @@ public class NtLinkClientTest {
     request.setBase64Key("");
     request.setPasswordKey("");
     CancelaCfdiOtrosPACsResponse response = client.cancelaCfdiOtrosPACs(request);
-    Assert.assertNotNull(response.getCancelaCfdiOtrosPACsResult());
+    assertNotNull(response.getCancelaCfdiOtrosPACsResult());
   }
 
   @Test
@@ -130,7 +135,7 @@ public class NtLinkClientTest {
     request.setExpresion(TEST_EXPR);
     request.setUuid(TEST_UUID);
     CancelaCfdiRequestResponse response = client.cancelaCfdiRequest(request);
-    Assert.assertNotNull(response.getCancelaCfdiRequestResult().getAcuse());
+    assertNotNull(response.getCancelaCfdiRequestResult().getAcuse());
   }
 
   @Test
@@ -141,7 +146,7 @@ public class NtLinkClientTest {
     request.setRfcEmisor("");
     request.setRfcReceptor("");
     ConsultaAceptacionRechazoResponse response = client.consultaAceptacionRechazo(request);
-    Assert.assertNotNull(response.getConsultaAceptacionRechazoResult());
+    assertNotNull(response.getConsultaAceptacionRechazoResult());
   }
 
   @Test
@@ -153,7 +158,7 @@ public class NtLinkClientTest {
     request.setRfcEmisor(TEST_RFC_EMISOR);
     request.setRfcReceptor(TEST_RFC_RECEPTOR);
     ConsultaCFDIRelacionadosResponse response = client.consultaCfdiRelacionados(request);
-    Assert.assertNotNull(response.getConsultaCFDIRelacionadosResult());
+    assertNotNull(response.getConsultaCFDIRelacionadosResult());
   }
 
   @Test
@@ -163,7 +168,7 @@ public class NtLinkClientTest {
     request.setPassword(TEST_PASS);
     request.setHash("");
     ObtenerStatusHashResponse response = client.obtenerStatusHash(request);
-    Assert.assertNotNull(response.getObtenerStatusHashResult().getStatus());
+    assertNotNull(response.getObtenerStatusHashResult().getStatus());
   }
 
   @Test
@@ -173,7 +178,7 @@ public class NtLinkClientTest {
     request.setPassword(TEST_PASS);
     request.setUuid("24E2465A-8B69-4F7C-BD68-4213E71F58F0");
     ObtenerStatusUuidResponse response = client.obtenerStatusUuid(request);
-    Assert.assertNotNull(response.getObtenerStatusUuidResult().getStatus());
+    assertNotNull(response.getObtenerStatusUuidResult().getStatus());
   }
 
   @Test
@@ -182,7 +187,7 @@ public class NtLinkClientTest {
     request.setUserName(TEST_USER);
     request.setPassword(TEST_PASS);
     ConsultaSaldoResponse response = client.consultaSaldo(request);
-    Assert.assertNotNull(response.getConsultaSaldoResult());
+    assertNotNull(response.getConsultaSaldoResult());
   }
 
   @Test
@@ -203,8 +208,8 @@ public class NtLinkClientTest {
     TimbraCfdiSinSelloResponse response = client.timbrarSinSello(cfdiSinSello);
 
     log.info(response.getTimbraCfdiSinSelloResult());
-    Assert.assertNotNull(response);
-    Assert.assertNotNull(response.getTimbraCfdiSinSelloResult());
+    assertNotNull(response);
+    assertNotNull(response.getTimbraCfdiSinSelloResult());
     Assert.assertTrue("Contains UUID", response.getTimbraCfdiSinSelloResult().contains("UUID"));
   }
 
@@ -224,8 +229,8 @@ public class NtLinkClientTest {
     request.setComprobante(comprobante);
 
     TimbraCfdiQrResponse response = client.timbrarCfdiConQr(request);
-    Assert.assertNotNull(response);
-    Assert.assertNotNull(response.getTimbraCfdiQrResult());
+    assertNotNull(response);
+    assertNotNull(response.getTimbraCfdiQrResult());
     Assert.assertFalse(response.getTimbraCfdiQrResult().getDescripcionError().isEmpty());
   }
   /*Para este metodo es necesario sellar el cfdi, es por eso que da error */
@@ -247,8 +252,8 @@ public class NtLinkClientTest {
     TimbraCfdiSinSelloResponse response = client.timbrarSinSello(cfdiSinSello);
 
     log.info(response.getTimbraCfdiSinSelloResult());
-    Assert.assertNotNull(response);
-    Assert.assertNotNull(response.getTimbraCfdiSinSelloResult());
+    assertNotNull(response);
+    assertNotNull(response.getTimbraCfdiSinSelloResult());
     Assert.assertTrue("Contains UUID", response.getTimbraCfdiSinSelloResult().contains("UUID"));
   }
 
@@ -268,8 +273,8 @@ public class NtLinkClientTest {
     cfdiSinSello.setComprobante(comprobante);
     TimbraCfdiQrSinSelloResponse response = client.timbrarSinSelloConQr(cfdiSinSello);
 
-    Assert.assertNotNull(response);
-    Assert.assertNotNull(response.getTimbraCfdiQrSinSelloResult());
+    assertNotNull(response);
+    assertNotNull(response.getTimbraCfdiQrSinSelloResult());
     Assert.assertTrue(response.getTimbraCfdiQrSinSelloResult().getDescripcionError().isEmpty());
     Assert.assertTrue(
         "Contains UUID", response.getTimbraCfdiQrSinSelloResult().getCfdi().contains("UUID"));
@@ -293,8 +298,8 @@ public class NtLinkClientTest {
     TimbraCfdiSinSelloResponse response = client.timbrarSinSello(cfdiSinSello);
 
     log.info(response.getTimbraCfdiSinSelloResult());
-    Assert.assertNotNull(response);
-    Assert.assertNotNull(response.getTimbraCfdiSinSelloResult());
+    assertNotNull(response);
+    assertNotNull(response.getTimbraCfdiSinSelloResult());
     Assert.assertTrue("Contains UUID", response.getTimbraCfdiSinSelloResult().contains("UUID"));
   }
 
@@ -317,8 +322,8 @@ public class NtLinkClientTest {
     TimbraCfdiSinSelloResponse response = client.timbrarSinSello(cfdiSinSello);
 
     log.info(response.getTimbraCfdiSinSelloResult());
-    Assert.assertNotNull(response);
-    Assert.assertNotNull(response.getTimbraCfdiSinSelloResult());
+    assertNotNull(response);
+    assertNotNull(response.getTimbraCfdiSinSelloResult());
     Assert.assertTrue("Contains UUID", response.getTimbraCfdiSinSelloResult().contains("UUID"));
   }
 
@@ -340,8 +345,8 @@ public class NtLinkClientTest {
     TimbraCfdiSinSelloResponse response = client.timbrarSinSello(cfdiSinSello);
 
     log.info(response.getTimbraCfdiSinSelloResult());
-    Assert.assertNotNull(response);
-    Assert.assertNotNull(response.getTimbraCfdiSinSelloResult());
+    assertNotNull(response);
+    assertNotNull(response.getTimbraCfdiSinSelloResult());
     Assert.assertTrue("Contains UUID", response.getTimbraCfdiSinSelloResult().contains("UUID"));
   }
 
@@ -362,8 +367,8 @@ public class NtLinkClientTest {
     TimbraCfdiSinSelloResponse response = client.timbrarSinSello(cfdiSinSello);
 
     log.info(response.getTimbraCfdiSinSelloResult());
-    Assert.assertNotNull(response);
-    Assert.assertNotNull(response.getTimbraCfdiSinSelloResult());
+    assertNotNull(response);
+    assertNotNull(response.getTimbraCfdiSinSelloResult());
     Assert.assertTrue("Contains UUID", response.getTimbraCfdiSinSelloResult().contains("UUID"));
   }
 
@@ -386,8 +391,8 @@ public class NtLinkClientTest {
     TimbraCfdiSinSelloResponse response = client.timbrarSinSello(cfdiSinSello);
 
     log.info(response.getTimbraCfdiSinSelloResult());
-    Assert.assertNotNull(response);
-    Assert.assertNotNull(response.getTimbraCfdiSinSelloResult());
+    assertNotNull(response);
+    assertNotNull(response.getTimbraCfdiSinSelloResult());
     Assert.assertTrue("Contains UUID", response.getTimbraCfdiSinSelloResult().contains("UUID"));
   }
 
@@ -409,8 +414,8 @@ public class NtLinkClientTest {
     TimbraCfdiSinSelloResponse response = client.timbrarSinSello(cfdiSinSello);
 
     log.info(response.getTimbraCfdiSinSelloResult());
-    Assert.assertNotNull(response);
-    Assert.assertNotNull(response.getTimbraCfdiSinSelloResult());
+    assertNotNull(response);
+    assertNotNull(response.getTimbraCfdiSinSelloResult());
     Assert.assertTrue("Contains UUID", response.getTimbraCfdiSinSelloResult().contains("UUID"));
   }
 
@@ -433,8 +438,8 @@ public class NtLinkClientTest {
     TimbraCfdiSinSelloResponse response = client.timbrarSinSello(cfdiSinSello);
 
     log.info(response.getTimbraCfdiSinSelloResult());
-    Assert.assertNotNull(response);
-    Assert.assertNotNull(response.getTimbraCfdiSinSelloResult());
+    assertNotNull(response);
+    assertNotNull(response.getTimbraCfdiSinSelloResult());
     Assert.assertTrue("Contains UUID", response.getTimbraCfdiSinSelloResult().contains("UUID"));
   }
 
@@ -456,8 +461,8 @@ public class NtLinkClientTest {
     TimbraCfdiSinSelloResponse response = client.timbrarSinSello(cfdiSinSello);
 
     log.info(response.getTimbraCfdiSinSelloResult());
-    Assert.assertNotNull(response);
-    Assert.assertNotNull(response.getTimbraCfdiSinSelloResult());
+    assertNotNull(response);
+    assertNotNull(response.getTimbraCfdiSinSelloResult());
     Assert.assertTrue("Contains UUID", response.getTimbraCfdiSinSelloResult().contains("UUID"));
   }
 
@@ -1748,5 +1753,18 @@ public class NtLinkClientTest {
           "Request Error :CFDI40146 - El campo RFC del receptor debe contener el valor  \"XAXX010101000\".",
           e.getMessage());
     }
+  }
+
+  @Test
+  public void validarCFdi() throws IOException, SoapClientException {
+    String comprobante =
+            new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-samples/cfdi-timbrado.xml")));
+
+    Validar request = new Validar();
+    request.setUserName(TEST_USER_URE);
+    request.setPassword(TEST_PASS_URE);
+    request.setComprobante(comprobante);
+    ValidarResponse response = client.validarCfdi(request);
+    assertNotNull(response);
   }
 }

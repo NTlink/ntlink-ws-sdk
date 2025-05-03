@@ -1,55 +1,13 @@
 package com.mx.ntlink.client;
 
 import com.mx.ntlink.error.SoapClientException;
-import com.mx.ntlink.models.generated.BajaEmpresa;
-import com.mx.ntlink.models.generated.BajaEmpresaResponse;
-import com.mx.ntlink.models.generated.CancelaCfdi;
-import com.mx.ntlink.models.generated.CancelaCfdiOtrosPACs;
-import com.mx.ntlink.models.generated.CancelaCfdiOtrosPACsResponse;
-import com.mx.ntlink.models.generated.CancelaCfdiRequest;
-import com.mx.ntlink.models.generated.CancelaCfdiRequestResponse;
-import com.mx.ntlink.models.generated.CancelaCfdiResponse;
-import com.mx.ntlink.models.generated.CancelaRetencion;
-import com.mx.ntlink.models.generated.CancelaRetencionResponse;
-import com.mx.ntlink.models.generated.ConsultaAceptacionRechazo;
-import com.mx.ntlink.models.generated.ConsultaAceptacionRechazoResponse;
-import com.mx.ntlink.models.generated.ConsultaCFDIRelacionados;
-import com.mx.ntlink.models.generated.ConsultaCFDIRelacionadosResponse;
-import com.mx.ntlink.models.generated.ConsultaEstatusCFDI;
-import com.mx.ntlink.models.generated.ConsultaEstatusCFDIResponse;
-import com.mx.ntlink.models.generated.ConsultaSaldo;
-import com.mx.ntlink.models.generated.ConsultaSaldoResponse;
-import com.mx.ntlink.models.generated.ObtenerDatosCliente;
-import com.mx.ntlink.models.generated.ObtenerDatosClienteResponse;
-import com.mx.ntlink.models.generated.ObtenerEmpresas;
-import com.mx.ntlink.models.generated.ObtenerEmpresasResponse;
-import com.mx.ntlink.models.generated.ObtenerStatusHash;
-import com.mx.ntlink.models.generated.ObtenerStatusHashResponse;
-import com.mx.ntlink.models.generated.ObtenerStatusUuid;
-import com.mx.ntlink.models.generated.ObtenerStatusUuidResponse;
-import com.mx.ntlink.models.generated.ProcesarRespuestaAceptacionRechazo;
-import com.mx.ntlink.models.generated.ProcesarRespuestaAceptacionRechazoResponse;
-import com.mx.ntlink.models.generated.RegistraEmpresa;
-import com.mx.ntlink.models.generated.RegistraEmpresaResponse;
-import com.mx.ntlink.models.generated.TimbraCfdi;
-import com.mx.ntlink.models.generated.TimbraCfdiQr;
-import com.mx.ntlink.models.generated.TimbraCfdiQrResponse;
-import com.mx.ntlink.models.generated.TimbraCfdiQrSinSello;
-import com.mx.ntlink.models.generated.TimbraCfdiQrSinSelloResponse;
-import com.mx.ntlink.models.generated.TimbraCfdiResponse;
-import com.mx.ntlink.models.generated.TimbraCfdiSinSello;
-import com.mx.ntlink.models.generated.TimbraCfdiSinSelloResponse;
-import com.mx.ntlink.models.generated.TimbraRetencion;
-import com.mx.ntlink.models.generated.TimbraRetencionQr;
-import com.mx.ntlink.models.generated.TimbraRetencionQrResponse;
-import com.mx.ntlink.models.generated.TimbraRetencionResponse;
-import com.mx.ntlink.models.generated.TimbraRetencionSinSello;
-import com.mx.ntlink.models.generated.TimbraRetencionSinSelloResponse;
+import com.mx.ntlink.models.generated.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import javax.xml.soap.MessageFactory;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
@@ -68,6 +26,12 @@ public class NtLinkClientImpl extends AbstractSoapClient implements NtLinkClient
       "http://schemas.datacontract.org/2004/07/CertificadorWs";
   private static final String CERTIFICADOR_BUSINESS_NAMESPACE =
       "http://schemas.datacontract.org/2004/07/CertificadorWs.Business";
+
+  private static final String SERVICIO_LOCAL_CONTRACT_NAMESPACE =
+      "http://schemas.datacontract.org/2004/07/ServicioLocalContract";
+
+  private static final String MICROSOFT_ARRAYS_NAMESPACE =
+      "http://schemas.microsoft.com/2003/10/Serialization/Arrays";
 
   public NtLinkClientImpl(URL wsEndpoint) {
     super(wsEndpoint, NTLINK_NAMESAPCE.concat(I_SERVICIO_TIMBRADO));
@@ -93,7 +57,7 @@ public class NtLinkClientImpl extends AbstractSoapClient implements NtLinkClient
       throws SoapClientException {
     SOAPMessage response = replaceNamespaces(sendRequest(request, ObtenerDatosCliente.class));
     return parseResponse(response, ObtenerDatosClienteResponse.class);
-  };
+  }
 
   @Override
   public CancelaCfdiOtrosPACsResponse cancelaCfdiOtrosPACs(CancelaCfdiOtrosPACs request)
@@ -268,13 +232,22 @@ public class NtLinkClientImpl extends AbstractSoapClient implements NtLinkClient
     return parseResponse(response, ConsultaEstatusCFDIResponse.class);
   }
 
+  @Override
+  public ValidarResponse validarCfdi(Validar request) throws SoapClientException {
+    request.setComprobante("<![CDATA[" + request.getComprobante() + "]]>");
+    SOAPMessage response = replaceNamespaces(sendRequest(request, Validar.class));
+    return parseResponse(response, ValidarResponse.class);
+  }
+
   private SOAPMessage replaceNamespaces(SOAPMessage message) throws SoapClientException {
     try {
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       message.writeTo(bos);
-      String stringResponse = bos.toString("UTF-8");
+      String stringResponse = bos.toString(StandardCharsets.UTF_8);
       stringResponse = stringResponse.replaceAll(CERTIFICADOR_NAMESPACE, NTLINK_NAMESAPCE);
       stringResponse = stringResponse.replaceAll(CERTIFICADOR_BUSINESS_NAMESPACE, NTLINK_NAMESAPCE);
+      stringResponse = stringResponse.replaceAll(SERVICIO_LOCAL_CONTRACT_NAMESPACE, NTLINK_NAMESAPCE);
+      stringResponse = stringResponse.replaceAll(MICROSOFT_ARRAYS_NAMESPACE, NTLINK_NAMESAPCE);
       stringResponse = stringResponse.replaceAll(NTLINK_BUSINESS_NAMESPACE, NTLINK_NAMESAPCE);
 
       InputStream is = new ByteArrayInputStream(stringResponse.getBytes());

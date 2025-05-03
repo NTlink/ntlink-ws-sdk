@@ -15,6 +15,24 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="Validar">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="userName"  type="xs:string"/>
+                <xs:element minOccurs="0" name="password"  type="xs:string"/>
+                <xs:element minOccurs="0" name="comprobante"  type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ValidarResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="ValidarResult"  type="tns:ResultadoValidacion"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
     <xs:element name="ObtenerDatosCliente">
         <xs:complexType>
             <xs:sequence>
@@ -520,5 +538,67 @@
             <xs:element minOccurs="0" maxOccurs="unbounded" name="Folios" type="tns:Folios"/>
         </xs:sequence>
     </xs:complexType>
+
+    <xs:complexType name="ArrayOfstring">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="string"  type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ResultadoValidacion">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Detalles"  type="tns:ArrayOfValidacion"/>
+            <xs:element minOccurs="0" name="Entrada"  type="tns:ValidadorContract"/>
+            <xs:element minOccurs="0" name="Valido" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ResultadoValidacion"  type="tns:ResultadoValidacion">
+
+    </xs:element>
+    <xs:complexType name="ArrayOfValidacion">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="Validacion"  type="tns:Validacion"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfValidacion"  type="tns:ArrayOfValidacion"/>
+    <xs:complexType name="Validacion">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Descripcion"  type="xs:string"/>
+            <xs:element minOccurs="0" name="Error"  type="xs:string"/>
+            <xs:element minOccurs="0" name="Valido" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="Validacion"  type="tns:Validacion"/>
+    <xs:complexType name="ValidadorContract">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="AnoAprobacion"  type="xs:string"/>
+            <xs:element minOccurs="0" name="CadenaOriginal"  type="xs:string"/>
+            <xs:element minOccurs="0" name="CadenaTimbre"  type="xs:string"/>
+            <xs:element minOccurs="0" name="Certificado"  type="xs:string"/>
+            <xs:element minOccurs="0" name="CertificadoNoFiel" type="xs:boolean"/>
+            <xs:element minOccurs="0" name="CertificadoValido" type="xs:boolean"/>
+            <xs:element minOccurs="0" name="Errores"  type="tns:ArrayOfstring"/>
+            <xs:element minOccurs="0" name="Fecha" type="xs:dateTime"/>
+            <xs:element minOccurs="0" name="FechaTimbrado" type="xs:dateTime"/>
+            <xs:element minOccurs="0" name="Folio"  type="xs:string"/>
+            <xs:element minOccurs="0" name="NoAprobacion"  type="xs:string"/>
+            <xs:element minOccurs="0" name="NoCertificado"  type="xs:string"/>
+            <xs:element minOccurs="0" name="NoCertificadoSat"  type="xs:string"/>
+            <xs:element minOccurs="0" name="RfcEmisor"  type="xs:string"/>
+            <xs:element minOccurs="0" name="Sello"  type="xs:string"/>
+            <xs:element minOccurs="0" name="SelloSat"  type="xs:string"/>
+            <xs:element minOccurs="0" name="SelloValido" type="xs:boolean"/>
+            <xs:element minOccurs="0" name="Serie"  type="xs:string"/>
+            <xs:element minOccurs="0" name="SubTotal" type="xs:double"/>
+            <xs:element minOccurs="0" name="SumaConceptos" type="xs:double"/>
+            <xs:element minOccurs="0" name="SumaImpuestos" type="xs:double"/>
+            <xs:element minOccurs="0" name="SumaRetenciones" type="xs:double"/>
+            <xs:element minOccurs="0" name="Total" type="xs:double"/>
+            <xs:element minOccurs="0" name="Valido" type="xs:boolean"/>
+            <xs:element minOccurs="0" name="Version"  type="xs:string"/>
+            <xs:element minOccurs="0" name="XmlString"  type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ValidadorContract"  type="tns:ValidadorContract"/>
 
 </xs:schema>

@@ -4,14 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.mx.ntlink</groupId>
     <artifactId>ntlink-ws-sdk</artifactId>
-    <version>3.0.1</version>
+    <version>3.1.0</version>
     <name>ntlink-ws-sdk</name>
     <description>Web service client for NTLink web service CFDI V4</description>
 
     <properties>
         <!--dont update to 2.10 version, it is not compatible with java 1.8-->
         <fmt-maven-plugin.version>2.9</fmt-maven-plugin.version>
-        <java.version>8</java.version>
+        <java.version>11</java.version>
         <javax.xml.soap-api.version>1.4.0</javax.xml.soap-api.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
         <jaxb-impl.version>2.3.5</jaxb-impl.version>
@@ -51,12 +51,6 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
-        </dependency>
-        <!-- DEPENDENCY REQUIRED TO SIGN XML -->
-        <dependency>
-            <groupId>org.apache.servicemix.bundles</groupId>
-            <artifactId>org.apache.servicemix.bundles.not-yet-commons-ssl</artifactId>
-            <version>${org.apache.servicemix.bundles.not-yet-commons-ssl.version}</version>
         </dependency>
 
         <dependency>
