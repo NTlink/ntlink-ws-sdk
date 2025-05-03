@@ -1,50 +1,7 @@
 package com.mx.ntlink.client;
 
 import com.mx.ntlink.error.SoapClientException;
-import com.mx.ntlink.models.generated.BajaEmpresa;
-import com.mx.ntlink.models.generated.BajaEmpresaResponse;
-import com.mx.ntlink.models.generated.CancelaCfdi;
-import com.mx.ntlink.models.generated.CancelaCfdiOtrosPACs;
-import com.mx.ntlink.models.generated.CancelaCfdiOtrosPACsResponse;
-import com.mx.ntlink.models.generated.CancelaCfdiRequest;
-import com.mx.ntlink.models.generated.CancelaCfdiRequestResponse;
-import com.mx.ntlink.models.generated.CancelaCfdiResponse;
-import com.mx.ntlink.models.generated.CancelaRetencion;
-import com.mx.ntlink.models.generated.CancelaRetencionResponse;
-import com.mx.ntlink.models.generated.ConsultaAceptacionRechazo;
-import com.mx.ntlink.models.generated.ConsultaAceptacionRechazoResponse;
-import com.mx.ntlink.models.generated.ConsultaCFDIRelacionados;
-import com.mx.ntlink.models.generated.ConsultaCFDIRelacionadosResponse;
-import com.mx.ntlink.models.generated.ConsultaEstatusCFDI;
-import com.mx.ntlink.models.generated.ConsultaEstatusCFDIResponse;
-import com.mx.ntlink.models.generated.ConsultaSaldo;
-import com.mx.ntlink.models.generated.ConsultaSaldoResponse;
-import com.mx.ntlink.models.generated.ObtenerDatosCliente;
-import com.mx.ntlink.models.generated.ObtenerDatosClienteResponse;
-import com.mx.ntlink.models.generated.ObtenerEmpresas;
-import com.mx.ntlink.models.generated.ObtenerEmpresasResponse;
-import com.mx.ntlink.models.generated.ObtenerStatusHash;
-import com.mx.ntlink.models.generated.ObtenerStatusHashResponse;
-import com.mx.ntlink.models.generated.ObtenerStatusUuid;
-import com.mx.ntlink.models.generated.ObtenerStatusUuidResponse;
-import com.mx.ntlink.models.generated.ProcesarRespuestaAceptacionRechazo;
-import com.mx.ntlink.models.generated.ProcesarRespuestaAceptacionRechazoResponse;
-import com.mx.ntlink.models.generated.RegistraEmpresa;
-import com.mx.ntlink.models.generated.RegistraEmpresaResponse;
-import com.mx.ntlink.models.generated.TimbraCfdi;
-import com.mx.ntlink.models.generated.TimbraCfdiQr;
-import com.mx.ntlink.models.generated.TimbraCfdiQrResponse;
-import com.mx.ntlink.models.generated.TimbraCfdiQrSinSello;
-import com.mx.ntlink.models.generated.TimbraCfdiQrSinSelloResponse;
-import com.mx.ntlink.models.generated.TimbraCfdiResponse;
-import com.mx.ntlink.models.generated.TimbraCfdiSinSello;
-import com.mx.ntlink.models.generated.TimbraCfdiSinSelloResponse;
-import com.mx.ntlink.models.generated.TimbraRetencion;
-import com.mx.ntlink.models.generated.TimbraRetencionQr;
-import com.mx.ntlink.models.generated.TimbraRetencionQrResponse;
-import com.mx.ntlink.models.generated.TimbraRetencionResponse;
-import com.mx.ntlink.models.generated.TimbraRetencionSinSello;
-import com.mx.ntlink.models.generated.TimbraRetencionSinSelloResponse;
+import com.mx.ntlink.models.generated.*;
 
 /** @author Ralph */
 public interface NtLinkClient {
@@ -102,4 +59,6 @@ public interface NtLinkClient {
   BajaEmpresaResponse bajaEmpresa(BajaEmpresa baja) throws SoapClientException;
 
   ConsultaEstatusCFDIResponse estatusCfdi(ConsultaEstatusCFDI consulta) throws SoapClientException;
+
+  ValidarResponse validarCfdi(Validar request) throws SoapClientException;
 }

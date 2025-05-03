@@ -112,7 +112,8 @@ To use just make a simple maven import
 - [x] 2.0.13 Adding retenciones20.xsd generated for class autogeneration via JaxB
 - [x] 2.0.14 Including Retenciones,Nomina and Pagos transformer methods
 - [x] 3.0.0 SDK cleanup
-  - [x] 3.0.1 Require java.net.URL as parameter on client creation to allow handle read and connect timeout. 
+  - [x] 3.0.1 Require java.net.URL as parameter on client creation to allow handle read and connect timeout.
+  - [x] 3.1.0 Adding CFDI validate method and upgrade to java 11
 
 
 <!-- LICENSE -->
