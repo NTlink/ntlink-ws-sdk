@@ -53,8 +53,8 @@ public class NtLinkClientTest {
   public void init() throws MalformedURLException {
     URL endpoint =
         new URL(
-            new URL("http://pruebas.ntlink.com.mx:90"),
-            "/CertificadorWs40/ServicioTimbrado.svc",
+            new URL("http://dev-cfdi4.ntlink.com.mx"),
+            "/cfdi40/servicio-timbrado",
             new URLStreamHandler() {
               @Override
               protected URLConnection openConnection(URL url) throws IOException {
