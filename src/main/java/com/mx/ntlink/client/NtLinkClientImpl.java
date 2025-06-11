@@ -239,6 +239,13 @@ public class NtLinkClientImpl extends AbstractSoapClient implements NtLinkClient
     return parseResponse(response, ValidarResponse.class);
   }
 
+  @Override
+  public ConsultaListaNegraResponse consultaListaNegra(ConsultaListaNegra request)
+      throws SoapClientException {
+    SOAPMessage response = replaceNamespaces(sendRequest(request, ConsultaListaNegra.class));
+    return parseResponse(response, ConsultaListaNegraResponse.class);
+  }
+
   private SOAPMessage replaceNamespaces(SOAPMessage message) throws SoapClientException {
     try {
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -246,7 +253,8 @@ public class NtLinkClientImpl extends AbstractSoapClient implements NtLinkClient
       String stringResponse = bos.toString(StandardCharsets.UTF_8);
       stringResponse = stringResponse.replaceAll(CERTIFICADOR_NAMESPACE, NTLINK_NAMESAPCE);
       stringResponse = stringResponse.replaceAll(CERTIFICADOR_BUSINESS_NAMESPACE, NTLINK_NAMESAPCE);
-      stringResponse = stringResponse.replaceAll(SERVICIO_LOCAL_CONTRACT_NAMESPACE, NTLINK_NAMESAPCE);
+      stringResponse =
+          stringResponse.replaceAll(SERVICIO_LOCAL_CONTRACT_NAMESPACE, NTLINK_NAMESAPCE);
       stringResponse = stringResponse.replaceAll(MICROSOFT_ARRAYS_NAMESPACE, NTLINK_NAMESAPCE);
       stringResponse = stringResponse.replaceAll(NTLINK_BUSINESS_NAMESPACE, NTLINK_NAMESAPCE);
 

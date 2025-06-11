@@ -15,6 +15,31 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="ConsultaListaNegra">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="userName" type="xs:string"/>
+                <xs:element minOccurs="0" name="password" type="xs:string"/>
+                <xs:element minOccurs="0" name="RFC" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ConsultaListaNegraResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="ConsultaListaNegraResult">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="Esta"  type="xs:boolean"/>
+                            <xs:element minOccurs="0" name="Situacion" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
     <xs:element name="Validar">
         <xs:complexType>
             <xs:sequence>
@@ -463,13 +488,35 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="RegistraEmpresa">
-        <xs:sequence>
-            <xs:element minOccurs="0" name="userName" type="xs:string"/>
-            <xs:element minOccurs="0" name="password" type="xs:string"/>
-            <xs:element minOccurs="0" name="empresa" type="tns:EmpresaNtLink"/>
-        </xs:sequence>
-    </xs:complexType>
+    <xs:element name="RegistraEmpresa">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="userName" type="xs:string"/>
+                <xs:element minOccurs="0" name="password" type="xs:string"/>
+                <xs:element minOccurs="0" name="empresa">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="Ciudad" type="xs:string" />
+                            <xs:element minOccurs="0" name="Colonia" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Contacto" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Cp" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Curp" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Direccion" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Email" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Estado" type="xs:string"/>
+                            <xs:element minOccurs="0" name="RazonSocial" type="xs:string"/>
+                            <xs:element minOccurs="0" name="RegimenFiscal" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Rfc" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Telefono" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Base64Cer" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Base64Key" type="xs:string"/>
+                            <xs:element minOccurs="0" name="PasswordKey" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
     <xs:element name="RegistraEmpresaResponse">
         <xs:complexType>
@@ -491,7 +538,7 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:complexType name="EmpresaNtLink">
+    <xs:complexType name="EmpresasNtLink">
         <xs:sequence>
             <xs:element minOccurs="0" name="Ciudad" type="xs:string"/>
             <xs:element minOccurs="0" name="Colonia" type="xs:string"/>
@@ -501,12 +548,9 @@
             <xs:element minOccurs="0" name="Direccion" type="xs:string"/>
             <xs:element minOccurs="0" name="Email" type="xs:string"/>
             <xs:element minOccurs="0" name="Estado" type="xs:string"/>
-            <xs:element minOccurs="0" name="FechaContrato" type="xs:dateTime"/>
-            <xs:element minOccurs="0" name="Folios" type="xs:int"/>
             <xs:element minOccurs="0" name="RazonSocial" type="xs:string"/>
             <xs:element minOccurs="0" name="RegimenFiscal" type="xs:string"/>
             <xs:element minOccurs="0" name="Rfc" type="xs:string"/>
-            <xs:element minOccurs="0" name="Sucursales" type="xs:int"/>
             <xs:element minOccurs="0" name="Telefono" type="xs:string"/>
             <xs:element minOccurs="0" name="TimbresContratados" type="xs:int"/>
             <xs:element minOccurs="0" name="Usuarios" type="xs:int"/>
@@ -515,7 +559,7 @@
 
     <xs:complexType name="ArrayOfEmpresaNtLink">
         <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="unbounded" name="EmpresaNtLink" type="tns:EmpresaNtLink"/>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="EmpresasNtLink" type="tns:EmpresasNtLink"/>
         </xs:sequence>
     </xs:complexType>
 

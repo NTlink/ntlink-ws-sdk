@@ -61,4 +61,7 @@ public interface NtLinkClient {
   ConsultaEstatusCFDIResponse estatusCfdi(ConsultaEstatusCFDI consulta) throws SoapClientException;
 
   ValidarResponse validarCfdi(Validar request) throws SoapClientException;
+
+  ConsultaListaNegraResponse consultaListaNegra(ConsultaListaNegra request)
+      throws SoapClientException;
 }
