@@ -68,6 +68,7 @@ public abstract class AbstractSoapClient {
   protected <R> R parseResponse(SOAPMessage response, Class<R> entityType)
       throws SoapClientException {
     try {
+      logSoapMessage(response);
       SOAPBody soapBody = response.getSOAPBody();
       Node element = soapBody.getFirstChild();
       return parseNode(element, entityType);

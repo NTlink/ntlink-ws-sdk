@@ -1,5 +1,8 @@
 package com.mx.ntlink.client;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 import com.mx.ntlink.error.SoapClientException;
 import com.mx.ntlink.models.generated.*;
 import java.io.IOException;
@@ -18,8 +21,6 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import static org.junit.Assert.assertNotNull;
 
 public class NtLinkClientTest {
 
@@ -52,8 +53,8 @@ public class NtLinkClientTest {
   public void init() throws MalformedURLException {
     URL endpoint =
         new URL(
-            new URL("http://dev-cfdi4.ntlink.com.mx"),
-            "/cfdi40/servicio-timbrado",
+            new URL("http://pruebas.ntlink.com.mx:90"),
+            "/CertificadorWs40/ServicioTimbrado.svc",
             new URLStreamHandler() {
               @Override
               protected URLConnection openConnection(URL url) throws IOException {
@@ -67,6 +68,39 @@ public class NtLinkClientTest {
             });
 
     this.client = new NtLinkClientImpl(endpoint);
+  }
+
+  @Test
+  public void testRegistraEmpresa() throws SoapClientException {
+    RegistraEmpresa registro = new RegistraEmpresa();
+    registro.setUserName(TEST_USER);
+    registro.setPassword(TEST_PASS);
+    RegistraEmpresa.Empresa empresaNtLink = new RegistraEmpresa.Empresa();
+    empresaNtLink.setRazonSocial("Empresa de Pruebas");
+    empresaNtLink.setRfc("AIN1211298V9");
+    empresaNtLink.setEmail("test@netlink.com.mx");
+    empresaNtLink.setCiudad("Ciudad de México");
+    empresaNtLink.setEstado("CDMX");
+    empresaNtLink.setCp("01234");
+    empresaNtLink.setColonia("Colonia de Pruebas");
+    empresaNtLink.setRegimenFiscal("626");
+    empresaNtLink.setBase64Cer("base64");
+    empresaNtLink.setBase64Key("base64");
+    empresaNtLink.setPasswordKey("password");
+    registro.setEmpresa(empresaNtLink);
+    RegistraEmpresaResponse response = client.registraEmpresa(registro);
+    assertNotNull(response);
+  }
+
+  @Test
+  public void testConsultaListaNegra() throws SoapClientException {
+    ConsultaListaNegra request = new ConsultaListaNegra();
+    request.setUserName(TEST_USER);
+    request.setPassword(TEST_PASS);
+    request.setRFC("AAF1307177L2");
+    ConsultaListaNegraResponse response = client.consultaListaNegra(request);
+    assertNotNull(response);
+    assertEquals("Sentencia Favorable", response.getConsultaListaNegraResult().getSituacion());
   }
 
   @Test
@@ -96,8 +130,8 @@ public class NtLinkClientTest {
     ObtenerEmpresasResponse response = client.obtenerEmpresas(request);
     assertNotNull(response.getObtenerEmpresasResult());
     Optional<String> rfc =
-        response.getObtenerEmpresasResult().getEmpresaNtLink().stream()
-            .map(EmpresaNtLink::getRfc)
+        response.getObtenerEmpresasResult().getEmpresasNtLink().stream()
+            .map(EmpresasNtLink::getRfc)
             .filter(r -> "URE180429TM6".equals(r))
             .findAny();
     Assert.assertTrue(rfc.isPresent());
@@ -1756,9 +1790,10 @@ public class NtLinkClientTest {
   }
 
   @Test
-  public void validarCFdi() throws IOException, SoapClientException {
+  public void validarCfdi() throws IOException, SoapClientException {
     String comprobante =
-            new String(Files.readAllBytes(Paths.get("./src/test/resources/cfdi-samples/cfdi-timbrado.xml")));
+        new String(
+            Files.readAllBytes(Paths.get("./src/test/resources/cfdi-samples/cfdi-timbrado.xml")));
 
     Validar request = new Validar();
     request.setUserName(TEST_USER_URE);
