@@ -105,6 +105,7 @@ To use just make a simple maven import
 - [x] 3.0.0 SDK cleanup
   - [x] 3.0.1 Require java.net.URL as parameter on client creation to allow handle read and connect timeout.
   - [x] 3.1.0 Adding CFDI validate method and upgrade to java 11
+  - [x] 3.2.0 Adding new methods validar listas negras and fix obtener empresas
 
 
 <!-- LICENSE -->
